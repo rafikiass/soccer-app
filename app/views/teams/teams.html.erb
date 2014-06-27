@@ -1,0 +1,25 @@
+<h3>Here are the European teams</h3>
+
+
+<ul class="side-nav">
+  <li><a href="/leagues">Leagues</a></li>
+  <li><a href="teams/new">Create a team</a></li>
+  <li class="divider"></li>
+  
+</ul>
+
+<div class="row">
+  <% @teams.each do |team| %>
+    <div class="column medium-4">
+      <p>Rank: #<%= team.rank %></p>
+      <p>Team: <a href="/teams/<%= team.id %>"><%= team.team %></a></p>
+      <p>Manager: <%= team.manager %></p>
+     <div>
+        <a class="button" href="/teams/<%= team.id %>/edit">Edit</a>
+
+        <a class="button" data-confirm="Are you sure?" data-method="delete" href="<%= "/teams/#{team.id}"%>" rel="nofollow">Destroy</a>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

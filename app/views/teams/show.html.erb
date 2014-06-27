@@ -1,0 +1,11 @@
+<p>Rank #<%= @team.rank %></p>
+<p>Name: <%= @team.team %></p>
+<p>Manager: <%= @team.manager %></p>
+
+<div class="">
+  <a href="/teams/<%= @team.id %>/edit">Edit</a>
+</div>
+
+  <a data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.id}"%>" rel="nofollow">Destroy</a>
+
+  <a class="go-back" href="/teams">Go Back</a>

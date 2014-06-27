@@ -1,0 +1,24 @@
+<h3>Here are the European leagues</h3>
+<ul class="side-nav">
+  <li><a href="/teams">Teams</a></li>
+  <li><a href="leagues/new">Create a team</a></li>
+  <li class="divider"></li>
+  
+</ul>
+
+<div>
+  <ul class="large-block-grid-4 medium-block-grid-4">
+    <% @leagues.each do |league| %>
+        <li><a href="leagues/<%= league.id %>"><%= league.league %></a></p>
+        <p><%= league.country %></p>
+        <p><%= league.team %></p>
+
+          <a class="button" href="/leagues/<%= league.id %>/edit">Edit</a>
+
+          <a class="button destroy" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues/#{league.id}"%>" rel="nofollow">Destroy</a></li>
+  
+    <% end %>
+  </ul>
+<img src="/assets/epl.png">
+<%= image_tag("epl.png") %>
+</div>

@@ -1,0 +1,39 @@
+// $tabs-navigation-bg-color: black;
+
+body {
+	background-image: url(background.jpg);
+	color: black;
+	margin: auto;
+	width: 80%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h3 {
+	color: lighten(#d9d9d9, 20);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 2.5em;
+}
+
+a:hover {
+	color: #FF3300;
+}
+.button:hover {
+	background: #FF3300;
+}
+
+#tab-body {
+	margin: auto;
+	width: 60%;
+	background: #ddd;
+}
+#header-body {
+	margin:auto;
+	width: 45%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#create-account-body {
+	margin: auto;
+	width: 25%;
+}
+

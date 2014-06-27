@@ -1,0 +1,16 @@
+<p><%= @league.league %></p>
+<p><%= @league.country %></p>
+<ul>
+  <% @league.team_list.each do |team| %>
+  <li><%= team %></li>
+  <% end %>
+
+</ul>
+
+<p>Back to <a href="/leagues">leagues</a></p>
+
+<div class="edit">
+  <a href="/leagues/<%= @league.id %>/edit">Edit</a>
+</div>
+
+  <a class="destroy" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@league.id}"%>" rel="nofollow">Destroy</a>
