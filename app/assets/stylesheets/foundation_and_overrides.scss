@@ -15,7 +15,7 @@
 // $experimental: true;
 $tabs-navigation-bg-color: #ED6D4D;
 $tabs-navigation-active-bg-color: darken(#fff, 15);
-// $tabs-content-padding: $column-gutter/2;
+
 // 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -79,7 +79,7 @@ $tabs-navigation-active-bg-color: darken(#fff, 15);
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
-// $column-gutter: rem-calc(30);
+
 
 // Media Query Ranges
 // $small-range: (0em, 40em);
@@ -347,7 +347,7 @@ $tabs-navigation-active-bg-color: darken(#fff, 15);
 
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
-// $button-sml: rem-calc(14);
+ $button-sml: rem-calc(8);
 // $button-med: rem-calc(16);
 // $button-lrg: rem-calc(18);
 
@@ -1123,7 +1123,7 @@ $tabs-navigation-active-bg-color: darken(#fff, 15);
 
 // $include-html-tabs-classes: $include-html-classes;
 
-// $tabs-navigation-padding: rem-calc(16);
+ // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;
 // $tabs-navigation-active-bg-color: #fff;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
@@ -1131,9 +1131,9 @@ $tabs-navigation-active-bg-color: darken(#fff, 15);
 // $tabs-navigation-active-font-color: $tabs-navigation-font-color;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
-
+// $column-gutter: rem-calc(60);
 // $tabs-content-margin-bottom: rem-calc(24);
-// $tabs-content-padding: $column-gutter/2;
+ // $tabs-content-padding: $column-gutter/5;
 
 // $tabs-vertical-navigation-margin-bottom: 1.25rem;
 

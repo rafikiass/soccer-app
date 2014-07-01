@@ -1,11 +1,13 @@
 <p><%= @league.league %></p>
 <p><%= @league.country %></p>
 <ul>
-  <% @league.team_list.each do |team| %>
-  <li><%= team %></li>
+  <% @league.teams.each do |team| %>
+  <li class="side-nav"><a href="../teams/<%= team.id -%>"><%= team.team %></a></li>
   <% end %>
-
 </ul>
+
+
+
 
 <p>Back to <a href="/leagues">leagues</a></p>
 

@@ -9,7 +9,9 @@ class TeamsController < ApplicationController
   end
 
   def create
-    Team.create(params[:team])
+    @team = Team.create(params[:team])
+    flash[:success] = "Team created."
+    redirect_to "/teams/#{@team.id}"
   end
 
   def show
@@ -23,6 +25,8 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @team.update(params[:team])
+    flash[:success] = "Team updated."
+    redirect_to "/teams/#{@team.id}"
   end
 
   def destroy

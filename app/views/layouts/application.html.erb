@@ -10,10 +10,41 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-
+<% flash.each do |name, message| %>
+  <div class="alert-box radius <%= name %>">
+    <%= message %>
+  </div>
+  <% end %>
   <body>
-  
+<header>
+  <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1 class="title">Leagues</h1>
+      </section>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>European Leagues</label></li>
+      </ul>
+    </aside>
+
+    <section class="main-section">
+      
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+</header>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
+  
 </html>

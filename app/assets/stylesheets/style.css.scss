@@ -21,10 +21,20 @@ a:hover {
 }
 
 #tab-body {
+	background: #d9d9d9;
 	margin: auto;
-	width: 60%;
-	background: #ddd;
+	width: 65%;
+
 }
+.tabs {
+	background: #ED6D4D;
+}
+
+.content p {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
 #header-body {
 	margin:auto;
 	width: 45%;
@@ -37,3 +47,17 @@ a:hover {
 	width: 25%;
 }
 
+.form-cancel-button {
+	margin: 40px 0 0 16px;
+}
+
+.hidden-list1, .hidden-list2 {
+	background-image: url(background8.jpg);
+
+}
+.hidden-list1 {
+	display: none;
+}
+.team-title {
+	float: right;
+}

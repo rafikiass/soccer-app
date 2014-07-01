@@ -1,4 +1,5 @@
 class LeaguesController < ApplicationController
+
   def leagues
     @leagues = League.all
   end
@@ -9,7 +10,9 @@ class LeaguesController < ApplicationController
   end
   
   def create
-    League.create(params[:league])
+    @league = League.create(params[:league])
+    flash[:success] = "League created."
+    redirect_to "/leagues/#{@league.id}"
   end
 
   def show
@@ -23,12 +26,22 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find(params[:id])
     @league.update(params[:league])
+    flash[:success] = "League updated."
+    redirect_to "/leagues/#{@league.id}"
   end
+
+  def showTeam
+    @team = Team.find(params[:id])
+  end
+
 
   def destroy
     @league = League.find(params[:id])
     @league.destroy
+    flash[:alert] = "League deleted."
+    redirect_to "/leagues/"
   end
+
 
 
 end
