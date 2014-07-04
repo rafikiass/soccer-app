@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get '/' => 'leagues#index'
+  devise_for :users
+  root 'leagues#index'
   get '/leagues' => 'leagues#leagues'
   get '/leagues/new' => 'leagues#new'
   post '/leagues' => 'leagues#create'

@@ -1,26 +1,22 @@
+<div class="row">
 <h1>Edit the team below:</h1>
 
-<%= form_for(@team) do |f| %>
+<%= simple_form_for @team do |f| %>
 
-  <div class="field">
-    <%= f.label :rank %><br>
-    <%= f.text_field :rank %>
-  </div>
-  <div class="field">
-    <%= f.label :team %><br>
-    <%= f.text_field :team %>
-  </div>
+  <div class="large-4 columns">
+  <%= f.input :team, placeholder: 'team name' %>
+  <%= f.input :manager, placeholder: 'first and last' %>
+  <%= f.input :rank, placeholder: 'current rank' %>
+  <%= f.association :league, label_method: :league, value_method: :id, :include_blank => false %>
+  <%= f.input :uefa, label: 'Part of UEFA?' %>
+  <%= f.button :submit, :class => 'tiny'%>
 
-  <div class="field">
-    <%= f.label :manager %><br>
-    <%= f.text_area :manager %>
   </div>
 
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
-
-<a href="/teams" class="large-2 columns button tiny form-cancel-button">Cancel</a>
+<div class="row">
+<p><a href="/teams" class="large-1 columns button tiny cancel-button">Cancel</a></p>
+</div>

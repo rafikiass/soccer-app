@@ -1,31 +1,22 @@
-<h1>Please enter a new league:</h1>
+<h1>Please enter a new team:</h1>
 
-<%= form_for(@team) do |f| %>
+<%= simple_form_for @team do |f| %>
 <div class="row">
-  <div class="field large-6 columns">
-    <%= f.label :rank %><br>
-    <%= f.text_field :rank %>
+  <div class="large-4 columns">
+  <%= f.input :team, placeholder: 'team name' %>
+  <%= f.input :manager, placeholder: 'first and last' %>
+  <%= f.input :rank, placeholder: 'current rank' %>
+  <%= f.association :league, label_method: :league, value_method: :id, :include_blank => false %>
+  <%= f.input :uefa, label: 'Part of UEFA?' %>
+  <%= f.button :submit, label_html: { class: 'expand' }%>
   </div>
-</div>
-<div class="row">
-  <div class="field large-6 columns">
-    <%= f.label :team %><br>
-    <%= f.text_field :team %>
   </div>
-</div>
-<div class="row">
-  <div class="field large-6 columns">
-    <%= f.label :manager %><br>
-    <%= f.text_area :manager %>
-  </div>
-</div>
-<div class="row">
-  <div class="actions large-6 columns">
-    <%= f.submit %>
-  </div>
-</div>
 <% end %>
+
+
+
 
 <div class="row">
 <a href="/teams" class="large-2 columns button tiny form-cancel-button">Cancel</a>
 </div>
+

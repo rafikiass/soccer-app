@@ -1,90 +1,95 @@
-<h3 id="header-body">Welcome to Eur Leagues</h3>
-<nav> 
-    <ul class="side-nav">
-      <div class="reveal-list1">
-        <li><a>Leagues</a>
-      </div>
-        <div class="row hidden-list1">
-          <div class="large-5 columns">
-            <ul class="side-nav">
-              <li><a href="leagues/1">English Premier League</a></li>
-              <li><a href="leagues/2">Bundesliga</a></li>
-            </ul>
-          </div>
-          <div class="large-7 columns">
-            <ul class="side-nav">
-              <li><a href="leagues/4">La Liga</a></li>
-              <li><a href="leagues/3">Series A</a></li>
-            </ul>
-          </div>
+
+<body class="home-page">
+  
+
+<% if user_signed_in? %>
+  <h4>Welcome, <%= current_user.first_name %>!</h4>
+  <p><a data-method="delete" rel="nofollow" href="/users/sign_out">Sign Out</a></p>
+<% else %>
+
+
+
+
+  <div class="row form-margin">
+
+    <div class="large-4 columns home-form">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'your email', :class => 'form-inputs' %>
+          <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: 'first name', :class => 'form-inputs' %>
+          <%= f.input :last_name, required: true, autofocus: true, label: false, placeholder: 'last name' %>
+          <%= f.input :password, required: true, placeholder: 'password', label: false %>
+          <%= f.input :password_confirmation, required: true, placeholder:'confirm password', label: false %>
+          <%= f.input_field :remember_me, as: :boolean, inline_label: 'Remember me' %>
         </div>
-      </li>
-      <!-- <div class="reveal-list2">
-       <li><a>Teams</a>
-      </div>
-        <div class="row hidden-list2">
-          <div class="large-3 columns">
-            <ul class="side-nav">
-              <li><a href="">Arsenal</a></li>
-              <li><a href="">Aston Villa</a></li>
-              <li><a href="">Burnley</a></li>
-              <li><a href="">Chelsea</a></li>
-              <li><a href="">Crystal Palace</a></li>
-            </ul>
-          </div>
-          <div class="large-3 columns">
-            <ul class="side-nav">
-              <li><a href="">Everton</a></li>
-              <li><a href="">Hull City</a></li>
-              <li><a href="">Leicester</a></li>
-              <li><a href="">Liverpool</a></li>
-              <li><a href="">Manchester City</a></li>
-            </ul>
-          </div>
-          <div class="large-3 columns">
-            <ul class="side-nav">
-              <li><a href="">Manchester United</a></li>
-              <li><a href="">Newcastle</a></li>
-              <li><a href="">QPR</a></li>
-              <li><a href="">Southampton</a></li>
-              <li><a href="">Stoke City</a></li>
-            </ul>
-          </div>
-          <div class="large-3 columns">
-            <ul class="side-nav">
-              <li><a href="">Sunderland</a></li>
-              <li><a href="">Swansea City</a></li>
-              <li><a href="">Tottenham Hotspurs</a></li>
-              <li><a href="">West Bromwich Albion</a></li>
-              <li><a href="">West Ham United</a></li>
-            </ul>
-          </div>
-        </div> -->
-      </li>
-    </ul>
-  </nav>
+        <div class="form-actions action-button-margin">
+        <%= f.button :submit, "Sign up", :class => 'small' %>
+      
+      
+    </div>
+    </div>
+      <% end %>
 
-<div id="tab-body">
-  <ul class="tabs" data-tab>
-    <li class="tab-title active"><a href="#panel1a">About</a></li>
-    <li class="tab-title"><a href="#panel2a">Why only European Leagues?</a></li>
-    <li class="tab-title"><a href="#panel3a">What's the benefit?</a></li>
-  </ul>
-  <div class="tabs-content">
-    <div class="content active" id="panel1a">
-      <p>EurLeagues let's you follow your favorite European football leagues. You can choose leauges, teams, even players. Get the very latest blogs, articles, tweets, stats and any other update you can imagine. But make it your own</p>
-    </div>
-    <div class="content" id="panel2a">
-      <p>Honestly, that's where the excitement is. These leagues feature the best players in the world and are the height of drama.</p>
-    </div>
-    <div class="content" id="panel3a">
-      <p>This site will only feature football (ok, soccer). You won't be bombarded with tons of other sports. Let this be your soccer home, away from every other distraction in your life. You'll keep the most up to date as you want to be. Get updates on your favorite players or teams while they play, get the latest news and blog articles, right when they're published. This is amazing!!!</p>
-    </div>
-  </div>
+<% end %>
 
+<div class="large-5 columns">
+<ul class="small-block-grid-1 medium-block-grid-3">
+  <li>
+    <dl class="accordion" data-accordion="myAccordionGroup">
+      <dd class="accordion-navigation">
+        <a href="#panel1c">About</a>
+        <div id="panel1c" class="content">
+          Pick and choose the leagues, teams, and players you want to follow. Following European football leagues can be tough. This will make it easy. Get everything all the info as it happen, get calendar reminders
+        </div>
+      </dd>
+      <dd class="accordion-navigation">
+        <a href="#panel2c">Why these European leagues?</a>
+        <div id="panel2c" class="content">
+          Honestly, that's where all the drama is. These leagues features the best players in the world. So if you don't have time to follow everyone, these are the ones to try.
+        </div>
+      </dd>
+      <dd class="accordion-navigation">
+        <a href="#panel3c">How does it work?</a>
+        <div id="panel3c" class="content">
+          You can view all the leagues and stats without an account - no problem. But if you want a customized page with alerts for your favorite leagues, teams and players, then you need to register. From there, just choose who all you want to follow. This is awesome!
+        </div>
+      </dd>
+    </dl>
+  </li>
+</ul>
 </div>
 
-<section id="create-account-body">
-  <a href="#" class="button">Create an account</a>
+<div class="large-3 columns">
+<a href="#" class="button league-dropdown" data-dropdown="drop" data-dropdown="hover1" data-options="is_hover:true">Leagues &raquo;</a>
+<ul id="drop" class="medium large content f-dropdown" data-dropdown-content>
+  <li><a href="/leagues/1">English Premier League</a></li>
+  <li><a href="/leagues/4">La Liga</a></li>
+  <li><a href="leagues/2">Bundesliga</a></li>
+  <li><a href="/leagues/3">Serie A</a></li>
+  <li><a href="#">UEFA Champions League</a></li>
+</ul>
+</div>
 
-</section>
+
+<div class="row">
+<div class="large-4 columns home-form login-form hidden-form">    
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, required: false, autofocus: true, label: false, placeholder: 'your email' %>
+    <%= f.input :password, required: false, label: false, placeholder: 'your password' %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "login", :class => 'small' %>
+  </div>
+<% end %>
+</div>
+      </div>
+
+
+
+</body>
+

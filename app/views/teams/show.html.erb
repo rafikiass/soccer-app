@@ -1,12 +1,23 @@
+<body class="team-show">
+  
+
+
+<div class="row team-show-content-bg">
+
+
+<h2>Name: <%= @team.team %></h2>
+
+<h4>Manager: <%= @team.manager %></h4>
+
 <p>Rank #<%= @team.rank %></p>
-<p>Name: <%= @team.team %></p>
-<p>Manager: <%= @team.manager %></p>
+
+  <a class="button tiny" href="/teams/<%= @team.id %>/edit">Edit</a>
 
 
-<div class="">
-  <a href="/teams/<%= @team.id %>/edit">Edit</a>
+  <a class="button tiny" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.id}"%>" rel="nofollow">Destroy</a>
+
+  <a class="button tiny" href="/teams">Go Back</a>
+
 </div>
 
-  <a data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.id}"%>" rel="nofollow">Destroy</a>
-
-  <a class="go-back" href="/teams">Go Back</a>
+</body>

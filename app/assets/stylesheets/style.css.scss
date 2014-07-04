@@ -1,63 +1,74 @@
 // $tabs-navigation-bg-color: black;
 
-body {
-	background-image: url(background.jpg);
-	color: black;
-	margin: auto;
-	width: 80%;
+.home-page {
+	background: url(background-soccer8.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 h3 {
 	color: lighten(#d9d9d9, 20);
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 2.5em;
 }
 
-a:hover {
-	color: #FF3300;
-}
-.button:hover {
-	background: #FF3300;
+.home-form {
+	background: rgba(0,0,0,.7);
+	
 }
 
-#tab-body {
-	background: #d9d9d9;
-	margin: auto;
-	width: 65%;
-
-}
-.tabs {
-	background: #ED6D4D;
+.form-inputs {
+	margin-top: 20px;
 }
 
-.content p {
-	margin-right: 10px;
-	margin-left: 10px;
+.small {
+	background: rgba(255, 18, 18,0);
+	border: #ff1212 solid;
 }
 
-#header-body {
-	margin:auto;
-	width: 45%;
-	margin-top: 50px;
-	margin-bottom: 50px;
+.small:hover {
+	background: #ff1212;
 }
 
-#create-account-body {
-	margin: auto;
-	width: 25%;
-}
-
-.form-cancel-button {
-	margin: 40px 0 0 16px;
-}
-
-.hidden-list1, .hidden-list2 {
-	background-image: url(background8.jpg);
-
-}
-.hidden-list1 {
-	display: none;
-}
-.team-title {
+.login-button {
 	float: right;
+}
+
+.login-button a{
+	color: white;
+}
+
+.form-margin {
+	margin: 150px 0 0 300px;
+}
+
+.accordion-navigation {
+	width: 343px;
+}
+
+.accordion-navigation:hover {
+	 background: rgba(0,0,0,.3);
+}
+.login-form {
+	margin-left: 15px;
+}
+.hidden-form {
+
+}
+.action-button-margin {
+	margin-top: 32px;
+}
+
+.league-dropdown {
+	margin-left: -60px;
+	background: rgba(255,18,18,.7);
+}
+.league-dropdown:hover {
+	background: rgb(255,18,18);
+}
+.cancel-button {
+	margin-left: 15px;
 }
