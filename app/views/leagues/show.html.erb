@@ -2,7 +2,10 @@
 <p><%= @league.country %></p>
 <ul>
   <% @league.teams.each do |team| %>
-  <li class="side-nav"><a href="../teams/<%= team.id -%>"><%= team.team %></a></li>
+
+
+
+  <li class="side-nav"><a href="../teams/<%= team.slug %>"><%= team.team %></a></li>
   <% end %>
 </ul>
 
@@ -12,7 +15,7 @@
 <p>Back to <a href="/leagues">leagues</a></p>
 
 <div class="button tiny">
-  <a href="/leagues/<%= @league.id %>/edit">Edit</a>
+  <a href="/leagues/<%= @league.slug %>/edit">Edit</a>
 </div>
 
   <a class="destroy" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@league.id}"%>" rel="nofollow">Destroy</a>

@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
 
   def teams
     @teams = Team.all
+    
   end 
 
   def new
@@ -15,22 +16,22 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.friendly.find(params[:id])
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.friendly.find(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
+    @team = Team.friendly.find(params[:id])
     @team.update(params[:team])
     flash[:success] = "Team updated."
     redirect_to "/teams/#{@team.id}"
   end
 
   def destroy
-    @team = Team.find(params[:id])
+    @team = Team.friendly.find(params[:id])
     @team.destroy
   end
 

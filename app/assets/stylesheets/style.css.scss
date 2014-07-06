@@ -42,7 +42,7 @@ h3 {
 }
 
 .form-margin {
-	margin: 150px 0 0 300px;
+	margin-top: 150px;
 }
 
 .accordion-navigation {
@@ -71,4 +71,20 @@ h3 {
 }
 .cancel-button {
 	margin-left: 15px;
+}
+.red-text-buttons {
+	color: rgb(255,18,18);
+}
+.red-text-buttons a{
+	color: rgb(255,18,18);
+}
+.red-text-buttons a:hover {
+	color: white;
+}
+.sign-in-page {
+	background: #fff;
+}
+.show-league-padding {
+	list-style: none;
+	margin: 15px 0;
 }

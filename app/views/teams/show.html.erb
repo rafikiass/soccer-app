@@ -8,15 +8,16 @@
 <h2>Name: <%= @team.team %></h2>
 
 <h4>Manager: <%= @team.manager %></h4>
+<h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
 
 <p>Rank #<%= @team.rank %></p>
 
-  <a class="button tiny" href="/teams/<%= @team.id %>/edit">Edit</a>
+  <a class="button small red-text-buttons" href="/teams/<%= @team.id %>/edit">Edit</a>
 
 
-  <a class="button tiny" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.id}"%>" rel="nofollow">Destroy</a>
+  <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.id}"%>" rel="nofollow">Destroy</a>
 
-  <a class="button tiny" href="/teams">Go Back</a>
+  <a class="button small red-text-buttons" href="/teams">Go Back</a>
 
 </div>
 

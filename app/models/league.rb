@@ -3,4 +3,10 @@ class League < ActiveRecord::Base
   def team_list
     return team.split(",")
   end
+  
+  
+
+  extend FriendlyId
+  friendly_id :league, use: :slugged
+
 end

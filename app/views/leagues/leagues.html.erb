@@ -1,24 +1,29 @@
-<h3>Here are the European leagues</h3>
-<ul class="side-nav">
-  <li><a href="/teams">Teams</a></li>
-  <li><a href="/leagues/new">Create a league</a></li>
-  <li class="divider"></li>
-  
-</ul>
+<div class="row">
+  <h3>Here are the European leagues</h3>
 
-<div>
-  <ul class="large-block-grid-4 medium-block-grid-4">
-    <% @leagues.each do |league| %>
-        <li><a href="/leagues/<%= league.id %>"><%= league.league %></a></p>
-        <p><%= league.country %></p>
-        <p><%= league.team %></p>
+  <div>
+    <ul>
+      <% @leagues.each do |league| %>
+        <li class="show-league-padding"><a href="/leagues/<%= league.slug %>"><%= league.league %></a></li>
+          <div class="row">
+        
+          <ul>
+            <% league.teams.each do |team| %>
+            <div class="large-6 columns">
+              <li><%= team.team %></li>
+            </div>
 
-          <a class="button small" href="/leagues/<%= league.id %>/edit">Edit</a>
-
-          <a class="button destroy small" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues/#{league.id}"%>" rel="nofollow">Destroy</a></li>
-  
-    <% end %>
-  </ul>
-<img src="/assets/epl.png">
-<%= image_tag("epl.png") %>
+            <% end %>
+            
+            <div class="large-3 columns">
+            <img src="http://cdn1.mos.techradar.futurecdn.net/////art/logos/premier-league1%20copy-578-80.jpg" width="200" height="200">
+            
+            </div>
+          </ul>
+          
+          </div>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
