@@ -22,6 +22,7 @@ gem 'devise'
 gem 'friendly_id'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
+gem 'unicorn'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

@@ -1188,19 +1188,19 @@ $f-dropdown-list-hover-bg: rgba(255,18,19,.7);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+ $topbar-bg-color: #333;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;
-// $topbar-margin-bottom: 0;
+// $topbar-margin-bottom: 0px;
 
 // Controlling the styles for the title in the top bar
 // $topbar-title-weight: $font-weight-normal;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: #333;
+$topbar-dropdown-bg: #FF1212;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: #333;
 // $topbar-dropdown-link-weight: $font-weight-normal;
@@ -1218,7 +1218,7 @@ $f-dropdown-list-hover-bg: rgba(255,18,19,.7);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
 // $topbar-link-bg-color-hover: #555555;
-// $topbar-link-bg-hover: #272727;
+$topbar-link-bg-hover: rgba(255,18,18,.6);
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
@@ -1250,7 +1250,7 @@ $f-dropdown-list-hover-bg: rgba(255,18,19,.7);
 // $topbar-media-query: $medium-up;
 
 // Divider Styles
-// $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+$topbar-divider-border-bottom: solid 1px #00b232;
 // $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
 
 // Sticky Class

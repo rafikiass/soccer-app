@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  
+
+devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'sign-up'}
+
   root 'leagues#index'
-  get '/leagues' => 'leagues#leagues'
-  get '/leagues/new' => 'leagues#new'
-  post '/leagues' => 'leagues#create'
-  get '/leagues/:id' => 'leagues#show', as: :league
-  get '/leagues/:id/edit' => 'leagues#edit'
-  patch '/leagues/:id' => 'leagues#update'
-  delete '/leagues/:id' => 'leagues#destroy'
 
   get '/teams' => 'teams#teams'
   get '/teams/new' => 'teams#new'
   post '/teams' => 'teams#create'
-  get '/teams/:id' => 'teams#show', as: :team
+  get '/:id' => 'teams#show', as: :team
   get '/teams/:id/edit' => 'teams#edit'
   patch '/teams/:id' => 'teams#update'
   delete '/teams/:id' => 'teams#destroy'
+
+
+  get '/leagues' => 'leagues#leagues'
+  get '/leagues/new' => 'leagues#new'
+  post '/leagues' => 'leagues#create'
+  get '/:id' => 'leagues#show', as: :league
+  get '/:id/edit' => 'leagues#edit'
+  patch '/leagues/:id' => 'leagues#update'
+  delete '/leagues/:id' => 'leagues#destroy'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

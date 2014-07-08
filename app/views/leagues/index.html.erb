@@ -4,9 +4,10 @@
 
 <% if user_signed_in? %>
 <body class="sign-in-page">
-  
+  <div class="row"/>
   <h4>Welcome, <%= current_user.first_name %>!</h4>
-  <p><a data-method="delete" rel="nofollow" href="/users/sign_out">Sign Out</a></p>
+  <p><a data-method="delete" rel="nofollow" href="logout">logOut</a></p>
+</div>
 </body>
 <% else %>
 
@@ -87,7 +88,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "login", :class => 'small' %>
+    <%= f.button :submit, "Login", :class => 'small' %>
   </div>
 <% end %>
 </div>

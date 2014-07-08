@@ -17,6 +17,73 @@
   <% end %>
   <body>
 
+
+<div class="fixed contain-to-grid">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Eur Leagues</a></h1>
+    </li>
+      
+
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown"><a href="/leagues">Leagues</a>
+        <ul class="dropdown">
+          
+          <li class="has-dropdown"><a href="/leagues/bundesliga">Bundesliga</a>
+            <ul class="dropdown">
+              <li><a href="/teams">Hannover 96</a></li>
+              <li><a href="/teams">Bayern Munich</a></li>
+            </ul>
+            </li>
+          <li><a href="/leagues/la-liga">La Liga</a></li>
+          
+          <li><a href="/leagues/english-premier-league">Premier League</a></li>
+          
+          <li><a href="/leagues/serie-a">Serie A</a></li>
+          
+          <li><a href="#">UEFA Champions</a></li>
+        
+        </ul>
+      
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="#">Account</a>
+        <ul class="dropdown">
+          <% if user_signed_in? === false %>
+          <li><a href="/sign-up">Sign up</a></li>
+          <li><a href="/login">Sign in</a></li>
+          <% end %>
+          <% if user_signed_in? %>
+          <li><a data-method="delete" rel="nofollow" href="/logout">Sign Out</a></li>
+          <% end %>
+
+        </ul>
+      </li>
+
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="divider"></li>
+      <li><a href="#">Left Nav Button</a></li>
+      <li class="divider"></li>
+    </ul>
+
+  </section>
+</nav>
+</div>
+
+
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
 </div>

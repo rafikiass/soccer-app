@@ -1,21 +1,27 @@
+<div class="row">
 <p><%= @league.league %></p>
 <p><%= @league.country %></p>
+
+<div class="row">
 <ul>
   <% @league.teams.each do |team| %>
 
 
-
+<div class="large-3 columns">
   <li class="side-nav"><a href="../teams/<%= team.slug %>"><%= team.team %></a></li>
+  </div>
   <% end %>
 </ul>
 
-
+</div>
 
 
 <p>Back to <a href="/leagues">leagues</a></p>
 
-<div class="button tiny">
+<div class="button small red-text-buttons">
   <a href="/leagues/<%= @league.slug %>/edit">Edit</a>
 </div>
 
-  <a class="destroy" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@league.id}"%>" rel="nofollow">Destroy</a>
+  <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@league.id}"%>" rel="nofollow">Destroy</a>
+
+  </div>

@@ -4,13 +4,13 @@
   <div>
     <ul>
       <% @leagues.each do |league| %>
-        <li class="show-league-padding"><a href="/leagues/<%= league.slug %>"><%= league.league %></a></li>
+        <li class="show-league-padding"><h2><a href="/leagues/<%= league.slug %>"><%= league.league %></a></h2></li>
           <div class="row">
         
           <ul>
             <% league.teams.each do |team| %>
             <div class="large-6 columns">
-              <li><%= team.team %></li>
+              <li class="sub-nav"><a href="../teams/<%= team.slug %>"><%= team.team %></a></li>
             </div>
 
             <% end %>
