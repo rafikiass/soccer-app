@@ -1,0 +1,81 @@
+
+<div class="row">
+<div class="columns large-2">
+      <ul id="favorites-nav">
+        <li><a href="/favorites">All</a></li>
+        <li><a href="/favorites/leagues">Leagues</a></li>
+        <li><a href="/favorites/teams">Teams</a></li>
+        <li><a href="/favorites/players">Players</a></li>
+      </ul>
+    </div>
+
+<% if current_page?('/favorites/leagues') %>
+<div class="columns large-10">
+<% @fav_leagues.each do |league| %>
+<h3 class="subheader"><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
+  <table>
+          <tr>
+            <th width="200px"><%= link_to "Team", :sort => 'team' %></th>
+            <th><% link_to "Rank" %>Rank</th>
+            <th>Games Played</th>
+            <th>League points</th>
+          </tr>
+          <% counter = 0 %> <!-- list only the top 4 teams in each league -->
+          <% league.teams.each do |team| %>
+          <tr>
+            <% if counter < 4 %>
+            <td><a href="<%= team_path(team.slug) %>"><%= team.team %></a></td>
+            <td><%= team.rank %></td>
+            <% counter += 1 %>
+            <% end %>
+            <% end %>
+          </tr>
+        </table>
+<% end %>
+        </div>
+<div>
+<hr id="favorite-page-line">
+<h3>Latest League Headlines</h3>
+</div>
+<% elsif current_page?('/favorites/teams') %>
+
+<div class="columns large-10">
+<% grouped_teams = @fav_teams.group_by {|team|team.league} %>
+<% grouped_teams.each do |league, teams| %>
+<h3><%= league.league %></h3>
+<% teams.each do |team| %>
+<ul class="side-nav">
+  
+<li><%= team.team %></li>
+</ul>
+<% end %>
+<% end %>
+
+</div>
+
+<div>
+<hr id="favorite-page-line">
+<h3>Latest Team Headlines</h3>
+</div>
+  <% elsif current_page?('/favorites/players') %>
+  
+<% @fav_players.each do |player| %>
+<%= player.name %>
+<% end %>
+<div>
+<hr id="favorite-page-line">
+<h3>Latest Player Headlines</h3>
+</div>
+  <% else %>
+  <h1>404</h1>
+<% end %>
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,17 +1,6 @@
-<h1>Please enter a new team:</h1>
-
-<%= simple_form_for @team do |f| %>
 <div class="row">
-  <div class="large-4 columns">
-  <%= f.input :team, placeholder: 'Team name' %>
-  <%= f.input :manager, placeholder: 'First and last' %>
-  <%= f.input :rank, placeholder: 'Current rank' %>
-  <%= f.association :league, label_method: :league, value_method: :id, :include_blank => false %>
-  <%= f.input :uefa, label: 'Part of UEFA?' %>
-  <%= f.button :submit, :class => 'button small red-text-buttons'%>
-<p class="button small red-text-buttons"><a href="/teams">Cancel</a><p>
-  </div>
-  </div>
-<% end %>
+  <h1>Please enter a new team:</h1>
 
+  <%= render "renders/team_form" %>
+</div>
 

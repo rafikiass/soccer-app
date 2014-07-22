@@ -1,5 +1,7 @@
 class LeaguesController < ApplicationController
 
+before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
+
   def leagues
     @leagues = League.all
     
@@ -8,12 +10,13 @@ class LeaguesController < ApplicationController
   def new
     @league = League.new
 
+
   end
   
   def create
     @league = League.create(params[:league])
     flash[:success] = "League created."
-    redirect_to "/leagues/#{@league.id}"
+    redirect_to "/leagues/#{@league.slug}"
   end
 
   def show
@@ -33,16 +36,22 @@ class LeaguesController < ApplicationController
 
   def showTeam
     @team = Team.friendly.find(params[:id])
+    
   end
 
 
+
   def destroy
+    
     @league = League.friendly.find(params[:id])
     @league.destroy
     flash[:alert] = "League deleted."
     redirect_to "/leagues/"
   end
 
+  def user_params
+    return params.require(:user).permit(:email, :first_name, :last_name)
+  end
 
 
 end

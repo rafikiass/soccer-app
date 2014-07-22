@@ -4,25 +4,33 @@ Rails.application.routes.draw do
 
 devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'sign-up'}
 
-  root 'leagues#index'
+  root 'favorites#index'
+  get '/leagues' => 'leagues#leagues', as: :leagues
+  get '/leagues/new' => 'leagues#new', as: :leagues_new
+  post '/leagues' => 'leagues#create', as: :leagues_create
+  get '/leagues/:id' => 'leagues#show', as: :league
+  get '/leagues/:id/edit' => 'leagues#edit', as: :leagues_edit
+  patch '/leagues/:id' => 'leagues#update', as: :leagues_update
+  delete '/leagues/:id' => 'leagues#destroy', as: :leagues_destroy
 
-  get '/teams' => 'teams#teams'
-  get '/teams/new' => 'teams#new'
-  post '/teams' => 'teams#create'
-  get '/:id' => 'teams#show', as: :team
-  get '/teams/:id/edit' => 'teams#edit'
-  patch '/teams/:id' => 'teams#update'
-  delete '/teams/:id' => 'teams#destroy'
+  get '/teams' => 'teams#teams', as: :teams
+  # get '/teams/new' => 'teams#new', as: :teams_new
+  # post '/teams' => 'teams#create', as: :teams_create
+  # get 'teams/:id' => 'teams#show', as: :team
+  # get '/teams/:id/edit' => 'teams#edit', as: :teams_edit
+  # patch '/teams/:id' => 'teams#update', as: :teams_update
+  # delete '/teams/:id' => 'teams#destroy', as: :teams_destroy
+
+resources :teams
+
+get '/players' => 'players#players', as: :players
+resources :players
 
 
-  get '/leagues' => 'leagues#leagues'
-  get '/leagues/new' => 'leagues#new'
-  post '/leagues' => 'leagues#create'
-  get '/:id' => 'leagues#show', as: :league
-  get '/:id/edit' => 'leagues#edit'
-  patch '/leagues/:id' => 'leagues#update'
-  delete '/leagues/:id' => 'leagues#destroy'
-
+resources :favorites
+get '/favorites/leagues' => 'favorites#show'
+get '/favorites/teams' => 'favorites#show'
+get '/favorites/players' => 'favorites#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,28 +1,40 @@
+<% if user_signed_in? && current_user.admin? %>
+
   <div class="row">
 <h1>Here are the European teams</h1>
 
 
 
+
+
 <ul class="side-nav large-12 columns">
-  <li><a href="/leagues">Leagues</a></li>
-  <li><a href="teams/new">Create a team</a></li>
+  <li><a href="<%= leagues_path %>">Leagues</a></li>
+  <li><a href="<%= new_team_path %>">Create a team</a></li>
   <li class="divider"></li>
   
 </ul>
 
 <div class="row">
+
   <% @teams.each do |team| %>
+
     <div class="column medium-4">
       <p>Rank: #<%= team.rank %></p>
-      <p>Team: <a href="/teams/<%= team.slug %>"><%= team.team %></a></p>
-      <p>Manager: <%= team.manager %></p>
-     <div>
-        <a class="button small red-text-buttons" href="/teams/<%= team.slug %>/edit">Edit</a>
 
-        <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/teams/#{team.id}"%>" rel="nofollow">Destroy</a>
+      <p>Team: <a href="<%= team_path(team.slug) %>"><%= team.team %></a></p>
+      <p>Manager: <%= team.manager %></p>
+       
+     <div>
+        <a class="button small red-text-buttons" href="teams/<%= team.slug %>/edit">Edit</a>
+
+        <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= teams_path %>" rel="nofollow">Destroy</a>
       </div>
+      
     </div>
   <% end %>
   
 </div>
 </div>
+
+
+<% end %>

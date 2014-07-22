@@ -1,0 +1,13 @@
+<%= simple_form_for @player do |f| %>
+
+  <div class="large-4 columns">
+    <%= f.input :name %>
+    <%= f.input :position %>
+    <%= f.input :number %>
+    <%= f.input :country%>
+    <%= f.input :nation_team, as: :country %>
+    <%= f.association :team, label_method: :team, value_method: :id, :include_blank => true %>
+    <%= f.button :submit, :class => 'button small red-text-buttons'%>
+    <p class="button small red-text-buttons"><a href="/players">Cancel</a></p>
+  </div>
+<% end %>

@@ -1,29 +1,35 @@
 <div class="row">
-  <h3>Here are the European leagues</h3>
 
-  <div>
-    <ul>
-      <% @leagues.each do |league| %>
-        <li class="show-league-padding"><h2><a href="/leagues/<%= league.slug %>"><%= league.league %></a></h2></li>
-          <div class="row">
-        
-          <ul>
-            <% league.teams.each do |team| %>
-            <div class="large-6 columns">
-              <li class="sub-nav"><a href="../teams/<%= team.slug %>"><%= team.team %></a></li>
-            </div>
 
-            <% end %>
-            
-            <div class="large-3 columns">
-            <img src="http://cdn1.mos.techradar.futurecdn.net/////art/logos/premier-league1%20copy-578-80.jpg" width="200" height="200">
-            
-            </div>
-          </ul>
+  <% @leagues.each do |league| %>
+    
+      
+      <h3><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
+      <div class="row">
+      <div class="large-6 medium-5 small-12 columns">
+        <table>
+          <tr>
+            <th width="200px"><%= link_to "Team", :sort => 'team' %></th>
+            <th><% link_to "Rank" %>Rank</th>
+            <th>Games Played</th>
+            <th>League points</th>
+          </tr>
+          <% league.teams.each do |team| %>
           
-          </div>
-      <% end %>
-    </ul>
-  </div>
+          <tr>
+            <td><a href="<%= team_path(team.slug) %>"><%= team.team %></a></td>
+            <td><%= team.rank %></td>
+            <% end %>
+          
+          </tr>
+
+        </table>
+      </div>
+      <div class="large-6 columns">
+        <img src="<%= league.photo_url %>" alt="">
+        </div>
+      </div>
+    
+  <% end %>
 </div>
 

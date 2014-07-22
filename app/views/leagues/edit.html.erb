@@ -1,15 +1,7 @@
-<h1>Edit your league below:</h1>
-
-<%= simple_form_for @league do |f| %>
 <div class="row">
-  <div class="large-4 columns">
-  <%= f.input :league, placeholder: 'League name' %>
-  <%= f.input :country, collection: ["England", "Germany", "Italy", "Spain"] %>
-  <%= f.button :submit, :class => 'button small red-text-buttons'%>
-  <p class="button small red-text-buttons"><a href="/leagues">Cancel</a></p>
-  </div>
+  <h1>Edit your league below:</h1>
 
-  </div>
-<% end %>
+  <%= render "renders/league_form" %>
+</div>
 
 

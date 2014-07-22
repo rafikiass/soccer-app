@@ -1,0 +1,17 @@
+<%= @player.name %>
+
+
+<%= form_tag("/favorites", method: "post") do %>
+    <%= hidden_field_tag :id, @player.id %>
+    <%= hidden_field_tag :type, "Player" %>
+    <%= image_submit_tag("Red_star.png")%>
+
+  <% end %>
+
+<p><a href="/players">All Players</a></p>
+
+<div>
+        <a class="button small red-text-buttons" href="/players/<%= @player.slug %>/edit">Edit</a>
+
+        <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/players"%>" rel="nofollow">Destroy</a>
+      </div>

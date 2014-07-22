@@ -1,27 +1,44 @@
 <div class="row">
-<p><%= @league.league %></p>
-<p><%= @league.country %></p>
-
-<div class="row">
-<ul>
-  <% @league.teams.each do |team| %>
 
 
-<div class="large-3 columns">
-  <li class="side-nav"><a href="../teams/<%= team.slug %>"><%= team.team %></a></li>
-  </div>
+   <%= form_tag("/favorites", method: "post") do %>
+    <%= hidden_field_tag :id, @league.id %>
+    <%= hidden_field_tag :type, "League" %>
+    <%= image_submit_tag("Red_star.png")%>
+
   <% end %>
-</ul>
-
-</div>
 
 
-<p>Back to <a href="/leagues">leagues</a></p>
 
-<div class="button small red-text-buttons">
-  <a href="/leagues/<%= @league.slug %>/edit">Edit</a>
-</div>
 
-  <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@league.id}"%>" rel="nofollow">Destroy</a>
-
+  <h4><%= @league.league %></h4>
+  <div class="large-6 columns">
+        <table>
+          <tr>
+            <th width="200px">Team</th>
+            <th>Rank</th>
+            <th>Games Played</th>
+            <th>Points</th>
+          </tr>
+          <% @league.teams.each do |league| %>
+          <tr>
+            <td><a href="<%= team_path(league.slug) %>"><%= league.team %></a></td>
+            <td><%= league.rank %></td>
+          </tr>
+          <% end %>
+        </table>
   </div>
+  <div class="large-6 columns">
+    <h2><%= @league.country %></h2>
+</div>
+  </div>
+<div class="row">
+<p>Back to <a href="<%= leagues_path %>">leagues</a></p>
+
+  <% if user_signed_in? && current_user.admin? %>
+    
+      <a class="button small red-text-buttons" href="<%= leagues_edit_path(@league.slug) %>">Edit</a>
+    
+      <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues"%>" rel="nofollow">Destroy</a>
+  <% end %>
+</div>
