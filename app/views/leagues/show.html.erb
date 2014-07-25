@@ -1,23 +1,29 @@
+
+
+
 <div class="row">
+  <div class="large-12 columns">
+  
+<% if user_signed_in? %>
+    <%= form_tag("/favorites", method: "post") do %>
+      <%= hidden_field_tag :id, @league.id %>
+      <%= hidden_field_tag :type, "League" %>
+      <%= image_submit_tag("border-star.png")%>
+<% end %>
+<% end %>
 
-
-   <%= form_tag("/favorites", method: "post") do %>
-    <%= hidden_field_tag :id, @league.id %>
-    <%= hidden_field_tag :type, "League" %>
-    <%= image_submit_tag("Red_star.png")%>
-
-  <% end %>
 
 
 
 
   <h4><%= @league.league %></h4>
-  <div class="large-6 columns">
-        <table>
+</div>
+<div class="large-4 columns padding">
+          <table>
           <tr>
-            <th width="200px">Team</th>
+            <th>Team</th>
             <th>Rank</th>
-            <th>Games Played</th>
+            <th>Played</th>
             <th>Points</th>
           </tr>
           <% @league.teams.each do |league| %>
@@ -28,9 +34,51 @@
           <% end %>
         </table>
   </div>
-  <div class="large-6 columns">
-    <h2><%= @league.country %></h2>
+  
+<div class="large-8 columns">
+  <h4>Top Scorers</h4>
 </div>
+<div class="large-8 columns">
+  <table class="my-table" cellspacing="0">
+    <thead>
+
+      <tr>
+        <th width="200px"></th>
+        <th width="100px">Goals</th>
+        <th width="150px">Team</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Player</td>
+        <td>34 </td>
+        <td>Liverpool</td>
+      </tr>
+      <tr>
+        <td>Player</td>
+        <td>42</td>
+        <td>Chelsea</td>
+      </tr>
+      <tr>
+        <td>Player</td>
+        <td>43</td>
+        <td>Hotspurs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="large-8 columns">
+  <h3>Fixtures</h3>
+  <div class="red-box">
+    <div class="transparent-box">
+      <p>Liverpool vs. Chelsea</p>
+    </div>
+  </div>
+
+</div>
+
+
   </div>
 <div class="row">
 <p>Back to <a href="<%= leagues_path %>">leagues</a></p>

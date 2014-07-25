@@ -167,7 +167,8 @@ html, body {
 }
 
 .league-headers {
-	margin-top: 40px;
+	margin-top: 20px;
+	padding-left: 0;
 	} 
 	a {
 
@@ -176,6 +177,7 @@ html, body {
 		color: darken(#666, 30);
 		// text-decoration: underline;
 	}
+
 }
 
 .league-bottom-border {
@@ -188,8 +190,70 @@ html, body {
 	height: 2em;
 }
 
+.background-overlay {
+	background: #000;
+}
+
+.leagues-text {
+	color: darken(#fff, 20);
+	font-size: .9em;
+	margin:  20px 10px;
+	a {
+		color: darken(#fff, 30)
+	}
+	a:hover {
+		color: #fff;
+	}
+}
+
+.image-position {
+	opacity: .7;
+	padding: 0;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.text-overlay {
+	background-color: black;
+	padding: 3px;
+	padding-bottom: 17px;
+	margin-bottom: 10px;
+}
+
+
 //League Show Page
 
+
+.league-pic-margin {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.my-table {
+	background: #fff;
+	border: none;
+	margin: 0;
+	padding: 0;
+	th{
+	background: #fff;
+	border-bottom: 2px solid #ff1212;
+}
+	td {
+	border-right: 2px solid #ff1212;
+	background: #fff;		
+	}
+	td:last-child {
+		border: none;
+	}
+}
+
+.red-box {
+	width: 500px;
+	height: 250px;
+	background: #990A0A;
+	border: 20px solid #ff1212;
+}
 
 
 
@@ -205,10 +269,12 @@ html, body {
 	list-style: none;
 	font-size: 1.5em;
 	display: block;
+
 	li {
 		display: block;
-		margin-bottom: 10px;
+		margin-bottom: 25px;
 		border-bottom: 1px solid #ff1212;
+		border-radius: 15px;
 		border-right: 1px solid #ff1212;
 
 	}
@@ -222,6 +288,7 @@ html, body {
 	}
 	a:hover {
 		border: 2px solid #ff1212;
+		border-radius: 15px;
 		color: lighten(#ff1212, 30)
 	}
 	a.selected {

@@ -21,10 +21,13 @@ gem 'capybara'
 gem 'simple_form'
 gem 'country_select'
 gem 'devise'
+gem 'espn'
 gem 'friendly_id'
+gem 'xmlsoccer', '~> 0.1.0'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 gem 'unicorn'
+gem 'unirest'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

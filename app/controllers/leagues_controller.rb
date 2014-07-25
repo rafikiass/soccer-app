@@ -5,6 +5,7 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
   def leagues
     @leagues = League.all
     
+    
   end
 
   def new
@@ -20,7 +21,9 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
   end
 
   def show
+    
     @league = League.friendly.find(params[:id])
+
   end
 
   def edit

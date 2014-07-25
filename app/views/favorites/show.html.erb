@@ -53,15 +53,24 @@
 
 </div>
 
+
 <div>
 <hr id="favorite-page-line">
 <h3>Latest Team Headlines</h3>
 </div>
-  <% elsif current_page?('/favorites/players') %>
-  
-<% @fav_players.each do |player| %>
-<%= player.name %>
+
+<% elsif current_page?('/favorites/players') %>
+<% grouped_players = @fav_players.group_by {|player|player.team} %>
+<% grouped_players.each do |team, players| %>
+<h3><%= team.team %></h3>
+<% players.each do |player| %>
+<ul class="side-nav">
+  <li><%= player.name %></li>
+</ul>
+
 <% end %>
+<% end %>
+  
 <div>
 <hr id="favorite-page-line">
 <h3>Latest Player Headlines</h3>

@@ -1,1 +1,0 @@
-json.(@team, :team, :rank, :manager)
