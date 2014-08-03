@@ -103,10 +103,9 @@ p {
 
 //Team Show Page
 
-
 .roster {
 	background: #333;
-	padding-bottom: 15px;
+	padding-bottom: 25px;
 	h2, h3, h4 {
 		color: #fff;
 		margin-left: 10px;
@@ -123,17 +122,21 @@ p {
 		width: 50%;
 	}
 	p {
-		padding: 25px 0;
+		padding: 15px 0;
 		color: #333;
+		font-size: 1em;
 	}
 	p:hover {
 		background: darken(#fff, 2);
 	}
 	h5 {
-		margin-top: 10px;
+		padding: 10px 0;
 	}
 }
 
+#manager-name {
+	margin-left: 10px;
+}
 
 
 
