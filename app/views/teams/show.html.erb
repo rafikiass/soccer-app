@@ -1,134 +1,125 @@
+<div class="side-navi-back">
+  <p class="side-navi"><a href="#">Roster</a></p>
+  <p class="side-navi"><a href="#">Team Standings</a></p>
+  <p class="side-navi"><a href="#">Headlines</a></p>
+</div>
+
 <div class="row">
 
   <h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
-<%= form_tag("/favorites", method: "post") do %>
-    <%= hidden_field_tag :id, @team.id %>
-    <%= hidden_field_tag :type, "Team" %>
-    <%= image_submit_tag("Red_star.png")%>
-  <% end %>
-  <h2><%= @team.team %></h2>
+  
+  <h2 class="left"><%= @team.name %></h2>
+
+  <% if user_signed_in? && current_user.teams.collect(&:id).include?(@team.id)%>
+    <%= form_tag("/favorites/#{@team.id}", remote: true, method: "delete") do %>
+      <%= hidden_field_tag :type, "Team" %>
+      <%= button_tag'', class: "unfav-button" %>
+<% end %>
+<% else user_signed_in?%>
+    <%= form_tag("/favorites", remote: true) do %>
+      <%= hidden_field_tag :id, @team.id %>
+      <%= hidden_field_tag :type, "Team" %>
+      <%= button_tag'', class: "fav-button" %>
+<% end %>
+<% end %>
 
   
+<div class="fav-button">
+  
+</div>
+<div class="unfav-button"></div>
+  
 
-  <div class="row" >
-    <div class="large-8 medium-8 small-12 columns">
-      <img src="<%= @team.photo_url %>" alt="">
+
+  <div class="large-12 columns clearfix roster">
+    <h4>Coach</h4>
+    <div class="large-8 large-offset-1 columns roster-info">
+      <p>other stuff</p>
     </div>
-    
-    <div class="row">
-      <div class="large-4 medium-4 small-12 columns">
-        <h2>Stats</h2>
-        <hr class="border">
-      </div>
+    <div class="large-2 columns right">
+      <img src="http://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/143px-Real_Madrid_CF.svg.png" alt="" width="60px" height="60px">
+      <p>homepage</p>
+    </div>
+    <div class="large-12 columns">
+      <h4>Goalkeepers</h4>
+    </div>
+
+    <div class="large-6 columns large-offset-1 roster-info">
+      <h5>Player Name</h5>
+    </div>
+    <div class="large-5 columns roster-info">
+      <h5>Number</h5>
+    </div>
+    <div class="large-6 columns large-offset-1 roster-info">
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
       
-      <div class="large-2 medium-2 small-6 columns green-line">
-        <h4>Season</h4>
-        <ul class="side-nav">
-          <li>League Rank:</li>
-          <li>League Points: </li>
-          <li>Games Played:</li>
-          <li>W-D-L:</li>
-          <li>GF:</li>
-          <li>GA:</li>
-        </ul>
-      </div>
+    </div>
+    <div class="large-5 columns roster-info">
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+    </div>
+<div class="large-12 columns">
+      <h4>Forward</h4>
+    </div>
+    <div class="large-6 columns large-offset-1 roster-info">
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
       
-      <div class="large-2 medium-2 small-6 columns">
-        <h4>Match</h4>
-        <ul class="side-nav">
-          <li>Shots on goal:</li>
-          <li>Crosses:</li>
-          <li>Offsides:</li>
-          <li>Saves:</li>
-          <li>Fouls:</li>
-          <li>Cards:</li>
-        </ul>
-      </div>
+    </div>
+    <div class="large-5 columns roster-info">
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+    </div>
+    <div class="large-12 columns">
+      <h4>Defenders</h4>
+    </div>
+    <div class="large-6 columns large-offset-1 roster-info">
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      
+    </div>
+    <div class="large-5 columns roster-info">
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+    </div>
+    <div class="large-12 columns">
+      <h4>Midfield</h4>
+    </div>
+    <div class="large-6 columns large-offset-1 roster-info">
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      <p>player name</p>
+      
+    </div>
+    <div class="large-5 columns roster-info">
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
+      <p>number</p>
     </div>
   </div>
-  
-  <br>
-  
-  <div class="row">
-      <ul class="team-show-list1">
-        <div class="large-3 medium-3 small-3 columns">
-          <li class="team-list">Manager:</li>
-        </div>
-        <div class="large-3 medium-3 small-3 columns">
-          <li>Nickname:</li>
-        </div>
-        <div class="large-3 medium-3 small-3 columns">
-          <li>Established:</li>
-        </div>
-        <div class="large-3 medium-3 small-3 columns">
-          <li>Stadium:</li>
-        </div>
-      </ul>    
-  </div>
 
-  <div class="row">
-    <ul class="team-show-list2">
-      <div class="large-3 medium-3 small-3 columns">
-        <li><%= @team.manager %></li>
-      </div>
-      <div class="large-3 medium-3 small-3 columns">
-        <li><%= @team.nickname %></li>
-      </div>
-      <div class="large-3 medium-3 small-3 columns">
-        <li><%= @team.established %></li>
-      </div>
-      <div class="large-3 medium-3 small-3 columns">
-        <li><%= @team.stadium %></li>
-      </div>  
-    </ul>
-  </div>
-  
-
-<dl class="accordion player-accordion" data-accordion>
-  <dd class="accordion-navigation">
-        <a href="#panel4c">Squad</a>
-        <div id="panel4c" class="content">
-    <table>      
-  <thead>
-    <tr>
-      <th width="150">Name</th>
-      <th>Number</th>
-      <th width="200">Position</th>
-      <th width="100">DOB</th>
-      <th width="200">Country</th>
-    </tr>
-  </thead>
-  <% @team.players.each do |player| %>
-  <tbody>
-    <tr>
-      <td><a href="<%= player_path(player.slug) %>"><%= player.name %></a></td>
-      <td><%= player.number %></td>
-      <td><%= player.position %></td>
-      <td></td>
-      <td><%= player.country %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
-
-        </div>
-      </dd> 
-</dl>
 
 
 
 
 
   <hr>
-  <% if user_signed_in? && current_user.admin? %>
-  <div>
-<% if user_signed_in? && current_user.admin? %>
-  <a class="button small red-text-buttons" href="/teams/<%= @team.id %>/edit">Edit</a>
-  <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.slug}"%>" rel="nofollow">Destroy</a>
-  <% end %>
   
-  </div>
-  <% end %>
   
 
 
@@ -213,9 +204,15 @@
     </div>
   
 
-
-
-
-
 </div>
 
+
+<% if user_signed_in? && current_user.admin? %>
+  <div>
+<% if user_signed_in? && current_user.admin? %>
+  <a class="button small red-text-buttons" href="/teams/<%= @team.id %>/edit">Edit</a>
+  <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.slug}"%>" rel="nofollow">Destroy</a>
+  <% end %>
+  
+  </div>
+  <% end %>

@@ -1,5 +1,6 @@
 <div class="row">
   <% @leagues.each do |league| %>
+  
     <h3><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
       <div class="row">
         <div class="large-6 medium-5 small-12 columns">
@@ -12,7 +13,7 @@
             </tr>
             <% league.teams.each do |team| %>
             <tr>
-              <td><a href="<%= team_path(team.slug) %>"><%= team.team %></a></td>
+              <td><a href="<%= team_path(team.slug) %>"><%= team.name %></a></td>
               <td><%= team.rank %></td>
             <% end %>
             </tr>

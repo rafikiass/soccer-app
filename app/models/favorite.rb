@@ -26,4 +26,12 @@ class Favorite
     end
   end
 
+
+  def delete_favorite!
+     if @type == "League"
+      leagues = League.find_by(:id => @id)
+      @user.leagues.destroy
+    end
+  end
+
 end

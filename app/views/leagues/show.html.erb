@@ -3,20 +3,28 @@
 
 <div class="row">
   <div class="large-12 columns">
-  
-<% if user_signed_in? %>
-    <%= form_tag("/favorites", method: "post") do %>
+  <h4 class="left"><%= @league.league %></h4>
+
+<% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
+    <%= form_tag("/favorites/#{@league.id}", remote: true, method: "delete") do %>
+      <%= hidden_field_tag :type, "League" %>
+      <%= button_tag'', class: "unfav-button" %>
+<% end %>
+<% else user_signed_in?%>
+    <%= form_tag("/favorites", remote: true) do %>
       <%= hidden_field_tag :id, @league.id %>
       <%= hidden_field_tag :type, "League" %>
-      <%= image_submit_tag("border-star.png")%>
+      <%= button_tag'', class: "fav-button" %>
 <% end %>
 <% end %>
 
 
 
+ 
 
 
-  <h4><%= @league.league %></h4>
+
+  
 </div>
 <div class="large-4 columns padding">
           <table>
@@ -28,7 +36,7 @@
           </tr>
           <% @league.teams.each do |league| %>
           <tr>
-            <td><a href="<%= team_path(league.slug) %>"><%= league.team %></a></td>
+            <td><a href="<%= team_path(league.slug) %>"><%= league.name %></a></td>
             <td><%= league.rank %></td>
           </tr>
           <% end %>
@@ -68,15 +76,7 @@
   </table>
 </div>
 
-<div class="large-8 columns">
-  <h3>Fixtures</h3>
-  <div class="red-box">
-    <div class="transparent-box">
-      <p>Liverpool vs. Chelsea</p>
-    </div>
-  </div>
 
-</div>
 
 
   </div>

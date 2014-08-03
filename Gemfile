@@ -18,10 +18,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'rspec-rails'
 gem 'capybara'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'simple_form'
 gem 'country_select'
 gem 'devise'
 gem 'espn'
+gem 'carrierwave'
 gem 'friendly_id'
 gem 'xmlsoccer', '~> 0.1.0'
 gem 'rails_12factor', group: :production

@@ -6,14 +6,29 @@
 
 //Main Typography - any typographical styling that is the same throughout
 
-.side-nav a{
-	color:#ff1212;
-	font-size: 1.4em;
+.side-navi a{
+	color:#fff;
+	font-size: 1.2em;
+	display: block;
+	padding: 5px 5px;
 	&:hover {
-		color: lighten(#ff1212, 20)
+		color: darken(#fff, 20)
+	}
+	img {
+		padding: 0;
+		margin: 0;
+		background: red;
 	}
 }
+.side-navi-back {
+	background: #333;
+	position: absolute;
+	position: fixed;
+	border: 2px solid #00b232;
+	border-radius: 5px;
+	margin: 150px 0 0 5px;
 
+}
 /*Body
 --------------------------------------------------------------*/
 * {
@@ -23,6 +38,26 @@ html, body {
 	min-height: 100%;
 }
 
+p {
+	font-family: 'Rosario', sans-serif;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.columns {
+	padding-left: 0;
+	padding-right: 0;
+}
 
 .home-page {
 	background: image-url("background-soccer8.jpg") no-repeat center center fixed; 
@@ -68,53 +103,37 @@ html, body {
 
 //Team Show Page
 
-.team-show-list1 {
-	list-style: none;
-	margin-left: 0;
-	& li {
-		display: block;
-		background: #ff1212;
-		padding: 10px 0;
-		text-align: center;
+
+.roster {
+	background: #333;
+	padding-bottom: 15px;
+	h2, h3, h4 {
+		color: #fff;
+		margin-left: 10px;
+	}
+	p {
+		color: #fff;
 	}
 }
 
-.team-show-list2 {
-	list-style:none;
-	margin-left:0;
-	& li {
-		border: solid #ff1212;
-		margin-top: 5px;
-		padding: 10px 0;
-		text-align: center;
+.roster-info {
+	background: #fff;
+	h5, p {
+		margin: auto;
+		width: 50%;
+	}
+	p {
+		padding: 25px 0;
+		color: #333;
+	}
+	p:hover {
+		background: darken(#fff, 2);
+	}
+	h5 {
+		margin-top: 10px;
 	}
 }
 
-//_____Player Accordion
-.player-accordion {
-	margin-top: 20px;
-
-}
-
-#panel4c {
-	background: #4B4B4B;
-	width: 750px;
-}
-//_____borders
-
-.bordera {
-	border-right: 1px solid #333;
-	border-left: 1px solid #333;
-}
-
-.border {
-	border: 2px solid #ff1212;
-
-}
-
-.green-line {
-	border-right: 2px solid #00b232;
-}
 
 
 
@@ -166,19 +185,7 @@ html, body {
 	list-style: none;
 }
 
-.league-headers {
-	margin-top: 20px;
-	padding-left: 0;
-	} 
-	a {
 
-	color: #666666;
-	&:hover {
-		color: darken(#666, 30);
-		// text-decoration: underline;
-	}
-
-}
 
 .league-bottom-border {
 	border-bottom: #333 solid 1.5px;
@@ -230,23 +237,6 @@ html, body {
 	padding-right: 0;
 }
 
-.my-table {
-	background: #fff;
-	border: none;
-	margin: 0;
-	padding: 0;
-	th{
-	background: #fff;
-	border-bottom: 2px solid #ff1212;
-}
-	td {
-	border-right: 2px solid #ff1212;
-	background: #fff;		
-	}
-	td:last-child {
-		border: none;
-	}
-}
 
 .red-box {
 	width: 500px;
@@ -254,8 +244,26 @@ html, body {
 	background: #990A0A;
 	border: 20px solid #ff1212;
 }
+ 
+button.fav-button {
+	background: none;
+	border: 2px solid #ff1212;
+	border-radius: 50%;
+	padding: 0;
+	height: 25px;
+	width: 25px;
+	margin: 5px 0 0 5px;
+	
+}
 
-
+button.unfav-button {
+	width: 25px;
+	height: 25px;
+	background: #ff1212;
+	border-radius: 50%;
+	padding: 0;
+	margin: 5px 0px 0 5px;
+}
 
 //Player Show Page
 
@@ -268,6 +276,7 @@ html, body {
 #favorites-nav {
 	list-style: none;
 	font-size: 1.5em;
+	font-family: 'Lato', sans-serif;
 	display: block;
 
 	li {
@@ -399,5 +408,21 @@ footer {
 .red-text-buttons a:hover {
 	color: white;
 }
+
+/*Headers
+--------------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Lato', sans-serif;
+	color: #393636;
+}
+
+h2 {
+	
+}
+
 
 

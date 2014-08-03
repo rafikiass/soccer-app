@@ -1,11 +1,13 @@
 class Team < ActiveRecord::Base
-belongs_to :league
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
-has_many :players
+  belongs_to :league
 
-has_and_belongs_to_many :users
+  has_many :players
 
-extend FriendlyId
-friendly_id :team, use: :slugged
+  has_and_belongs_to_many :users
+
+  
 
 end

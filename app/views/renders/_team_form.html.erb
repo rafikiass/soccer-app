@@ -1,12 +1,11 @@
 <%= simple_form_for @team do |f| %>
 
   <div class="large-4 columns">
-  <%= f.input :team, placeholder: 'Team name' %>
+  <%= f.input :name, placeholder: 'Team name' %>
   <%= f.input :manager, placeholder: 'First and last' %>
   <%= f.input :established %>
   <%= f.input :stadium %>
   <%= f.input :nickname %>
-  <%= f.input :overview %>
   <%= f.input :photo_url %>
   <%= f.association :league, label_method: :league, value_method: :id, :include_blank => false %>
   <%= f.input :uefa, label: 'Part of UEFA?' %>
