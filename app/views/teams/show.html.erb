@@ -43,73 +43,69 @@
     <div class="large-12 columns">
       <h4>Goalkeepers</h4>
     </div>
-
+      
     <div class="large-6 columns large-offset-1 roster-info">
       <h5>Player Name</h5>
     </div>
+
     <div class="large-5 columns roster-info">
       <h5>Number</h5>
     </div>
+      <% @players.each do |player| %>
     <div class="large-6 columns large-offset-1 roster-info">
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      
+      <% if player[:position] == "Goalkeeper" %>
+      <p><%= player[:name] %></p>
+
     </div>
     <div class="large-5 columns roster-info">
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
+      <p><%= player[:player_number] %></p>
+      <% end %>
     </div>
-<div class="large-12 columns">
+    <% end %>
+
+    <div class="large-12 columns">
       <h4>Forward</h4>
     </div>
+    <% @players.each do |player| %>
     <div class="large-6 columns large-offset-1 roster-info">
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
+      <% if player[:position] == "Forward" %>
+      <p><%= player[:name] %></p>
       
     </div>
     <div class="large-5 columns roster-info">
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
+      <p><%= player[:player_number] %></p>
+      <% end %>
     </div>
+    <% end %>
+
+
+
+
+
+
     <div class="large-12 columns">
       <h4>Defenders</h4>
     </div>
     <div class="large-6 columns large-offset-1 roster-info">
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      
+     
     </div>
     <div class="large-5 columns roster-info">
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
+    
+
+
+
+
+      
     </div>
     <div class="large-12 columns">
       <h4>Midfield</h4>
     </div>
     <div class="large-6 columns large-offset-1 roster-info">
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
-      <p>player name</p>
+      
       
     </div>
     <div class="large-5 columns roster-info">
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
-      <p>number</p>
+      
     </div>
   </div>
 
