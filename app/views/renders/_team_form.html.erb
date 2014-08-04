@@ -6,7 +6,7 @@
   <%= f.input :established %>
   <%= f.input :stadium %>
   <%= f.input :nickname %>
-  <%= f.input :photo_url %>
+  <%= f.file_field :photo_url %>
   <%= f.association :league, label_method: :league, value_method: :id, :include_blank => false %>
   <%= f.input :uefa, label: 'Part of UEFA?' %>
   <%= f.button :submit, :class => 'small red-text-buttons'%>
