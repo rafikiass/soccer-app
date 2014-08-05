@@ -19,9 +19,15 @@ client = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJ
 # end
 
 #Players!
-players = client.get_players_by_team(team_id: '45')
+players = client.get_players_by_team(team_id: '561')
 players.each do |player|
-  Player.create()
+  Player.create(:name => player[:name], :number => player[:player_number], :team_id => 85, :position => player[:position], :nationality => player[:nationality], :dob => player[:date_of_birth])
+  # puts player[:name]
+  # puts player[:player_number]
+  # puts player[:nationality]
+  # puts player[:date_of_birth]
+  # puts player[:position]
+end
 
 #ESPN API
 #====================

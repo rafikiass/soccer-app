@@ -19,8 +19,6 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.friendly.find(params[:id])
-    @xmlplayers = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJFUUTSWCLTKI', api_type: 'Demo')
-    @players = @xmlplayers.get_players_by_team(team_id: '45')
   end
 
   def edit

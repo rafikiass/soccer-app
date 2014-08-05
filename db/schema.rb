@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729213834) do
+ActiveRecord::Schema.define(version: 20140804225551) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -44,15 +44,15 @@ ActiveRecord::Schema.define(version: 20140729213834) do
 
   create_table "players", force: true do |t|
     t.string   "name"
-    t.string   "country"
-    t.string   "dob"
+    t.string   "nationality"
+    t.date     "dob"
     t.string   "position"
     t.string   "number"
-    t.string   "nation_team"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "team_id"
+    t.string   "head_shot"
   end
 
   create_table "players_users", id: false, force: true do |t|
@@ -62,20 +62,20 @@ ActiveRecord::Schema.define(version: 20140729213834) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.integer  "rank"
     t.string   "manager"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "league_id"
-    t.boolean  "uefa"
     t.string   "slug"
-    t.string   "photo_url"
-    t.string   "established"
     t.string   "nickname"
     t.string   "stadium"
     t.string   "homepage"
     t.string   "location"
     t.string   "abbr"
+    t.string   "established"
+    t.integer  "rank"
+    t.string   "photo_url"
+    t.integer  "league_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "uefa"
   end
 
   create_table "teams_users", id: false, force: true do |t|
