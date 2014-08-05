@@ -1,14 +1,7 @@
-<%= @player.name %>
+<%= @player %>
 
 
-<%= form_tag("/favorites", method: "post") do %>
-    <%= hidden_field_tag :id, @player.id %>
-    <%= hidden_field_tag :type, "Player" %>
-    <%= image_submit_tag("Red_star.png")%>
 
-  <% end %>
-
-<p><a href="/players">All Players</a></p>
 
 <div>
         <a class="button small red-text-buttons" href="/players/<%= @player.slug %>/edit">Edit</a>
