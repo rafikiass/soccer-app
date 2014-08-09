@@ -231,13 +231,6 @@
 
   <!-- Schedule -->
   
-  
-
-
-
-
-
-
 
 
 
@@ -246,120 +239,70 @@
 
 <!-- headlines -->
 
+<% counter = 0 %>
+
+<% @sbnation.entries.each do |entry| %>
+<% if counter < 3 %>
+<div class="large-4 columns article-headers1">
+<p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+
+<img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+
+<% counter += 1 %>
+</div>
+<% end %>
+<% end %>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <ul class="small-block-grid-3">
-  <li>
-    <div class="above-photo">
-    <p class="text-center article-headers"><a href="#">Gareth Bale Signs for Everton</a></p>
-
-    <img src="http://cdn2.vox-cdn.com/uploads/chorus_image/image/35349484/459415369.0_standard_709.0.jpg" alt="">
-    </div>
-  </li>
-  <li>
-    <div class="above-photo bordera">
-      <p class="text-center article-headers"><a href="#">Liverpool Abandon Alexis Chase</a></p>
-    <img src="http://cdn3.vox-cdn.com/uploads/chorus_image/image/35299252/451389944.0_standard_709.0.jpg" alt="">
-    </div>
-  </li>
-
-  <li>
-    <div class="above-photo">
-      <p class="text-center article-headers"><a href="#">Lukaku to decide 'soon' after some pondering</a></p>
-    <img class="hover-image" src="http://cdn2.vox-cdn.com/uploads/chorus_image/image/35272106/20140630_mjr_su5_101.JPG.0_standard_709.0.jpg" alt=""></li>
-    </div>
-</ul>
-    
-    <div class="row article-margin">
-      <div class="large-3 columns">
-        <img src="http://img.bleacherreport.net/img/images/photos/002/972/994/hi-res-8089835c7478a5c40869dc9b734674dc_crop_north.jpg?w=630&h=420&q=75" alt="  ">
-      </div>
-      <div class="large-5 columns">
-<h4><small>Arsenal Must Target Lars Bender Next</small></h4>
-        
-<p class="credit">by James McNicholas<p>
-<p>Having secured the transfer of Alexis Sanchez from Barcelona, it must be tempting for Arsenal ’s negotiating team to rest on their considerable laurels. In signing the Chilean, they have br... Read More »</p>
-      </div>
-      <div class="large-4 columns">
-        
-      </div>
-  <hr class="large-8">
-  <div class="large-3 columns">
-        <img src="http://img.bleacherreport.net/img/images/photos/002/972/994/hi-res-8089835c7478a5c40869dc9b734674dc_crop_north.jpg?w=630&h=420&q=75" alt="  ">
-      </div>
-      <div class="large-5 columns">
-<h4><small>Arsenal Must Target Lars Bender Next</small></h4>
-        
-<p class="credit">by James McNicholas<p>
-<p>Having secured the transfer of Alexis Sanchez from Barcelona, it must be tempting for Arsenal ’s negotiating team to rest on their considerable laurels. In signing the Chilean, they have br... Read More »</p>
-      </div>
-      <div class="large-4 columns">
-        
-      </div>
-  <hr class="large-8">
-
-  <div class="large-3 columns">
-        <img src="http://img.bleacherreport.net/img/images/photos/002/972/994/hi-res-8089835c7478a5c40869dc9b734674dc_crop_north.jpg?w=630&h=420&q=75" alt="  ">
-      </div>
-      <div class="large-5 columns">
-<h4><small>Arsenal Must Target Lars Bender Next</small></h4>
-        
-<p class="credit">by James McNicholas<p>
-<p>Having secured the transfer of Alexis Sanchez from Barcelona, it must be tempting for Arsenal ’s negotiating team to rest on their considerable laurels. In signing the Chilean, they have br... Read More »</p>
-      </div>
-      <div class="large-4 columns">
-        
-      </div>
-  <hr class="large-8">
-
-  <div class="large-3 columns">
-        <img src="http://img.bleacherreport.net/img/images/photos/002/972/994/hi-res-8089835c7478a5c40869dc9b734674dc_crop_north.jpg?w=630&h=420&q=75" alt="  ">
-      </div>
-      <div class="large-5 columns">
-<h4><small>Arsenal Must Target Lars Bender Next</small></h4>
-        
-<p class="credit">by James McNicholas<p>
-<p>Having secured the transfer of Alexis Sanchez from Barcelona, it must be tempting for Arsenal ’s negotiating team to rest on their considerable laurels. In signing the Chilean, they have br... Read More »</p>
-      </div>
-      <div class="large-4 columns">
-        
-      </div>
-  <hr class="large-8">
-    </div>
-  
-
+ 
+<% headlines = @headlines["headlines"] %>
+<% counter = 0 %>
+<% headlines.each do |headline| %>
+<% if counter < 5 %>
+<div class="large-5 columns espn-image">
+  <% if headline["video"] != [] %>
+  <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="350px" height="200px" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
+</video>
 </div>
 
 
-<% if user_signed_in? && current_user.admin? %>
-  <div>
-<% if user_signed_in? && current_user.admin? %>
-  <a class="button small red-text-buttons" href="/teams/<%= @team.id %>/edit">Edit</a>
-  <a class="button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/team/#{@team.slug}"%>" rel="nofollow">Destroy</a>
-  <% end %>
+<div class="large-5 columns espn-image">
+  <% elsif headline["images"] != [] %>
+  <img src="<%= headline["images"][0]["url"] %>" width="350" alt="">
+  <% else %>
   
-  </div>
+   <div class="large-5 columns no-image-filler"></div>
+  
   <% end %>
+</div>
+<div class="large-5 columns espn-article">
+<h4><small><%= headline["headline"] %></small></h4>
+<p>by <%= headline["byline"] %></p>
+  <p><a href="<%= headline["links"]["web"]["href"] %>" target="_blank"><%= headline["title"] %></a></p>
+</div>
+
+<div class="large-12 columns">
+  <div class="large-5 columns underline"></div>
+</div>
+<% counter +=1 %>
+<% end %>
+<% end %>
+
+
+
+
+<% counter = 0 %>
+<% @sbnation.entries.each do |entry| %>
+<% if counter > 3 && counter < 7%>
+<div class="large-4 columns article-headers1">
+<p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+
+<img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+
+</div>
+<% end %>
+<% counter += 1 %>
+<% end %>
+
+
+

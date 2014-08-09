@@ -149,31 +149,38 @@ p {
 
 //_____3 photo section
 
-.above-photo {
-	background-color: #000;
-
+.article-headers1 {
+	
+	background: black;
 	p {
-		color: white;
-		padding-top: 10px;
-
+		text-align: center;
+		font-family: 'Dosis', sans-serif;
+		
 	}
+	a {
+		font-size: 1.5em;
+		color: #fff;
+	}
+
+	a:hover {
+		color: darken(#fff, 20);
+	}
+}
+
+.article-headers-image {
+	background: #000;
+
 	img {
+	margin-top: -300px;
 		opacity: .7;
+	}
 	&:hover {
-		opacity: 1;
-		}
+		opacity: .9;
 	}
 }
 
-.hover-image {
-	background: #333;
-}
 
-.remember-text {
-	background: white;
-}
-
-//_____articles below 3 photos
+//_____articles below and above 3 photos
 
 .article-headers a{
 	font-family: 'Dosis', sans-serif;
@@ -184,10 +191,36 @@ p {
 		color: white;
 	}
 }
+
+.underline {
+	margin-top: 20px;
 	
-.article-margin {
-	margin-top: 40px;
 }
+
+.no-image-filler {
+	width: 150px;
+	height: 150px;
+}
+
+.espn-image {
+	margin-top: 30px;
+
+}
+
+.espn-article {
+	margin-top: 2%;
+	p {
+		color: #222222;
+	}
+	a {
+		color: #333;
+	}
+	a:hover {
+		color: lighten(#333, 15);
+	}
+}
+
+
 
 //League Page
 
@@ -280,6 +313,11 @@ button.unfav-button {
 //Sign Up Page
 
 //Login Page
+
+video {
+	margin: 0;
+	padding: 0;
+}
 
 //Favorites Page
 

@@ -26,6 +26,7 @@ class TeamsController < ApplicationController
                     headers: {"Accept" => "application/json"}).body
     @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/eng.1/teams/360/news?apikey=xzswdj9d9eexp7nwep3qnz5e",
                     headers: {"Accept" => "application/json"}).body
+    @sbnation = SimpleRSS.parse open('http://www.sbnation.com/rss/section/epl/index.xml')
   end
 
   def edit
@@ -48,5 +49,6 @@ class TeamsController < ApplicationController
   def user_params
     return params.require(:user).permit(:email, :first_name, :last_name)
   end
+
 
 end
