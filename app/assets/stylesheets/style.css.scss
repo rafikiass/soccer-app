@@ -145,7 +145,33 @@ p {
 	margin-bottom: 25px;
 }
 
+//_____Rank section
 
+.league-rank-box {
+	background: #ff1212;
+	margin-left: 2px;
+	padding-bottom: 4px;
+	h1 {
+		color: #fff;
+		text-align: center;
+	}
+}
+#rank-header {
+	background: #ff1212;
+	margin-top: -10px;
+	padding-left: 2px;
+	color: #fff;
+}
+#rank-text {
+	color: #ff1212;
+}
+#rank-borders {
+	border-left: 1px solid #ff1212;
+	padding: 5px;
+
+}
+
+// border-left: 1px solid #ff1212
 
 //_____3 photo section
 
