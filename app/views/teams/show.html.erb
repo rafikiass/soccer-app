@@ -215,7 +215,7 @@
   
 
   <!-- Rank -->
-
+<div class="stats-box columns">
     <% ranks = @rank["teams"] %>
     <% ranks.each do |rank| %>
     <% if rank["stand_team_name"] == @team.name %>
@@ -226,7 +226,7 @@
   <div class="large-1 columns league-rank-box">
     <h1><%= rank["stand_position"] %></h1>
   </div>
-  <div class="large-7 columns"></div>
+  <div class="large-7 columns rank-red-box"></div>
 
 
 
@@ -258,12 +258,10 @@
     <h1 id="rank-number"><%= rank["stand_points"] %></h1>
   </div>
   <div class="large-6 columns"></div>
-
-
 <% end %>
 <% end %>
 
-
+</div>
 
 
 
