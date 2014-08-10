@@ -168,10 +168,51 @@ p {
 #rank-borders {
 	border-left: 1px solid #ff1212;
 	padding: 5px;
+}
+
+//_____Schedule section
+
+.schedule-box {
+	margin-right: 150px;
+	border: 10px solid #333;
+	padding: 20px;
+	border-radius: 4px;
+	h1 {
+	border: 2px solid #ff1212;
+		background: #333;
+		display: inline;
+		padding: 5px 15px;
+		border-radius: 5px;
+		color: #fff;
+	}
+	h5, h6 {
+		
+		display: block;
+	}
 
 }
 
-// border-left: 1px solid #ff1212
+.sub-schedule-box {
+	margin-top: 10px;
+	text-align: center;
+	padding: 10px 10px;
+	border: 2px solid #00b232;
+	border-radius: 4px;
+}
+
+.opponent{
+	border-left: 1px solid #00b232;
+	padding-left: 10px;
+	margin: 10px 0 0 20px;
+}
+
+.date-time {
+	
+}
+
+
+
+
 
 //_____3 photo section
 

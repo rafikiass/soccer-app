@@ -5,7 +5,6 @@
 </div>
 
 <div class="row">
-
   <h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
   
   <h2 class="left"><%= @team.name %></h2>
@@ -267,13 +266,46 @@
 
   <!-- Schedule -->
   
+<div class="large-12 columns">
+<h1><%= Time.now.strftime("%B") %></h1>
+  
+  <div class="left schedule-box">
+    <h1>H</h1>
+    <% @matches.each do |match| %>
+      <% if match["match_localteam_name"] == @team.name %>
+        <div class="sub-schedule-box left">
+          <div class="left date-time">
+          <h5><%= match["match_date"] %></h5>
+          <h6><%= match["match_time"] %></h6>
+          </div>
+          <div class="opponent right">
+            <h4><%= match["match_visitorteam_name"] %></h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>  
+  </div>
+
+
+  <div class="left schedule-box">
+    <h1>A</h1>
+        <% @matches.each do |match| %>
+          <% if match["match_visitorteam_name"] == @team.name %>
+          <div class="sub-schedule-box left">
+            <div class="left date-time">
+              <h5><%= match["match_date"] %></h5>
+              <h6><%= match["match_time"] %></h6>
+            </div>
+            <div class="opponent right">
+              <h4><%= match["match_localteam_name"] %></h4>
+            </div>
+          </div>
+          <% end %>  
+        <% end %>
+  </div>
   
 
-
-
-
-
-
+  </div>
 
 
 
