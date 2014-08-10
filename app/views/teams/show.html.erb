@@ -216,25 +216,52 @@
 
   <!-- Rank -->
 
+    <% ranks = @rank["teams"] %>
+    <% ranks.each do |rank| %>
+    <% if rank["stand_team_name"] == @team.name %>
+
+  <div class="large-1 large-offset-3 columns">
+    <h4 id="rank-text">League Rank</h4>
+  </div>
+  <div class="large-1 columns league-rank-box">
+    <h1><%= rank["stand_position"] %></h1>
+  </div>
+  <div class="large-7 columns"></div>
 
 
 
+  <div class="large-2 large-offset-3 columns">
+    <h4 id="rank-header">Games</h4>
+  </div>
+  <div class="large-2 columns">
+    <h4 id="rank-header">Goals</h4>
+  </div>
+  <div class="large-2 columns">
+    <h4 id="rank-header">Points</h4>
+  </div>
+  <div class="large-4 columns"></div>
 
 
+  
+  <div class="large-2 columns large-offset-3" id="rank-boxes">
+
+    <h6>Played: <%= rank["stand_overall_gp"] %></h6>
+    <h6>Won: <%= rank["stand_overall_w"] %></h6>
+    <h6>Drawn: <%= rank["stand_overall_d"] %></h6>
+    <h6>Lost: <%= rank["stand_overall_l"] %></h6>
+  </div>
+  <div class="large-2 columns" id="rank-boxes">
+    <h6>Scored: <%= rank["stand_overall_gs"] %></h6>
+    <h6>Against: <%= rank["stand_overall_ga"] %></h6>
+  </div>
+  <div class="large-2 columns" id="rank-boxes">
+    <h1 id="rank-number"><%= rank["stand_points"] %></h1>
+  </div>
+  <div class="large-6 columns"></div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<% end %>
+<% end %>
 
 
 
