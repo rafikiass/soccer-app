@@ -9,6 +9,7 @@ devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out =
   get '/leagues/new' => 'leagues#new', as: :leagues_new
   post '/leagues' => 'leagues#create', as: :leagues_create
   get '/leagues/:id' => 'leagues#show', as: :league
+  get 'leagues/favorites' => 'leagues#show'
   get '/leagues/:id/edit' => 'leagues#edit', as: :leagues_edit
   patch '/leagues/:id' => 'leagues#update', as: :leagues_update
   delete '/leagues/:id' => 'leagues#destroy', as: :leagues_destroy
@@ -26,6 +27,10 @@ resources :teams
 get '/players' => 'players#players', as: :players
 resources :players
 
+namespace :leagues do
+  resources :favorites
+end
+  
 
 resources :favorites
 get '/favorites/leagues' => 'favorites#show'

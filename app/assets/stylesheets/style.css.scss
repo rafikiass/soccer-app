@@ -147,77 +147,112 @@ p {
 
 //_____Rank section
 
-.league-rank-box {
-	background: #ff1212;
-	margin-left: 2px;
-	padding-bottom: 4px;
-	h1 {
-		color: #fff;
-		text-align: center;
-	}
+.green-background {
+	background: #00992B;
+	padding: 30px;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
+
+
 #rank-header {
-	background: #ff1212;
-	margin-top: -10px;
-	padding-left: 2px;
 	color: #fff;
+	text-decoration: underline;
 }
 #rank-text {
-	color: #ff1212;
+	display: inline;
+	color: #fff;
+
 }
 #rank-borders {
-	border-left: 1px solid #ff1212;
-	padding: 5px;
+
+	
 }
-
-//_____Schedule section
-
-.schedule-box {
-	margin-right: 150px;
-	border: 10px solid #333;
-	padding: 20px;
-	border-radius: 4px;
-	h1 {
-	border: 2px solid #ff1212;
-		background: #333;
-		display: inline;
-		padding: 5px 15px;
-		border-radius: 5px;
-		color: #fff;
-	}
-	h5, h6 {
-		
-		display: block;
-	}
+.record {
+	
+	
 }
 #rank-boxes {
-	padding-left: 2px;
-	h6 {
-	color: #ff1212;
+	
+	
+}
+
+#rank-number {
+	
+	h1 {
+		display: inline;	
+		background-color: #fff;
+		color: #00b232;
+		border-radius: 5px;
+		padding: 5px;	
+		margin-left: 10px;
+
 	}
+}
+
+#games {
+	float: left;
+	
+	ul li{
+		list-style:none;
+		margin-bottom: 5px;
+	}
+	h4 {
+		color: #fff;
+		display: inline;
+	}
+}
+#games-record {
+	float: left;
+	ul li{
+		list-style: none;
+		margin-bottom: 5px;
+	}
+	h4 {
+		background: #fff;
+		color: #00b232;
+		margin-left: 20px;
+		border-radius: 5px;
+		padding: 0 10px;
+		display: inline;
+		
+	}
+}
+
+
+.stats-box {
 	
 }
 
 
-#rank-number {
-	border: 4px solid #ff1212;
-	margin-top: -12px;
-	border-top: none;
-	color: #ff1212;
-	text-align: center;
+//_____Schedule section
+
+
+.red-box {
+	background: #F80000;
+	border-radius: 5px;
+	h2 {
+		color: #fff;
+		background: #333;
+		display: inline;
+		padding: 0 15px;
+		border-radius: 5px;
+	}
+	h1 {
+		margin-left: 20px;
+		color: #fff;
+	}
 }
 
-.stats-box {
-	border: 5px solid #ff1212;
-	border-radius: 4px;
-}
-
-.sub-schedule-box {
-	margin-top: 10px;
+.schedule-box {
+	margin: 10px 0;
 	text-align: center;
-	padding: 10px 10px;
-	border: 2px solid #00b232;
-	border-radius: 4px;
+	background: #fff;
+	border: 3px solid lighten(#333, 10);
+	border-radius: 5px;
+	padding: 10px 0;
+	width: 60%;
+	
 }
 
 .opponent{
@@ -326,14 +361,6 @@ p {
 .league-pic-margin {
 	margin-right: 0;
 	padding-right: 0;
-}
-
-
-.red-box {
-	width: 500px;
-	height: 250px;
-	background: #990A0A;
-	border: 20px solid #ff1212;
 }
  
 button.fav-button {

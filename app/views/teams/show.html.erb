@@ -210,101 +210,116 @@
   </div> 
   <!-- end roster -->
   
-  <hr>
+  </div>
   
 
 
   <!-- Rank -->
-<div class="stats-box columns">
+
+
+  <div class="green-background row">
+    
     <% ranks = @rank["teams"] %>
     <% ranks.each do |rank| %>
+
     <% if rank["stand_team_name"] == @team.name %>
 
-  <div class="large-1 large-offset-3 columns">
-    <h4 id="rank-text">League Rank</h4>
-  </div>
-  <div class="large-1 columns league-rank-box">
-    <h1><%= rank["stand_position"] %></h1>
-  </div>
-  <div class="large-7 columns rank-red-box"></div>
+    <div id="rank-number">
+      <h4 id="rank-text">League Rank</h4>
+      <h1><%= rank["stand_position"] %></h1>
+    </div>
+    <div class="large-4 columns">
+      
+      <h4 id="rank-header">Games</h4>
+      <div id="games">
+        <ul>
+          <li><h4>Played</h4></li>
+         
+          <li><h4>Won</h4> </li>
+         
+          <li><h4>Drawn</h4></li>
+         
+          <li><h4>Lost</h4></li>
+          
+        </ul>
+      </div>
+        <div id="games-record">
+          <ul>
+            <li><h4 id="rank-boxes"><%= rank["stand_overall_gp"] %></h4></li>
+            <li><h4><%= rank["stand_overall_w"] %></h4></li>
+            <li><h4><%= rank["stand_overall_d"] %></h4></li>
+            <li><h4><%= rank["stand_overall_l"] %></h4></li>
+          </ul>
+        </div>
+    </div>    
+    
+    <div class="large-4 columns">
+      <h4 id="rank-header">Goals</h4>
+    </div>
+
+    <div class="large-4 columns">
+      <h4 id="rank-header">Points</h4>
+    </div>
+
+    
+    
+    
+    <%= rank["stand_overall_gs"] %>
+    <%= rank["stand_overall_ga"] %>
+    <%= rank["stand_points"] %>
 
 
-
-  <div class="large-2 large-offset-3 columns">
-    <h4 id="rank-header">Games</h4>
-  </div>
-  <div class="large-2 columns">
-    <h4 id="rank-header">Goals</h4>
-  </div>
-  <div class="large-2 columns">
-    <h4 id="rank-header">Points</h4>
-  </div>
-  <div class="large-4 columns"></div>
-
-
-  
-  <div class="large-2 columns large-offset-3" id="rank-boxes">
-
-    <h6>Played: <%= rank["stand_overall_gp"] %></h6>
-    <h6>Won: <%= rank["stand_overall_w"] %></h6>
-    <h6>Drawn: <%= rank["stand_overall_d"] %></h6>
-    <h6>Lost: <%= rank["stand_overall_l"] %></h6>
-  </div>
-  <div class="large-2 columns" id="rank-boxes">
-    <h6>Scored: <%= rank["stand_overall_gs"] %></h6>
-    <h6>Against: <%= rank["stand_overall_ga"] %></h6>
-  </div>
-  <div class="large-2 columns" id="rank-boxes">
-    <h1 id="rank-number"><%= rank["stand_points"] %></h1>
-  </div>
-  <div class="large-6 columns"></div>
 <% end %>
 <% end %>
 
-</div>
 
+
+  </div>
 
 <!-- Schedule -->
-  
-<div class="large-12 columns">
+<div class="red-box row">
+
 <h1><%= Time.now.strftime("%B") %></h1>
+  <div class="large-5 large-offset-1 columns">
   
-  <div class="left schedule-box">
-    <h1>H</h1>
+    <h2>H</h2>
+
     <% @matches.each do |match| %>
+
       <% if match["match_localteam_name"] == @team.name %>
-        <div class="sub-schedule-box left">
-          <div class="left date-time">
+        
+          <div class="schedule-box">
           <h5><%= match["match_date"] %></h5>
-          <h6><%= match["match_time"] %></h6>
-          </div>
-          <div class="opponent right">
+
+          <h5><%= match["match_time"] %></h5>
+          
             <h4><%= match["match_visitorteam_name"] %></h4>
           </div>
-        </div>
+        
       <% end %>
     <% end %>  
-  </div>
+  
+</div>
 
-
-  <div class="left schedule-box">
-    <h1>A</h1>
+<div class="large-6 columns">
+  
+    <h2>A</h2>
         <% @matches.each do |match| %>
           <% if match["match_visitorteam_name"] == @team.name %>
-          <div class="sub-schedule-box left">
-            <div class="left date-time">
+          
+          <div class="schedule-box">
               <h5><%= match["match_date"] %></h5>
               <h6><%= match["match_time"] %></h6>
-            </div>
-            <div class="opponent right">
+          
+          
               <h4><%= match["match_localteam_name"] %></h4>
-            </div>
+          
           </div>
           <% end %>  
         <% end %>
-  </div>
+  
+  
+</div>
   
 
-  </div>
-
-
+</div>
