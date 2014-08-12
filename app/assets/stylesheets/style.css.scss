@@ -149,16 +149,18 @@ p {
 
 //_____3 photo section
 
-.article-headers1 {
+.article-headers {
 	
 	background: black;
+	margin-bottom: 0;
+	height: 40px;
 	p {
 		text-align: center;
 		font-family: 'Dosis', sans-serif;
 		
 	}
 	a {
-		font-size: 1.5em;
+		font-size: 1em;
 		color: #fff;
 	}
 
@@ -169,12 +171,10 @@ p {
 
 .article-headers-image {
 	background: #000;
-
 	img {
-	margin-top: -300px;
 		opacity: .7;
 	}
-	&:hover {
+	img:hover {
 		opacity: .9;
 	}
 }
@@ -182,15 +182,7 @@ p {
 
 //_____articles below and above 3 photos
 
-.article-headers a{
-	font-family: 'Dosis', sans-serif;
-	font-size: 1rem;
-	color: white;
-	&:hover {
-		text-decoration: underline;
-		color: white;
-	}
-}
+
 
 .underline {
 	margin-top: 20px;
