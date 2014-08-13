@@ -22,73 +22,101 @@
     <%= button_tag'', class: "fav-button" %>
     <% end %>
   <% end %>
-
+</div>
   <!-- Beginning of Roster -->
-  <div class="large-12 columns clearfix roster">
+  <div class="row">
+  <div class="large-12 columns roster">
 
     <div class="large-1 columns large-offset-1 left" id="team-logo">
-      <img src="<%= @team.photo_url.url %>" alt="" width="80px" height="80px">
-      
+      <img src="<%= @team.photo_url.url %>" alt="" width="80px" height="80px">  
     </div>
-
-    <div>
-    <h4>Manager</a></h4>
+      <h4>Manager</a></h4>
       <h5 id="manager-name"><%= @team.manager %></h5>
-    </div>
-    
-    <!-- Roster headers -->
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <h5>Name</h5>
-        </div>
-        <div class="large-2 columns">
-          <h5>Position</h5>
-        </div>
-        <div class="large-2 columns">
-          <h5>Number</h5>
-        </div>
-        <div class="large-2 columns left">
-          <h5>DOB</h5>
-        </div>
+      <div class="goalie-header">
+      <h3>Goalkeepers</h3>
       </div>
-      <h4>Goalkeepers</h4>
+  </div>
+
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Goalkeeper" %>
+      <tr>
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Defenders</h3>
     </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Defender" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Midfield</h3>
+    </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Midfielder" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Forwards</h3>
+    </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Forward" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+  </div> 
+    <!-- Roster headers -->
+    
     <!-- End of Roster headers -->
     
     <!-- Goalkeeper -->
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Goalkeeper" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Goalkeeper" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Goalkeeper" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Goalkeeper" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
+    
     <!-- End of Goalkeepers -->
 
 
@@ -98,126 +126,21 @@
 
 
     <!-- Defenders -->
-    <div class="large-12 columns">
-      <h4>Defenders</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Defender" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Defender" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Defender" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Defender" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
+    
     <!-- End of Defenders -->
     
     <!-- Midfielders -->
-    <div class="large-12 columns">
-      <h4>Midfield</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Midfielder" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Midfielder" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Midfielder" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Midfielder" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
+    
     <!-- End of Midfield -->
 
     <!-- Forwards -->
-    <div class="large-12 columns">
-      <h4>Forwards</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Forward" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Forward" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Forward" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Forward" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
+   
     <!-- End of Forwards -->
 
-  </div> 
+  
   <!-- end roster -->
   
-  <hr>
+ 
   
 
   <!-- Rank -->
@@ -244,68 +167,5 @@
 
 
 <!-- headlines -->
-
-
-
-<% @sbnation.entries[0..2].each do |entry| %>
-  <div class="large-4 columns article-headers">
-    <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
-  </div>
-<% end %>
-
-<% @sbnation.entries[0..2].each do |entry| %>
-  <div class="large-4 columns article-headers-image">
-  <a href="<%= entry[:id] %>" target="_blank"><img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt=""></a>
-  </div>
-<% end %>
- 
-
-<% headlines = @headlines["headlines"] %>
-<% headlines[0..8].each do |headline| %>
-  <% if headline["video"].any? %>
-  <div class="large-5 columns image-margin">
-    <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="100%" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
-    </video>
-  </div>
-
-  <% elsif headline["images"].any? %>
-  <div class="large-5 columns image-margin">
-    <img src="<%= headline["images"][0]["url"] %>" alt="">
-  </div>
-  <% end %>
-
-  <% if headline["video"].any? || headline["images"].any? %>
-<div class="large-3 columns article-margin">
-<h5><a href="<%= headline["links"]["web"]["href"] %>" target="_blank"><%= headline["headline"] %></a></h5>
-<p>by <%= headline["byline"] %></p>
-  <p><a href="<%= headline["links"]["web"]["href"] %>" target="_blank"><%= headline["title"] %></a></p>
-</div>
-
-<div class="large-8 columns">
-  <hr id="team-break">
-</div>
-<% end %>
-<% end %>
-  <div>
-    <a class="twitter-timeline" width="280" href="https://twitter.com/premierleague" data-widget-id="499305398621315072">Tweets by @premierleague</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div>
-
-  <div class="large-9 columns"></div>
-
-
-<% @sbnation.entries[3..5].each do |entry| %>
-<div class="large-4 columns article-headers">
-<p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
-</div>
-<% end %>
-
-
-<% @sbnation.entries[3..5].each do |entry| %>
-<div class="large-4 columns article-headers-image">
-<a href="<%= entry[:id] %>" target="_blank"><img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt=""></a>
-</div>
-<% end %>
-
 
 
