@@ -164,7 +164,8 @@ hr#team-break {
 	height: 40px;
 	p {
 		text-align: center;
-		font-family: 'Dosis', sans-serif;
+		font-family: Georgia, Times, "Times New Roman", serif;
+		padding-top: 3px;
 		
 	}
 	a {
@@ -197,6 +198,13 @@ hr#team-break {
 
 .image-margin {
 	margin-top: 20px;
+}
+
+.article-border {
+	height: 15px;
+	background: #ff1212;
+	margin-top: 10px;
+	opacity: .6;
 }
 
 .article-margin {
