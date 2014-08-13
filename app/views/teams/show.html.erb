@@ -35,183 +35,73 @@
       <h5 id="manager-name"><%= @team.manager %></h5>
     </div>
     
-    <!-- Roster headers -->
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <h5>Name</h5>
-        </div>
-        <div class="large-2 columns">
-          <h5>Position</h5>
-        </div>
-        <div class="large-2 columns">
-          <h5>Number</h5>
-        </div>
-        <div class="large-2 columns left">
-          <h5>DOB</h5>
-        </div>
-      </div>
-      <h4>Goalkeepers</h4>
-    </div>
-    <!-- End of Roster headers -->
     
-    <!-- Goalkeeper -->
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Goalkeeper" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Goalkeeper" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Goalkeeper" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Goalkeeper" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
-    <!-- End of Goalkeepers -->
-
-    <!-- Defenders -->
-    <div class="large-12 columns">
-      <h4>Defenders</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Defender" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Defender" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Defender" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Defender" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
-    <!-- End of Defenders -->
-    
-    <!-- Midfielders -->
-    <div class="large-12 columns">
-      <h4>Midfield</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Midfielder" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Midfielder" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Midfielder" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Midfielder" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
-    <!-- End of Midfield -->
-
-    <!-- Forwards -->
-    <div class="large-12 columns">
-      <h4>Forwards</h4>
-    </div>
-
-    <div class="large-12 columns">
-      <div id="roster-header">
-        <div class="large-3 large-offset-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Forward" %>
-            <h6><%= player.name %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-          <% if player.position == "Forward" %>
-            <h6><%= player.position[0] %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Forward" %>
-            <h6><%= player.number %></h6>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="large-2 columns left">
-          <% @team.players.each do |player| %>
-            <% if player.position == "Forward" %>
-            <h6><%= player.dob %></h6>
-            <% end %>
-          <% end %>          
-        </div>
-      </div>
-    </div>
-    <!-- End of Forwards -->
 
   </div> 
-  <!-- end roster -->
+  
   
   </div>
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- Rank -->
