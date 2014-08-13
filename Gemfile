@@ -25,6 +25,8 @@ gem 'devise'
 gem 'espn'
 gem 'carrierwave'
 gem 'friendly_id'
+gem 'simple-rss'
+
 gem "fog"
 gem 'xmlsoccer', '~> 0.1.0'
 gem 'rails_12factor', group: :production

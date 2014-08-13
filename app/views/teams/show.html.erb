@@ -21,85 +21,103 @@
     <%= button_tag'', class: "fav-button" %>
     <% end %>
   <% end %>
-
+</div>
   <!-- Beginning of Roster -->
-  <div class="large-12 columns clearfix roster">
+  <div class="row">
+  <div class="large-12 columns roster">
 
     <div class="large-1 columns large-offset-1 left" id="team-logo">
-      <img src="<%= @team.photo_url.url %>" alt="" width="80px" height="80px">
-      
+      <img src="<%= @team.photo_url.url %>" alt="" width="80px" height="80px">  
     </div>
-
-    <div>
-    <h4>Manager</a></h4>
+      <h4>Manager</a></h4>
       <h5 id="manager-name"><%= @team.manager %></h5>
+      <div class="goalie-header">
+      <h3>Goalkeepers</h3>
+      </div>
     </div>
+  
 
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Goalkeeper" %>
+      <tr>
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Defenders</h3>
+    </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Defender" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Midfield</h3>
+    </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Midfielder" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
+    <div class="roster-header">
+      <h3>Forwards</h3>
+    </div>
+    <table class="player-table">
+      <tr>
+        <th>Player</th>
+        <th>Number</th>
+        <th>DOB</th>
+      </tr>
+        <% @team.players.each do |player| %>
+        <% if player.position == "Forward" %>
+      <tr> 
+          <td><%= player.name %></td>
+          <td><%= player.number %></td>
+          <td><%= player.dob %></td>
+      </tr>
+        <% end %>
+        <% end %>
+    </table>
   </div> 
-  </div>
+    
+ 
   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- Schedule -->
+  
 
 
 
@@ -220,3 +238,4 @@
   
 
 </div>
+
