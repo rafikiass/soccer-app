@@ -36,6 +36,11 @@
 }
 html, body {
 	min-height: 100%;
+	font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+body {
+	background-image: url('furley_bg.png');
 }
 
 p {
@@ -137,7 +142,8 @@ p {
 }
 
 #manager-name {
-	background: #fff;
+	background: url('furley_bg.png');
+
 	border-top: 2px solid #ff1212;
 	border-bottom: 2px solid #ff1212;
 	
@@ -145,7 +151,9 @@ p {
 	margin-bottom: 25px;
 }
 
-
+hr#team-break {
+	height: 5px;
+}
 
 //_____3 photo section
 
@@ -179,40 +187,44 @@ p {
 	}
 }
 
-
 //_____articles below and above 3 photos
 
 
-
-.underline {
-	margin-top: 20px;
-	
-}
-
-.no-image-filler {
-	width: 150px;
+.empty-image {
+	width: 50px;
 	height: 150px;
 }
 
-.espn-image {
-	margin-top: 30px;
-
+.image-margin {
+	margin-top: 20px;
 }
 
-.espn-article {
-	margin-top: 2%;
-	p {
-		color: #222222;
-	}
+.article-margin {
+	margin-top: 20px;
+	height: 234px;
+	padding-left: 10px;
+	background: #000;
 	a {
-		color: #333;
+		color: #fff;
+	&:hover {
+		color: darken(#fff, 20);
 	}
-	a:hover {
-		color: lighten(#333, 15);
+	}
+	h5 a{
+		margin-top: 40px;
+		color: darken(#fff, 30);
+		h5 a:hover {
+			color: darken(#fff, 10);
+		}
+	}
+	p {
+		color: darken(#fff, 20);
 	}
 }
-
-
+.twitter-timeline {
+	margin-top: 20px;
+	margin-left: 50px;
+}
 
 //League Page
 
@@ -455,8 +467,10 @@ footer {
 h1,
 h2,
 h3,
-h4 {
-	font-family: 'Lato', sans-serif;
+h4,
+h5,
+h6 {
+	font-family: Georgia, Times, "Times New Roman", serif;
 	color: #393636;
 }
 
