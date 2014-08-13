@@ -18,66 +18,35 @@
 <% end %>
 <% end %>
 
-
-
- 
-
-
-
-  
 </div>
-<div class="large-4 columns padding">
-          <table>
+
+<div class="large-12 columns padding">
+          <table class="league-table">
           <tr>
-            <th>Team</th>
+            
+            <th colspan="2">Team</th>
+            <th></th>
             <th>Rank</th>
             <th>Played</th>
             <th>Points</th>
           </tr>
           <% @league.teams.each do |league| %>
           <tr>
+            <td><img src="<%= league.photo_url %>" width="40" height="40" alt=""></td>
             <td><a href="<%= team_path(league.slug) %>"><%= league.name %></a></td>
-            <td><%= league.rank %></td>
+            <td></td>
+            <% @rank["teams"].each do |rank| %>
+            <% if rank["stand_team_name"] == league.name %>
+            <td><%= rank["stand_position"] %></td>
+            <td><%= rank["stand_overall_gp"] %></td>
+            <td><%= rank["stand_points"] %></td>
+            <% end %>
+            <% end %>
           </tr>
           <% end %>
         </table>
   </div>
   
-<div class="large-8 columns">
-  <h4>Top Scorers</h4>
-</div>
-<div class="large-8 columns">
-  <table class="my-table" cellspacing="0">
-    <thead>
-
-      <tr>
-        <th width="200px"></th>
-        <th width="100px">Goals</th>
-        <th width="150px">Team</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Player</td>
-        <td>34 </td>
-        <td>Liverpool</td>
-      </tr>
-      <tr>
-        <td>Player</td>
-        <td>42</td>
-        <td>Chelsea</td>
-      </tr>
-      <tr>
-        <td>Player</td>
-        <td>43</td>
-        <td>Hotspurs</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-
 
   </div>
 <div class="row">

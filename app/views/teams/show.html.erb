@@ -111,131 +111,80 @@
         <% end %>
     </table>
   </div> 
-    
- 
-  
 
-
-  <!-- Schedule -->
-  
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Rank -->
-
-
-  <div class="green-background row">
-    
-    <% ranks = @rank["teams"] %>
-    <% ranks.each do |rank| %>
-
-    <% if rank["stand_team_name"] == @team.name %>
-
-    <div id="rank-number">
-      <h4 id="rank-text">League Rank</h4>
-      <h1><%= rank["stand_position"] %></h1>
-    </div>
-    <div class="large-4 columns">
-      
-      <h4 id="rank-header">Games</h4>
-      <div id="games">
-        <ul>
-          <li><h4>Played</h4></li>
-         
-          <li><h4>Won</h4> </li>
-         
-          <li><h4>Drawn</h4></li>
-         
-          <li><h4>Lost</h4></li>
-          
-        </ul>
-      </div>
-        <div id="games-record">
-          <ul>
-            <li><h4 id="rank-boxes"><%= rank["stand_overall_gp"] %></h4></li>
-            <li><h4><%= rank["stand_overall_w"] %></h4></li>
-            <li><h4><%= rank["stand_overall_d"] %></h4></li>
-            <li><h4><%= rank["stand_overall_l"] %></h4></li>
-          </ul>
-        </div>
-    </div>    
-    
-    <div class="large-4 columns">
-      <h4 id="rank-header">Goals</h4>
-    </div>
-
-    <div class="large-4 columns">
-      <h4 id="rank-header">Points</h4>
-    </div>
-
-    
-    
-    
-    <%= rank["stand_overall_gs"] %>
-    <%= rank["stand_overall_ga"] %>
-    <%= rank["stand_points"] %>
-
-
-<% end %>
-<% end %>
-
-
-
-  </div>
+<!-- Rank -->
+<div class="row">
+  <% ranks = @rank["teams"] %>
+  <% ranks.each do |rank| %>
+  <% if rank["stand_team_name"] == @team.name %>
+    <table class="rank-table">
+      <tr id="league-rank">
+        <th>Rank</th>
+        <th><%= rank["stand_position"] %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>Games</th>
+        <th></th>
+        <th>Goals</th>
+        <th></th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>Played</td>
+        <td><%= rank["stand_overall_gp"] %></td>
+        <td>Scored</td>
+        <td><%= rank["stand_overall_gs"] %></td>
+        <td id="total-points" rowspan="2"><%= rank["stand_points"] %></td>
+      </tr>
+      <tr>
+        <td>Won</td>
+        <td><%= rank["stand_overall_w"] %></td>
+        <td>Against</td>
+        <td><%= rank["stand_overall_ga"] %></td>
+      </tr>
+      <tr>
+        <td>Drawn</td>
+        <td><%= rank["stand_overall_d"] %></td>
+      </tr>
+      <tr>
+        <td>Lost</td>
+        <td><%= rank["stand_overall_l"] %></td>
+      </tr>
+    </table>
+  <% end %>
+  <% end %>
+</div>
 
 <!-- Schedule -->
-<div class="red-box row">
-
-<h1><%= Time.now.strftime("%B") %></h1>
+<div class="row">
+  <h1>Fixtures</h1>
+  <h3 id="month"><%= Time.now.strftime("%B") %></h3>
   <div class="large-5 large-offset-1 columns">
-  
-    <h2>H</h2>
-
+    <h3>Home</h3>
     <% @matches.each do |match| %>
-
-      <% if match["match_localteam_name"] == @team.name %>
-        
-          <div class="schedule-box">
+      <% if match["match_localteam_name"] == @team.name %>  
+        <div class="schedule-box large-6 columns">
           <h5><%= match["match_date"] %></h5>
-
           <h5><%= match["match_time"] %></h5>
-          
-            <h4><%= match["match_visitorteam_name"] %></h4>
-          </div>
-        
+          <h4><%= match["match_visitorteam_name"] %></h4>
+        </div>
       <% end %>
     <% end %>  
-  
-</div>
-
-<div class="large-6 columns">
-  
-    <h2>A</h2>
-        <% @matches.each do |match| %>
-          <% if match["match_visitorteam_name"] == @team.name %>
-          
-          <div class="schedule-box">
-              <h5><%= match["match_date"] %></h5>
-              <h6><%= match["match_time"] %></h6>
-          
-          
-              <h4><%= match["match_localteam_name"] %></h4>
-          
-          </div>
-          <% end %>  
-        <% end %>
-  
-  
-</div>
-  
-
+  </div>
+  <div class="large-6 columns">
+    <h3>Away</h3>
+    <% @matches.each do |match| %>
+      <% if match["match_visitorteam_name"] == @team.name %>    
+        <div class="schedule-box large-6 columns">
+          <h5><%= match["match_date"] %></h5>
+          <h5><%= match["match_time"] %></h5>
+          <h4><%= match["match_localteam_name"] %></h4>      
+        </div>
+      <% end %>  
+    <% end %>
+  </div>
 </div>
 

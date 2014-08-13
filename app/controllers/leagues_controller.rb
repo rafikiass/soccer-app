@@ -23,7 +23,8 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
   def show
     
     @league = League.friendly.find(params[:id])
-
+    @rank = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=ca6bb737-ab39-9f20-52e6efb05d40&comp_id=1204",
+                    headers: {"Accept" => "application/json"}).body
   end
 
   def edit

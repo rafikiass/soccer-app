@@ -94,6 +94,11 @@ p {
 .home-form {
 	background: rgba(0,0,0,.7);
 	margin-bottom: 20px;
+	padding: 0 20px;
+}
+
+.home-page-accordion {
+	margin-left: 15px;
 }
 
 .login-form {
@@ -173,134 +178,71 @@ p {
 
 
 #manager-name {
-	background: #fff;
+	background: url('furley_bg.png');
 	border-top: 2px solid #ff1212;
 	border-bottom: 2px solid #ff1212;
 	
 	padding: 15px 0;
-	margin-bottom: 25px;
 }
 
 //_____Rank section
 
-.green-background {
-	background: #00992B;
-	padding: 30px;
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
+.rank-table {
+	border-collapse: collapse;
+	background: none;
+	border: none;
+	width: 500px;
+	margin:auto;
 
-
-#rank-header {
-	color: #fff;
-	text-decoration: underline;
-}
-#rank-text {
-	display: inline;
-	color: #fff;
-
-}
-#rank-borders {
-
-	
-}
-.record {
-	
-	
-}
-#rank-boxes {
-	
-	
-}
-
-#rank-number {
-	
-	h1 {
-		display: inline;	
-		background-color: #fff;
+	border-left: 20px solid #93daa7;
+	th {
+		height: 60px;
+		font-size: 1.2em;
+	}
+	tr {
+		background: none;
+	}
+	td {
+		background: none;
+		border-top: 1px solid #e9e9e9;
+		text-align: center;
+		height: 30px;
+		font-size: 1em;
+	}
+	#league-rank {
+		
+		th{
+			height: 60px;
+			font-size: 1.5em;
+			background: #93DAA7;
+			color: #fff;
+			
+		}
+	}
+	#total-points{
 		color: #00b232;
-		border-radius: 5px;
-		padding: 5px;	
-		margin-left: 10px;
+		font-size: 3em;
 
 	}
-}
 
-#games {
-	float: left;
-	
-	ul li{
-		list-style:none;
-		margin-bottom: 5px;
-	}
-	h4 {
-		color: #fff;
-		display: inline;
-	}
-}
-#games-record {
-	float: left;
-	ul li{
-		list-style: none;
-		margin-bottom: 5px;
-	}
-	h4 {
-		background: #fff;
-		color: #00b232;
-		margin-left: 20px;
-		border-radius: 5px;
-		padding: 0 10px;
-		display: inline;
-
-}
 }
 
 
-.stats-box {
-	
-}
 
 
 //_____Schedule section
 
-
-.red-box {
-	background: #F80000;
-	border-radius: 5px;
-	h2 {
-		color: #fff;
-		background: #333;
-		display: inline;
-		padding: 0 15px;
-		border-radius: 5px;
-	}
-	h1 {
-		margin-left: 20px;
-		color: #fff;
-	}
-}
-
 .schedule-box {
-	margin: 10px 0;
+	border: 1px solid #333;
 	text-align: center;
-	background: #fff;
-	border: 3px solid lighten(#333, 10);
+}
+
+#month {
+	background: #93DAA7;
+	color: #fff;
+	padding: 5px 0 5px 10px;
 	border-radius: 5px;
-	padding: 10px 0;
-	width: 60%;
-	
 }
-
-.opponent{
-	border-left: 1px solid #00b232;
-	padding-left: 10px;
-	margin: 10px 0 0 20px;
-}
-
-hr#team-break {
-	height: 5px;
-}
-
 //_____3 photo section
 
 .article-headers {
@@ -424,10 +366,21 @@ hr#team-break {
 
 //League Show Page
 
-
-.league-pic-margin {
-	margin-right: 0;
-	padding-right: 0;
+.league-table {
+	border-collapse: collapse;
+	background: none;
+	tr {
+		background: none;
+	}
+	th {
+		background: none;
+		height: 60px;
+		background: #93daa7;
+	}
+	td {
+		background: none;
+		border-top: 1px solid #e9e9e9;
+	}
 }
  
 button.fav-button {
