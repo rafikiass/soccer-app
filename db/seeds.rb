@@ -14,6 +14,7 @@ client = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJ
 
 # teams.each do |team|
 
+
 #   # Team.create(:name => team[:name], :league_id => 7, :stadium => team[:stadium], :homepage => team[:home_page_url])
   
 # end

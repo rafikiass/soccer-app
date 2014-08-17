@@ -38,8 +38,9 @@
   
     <table class="player-table">
       <tr>
-        <th>Player</th>
-        <th>Number</th>
+        <th width="350">Player</th>
+        <th width="250">Number</th>
+        <th width="100">Age</th>
         <th>DOB</th>
       </tr>
         <% @team.players.each do |player| %>
@@ -47,7 +48,9 @@
       <tr>
           <td><%= player.name %></td>
           <td><%= player.number %></td>
-          <td><%= player.dob %></td>
+          <% age = (DateTime.now - player.dob)/365 %>
+          <td><%= age.to_i %></td>
+          <td><%= player.dob.strftime("%b %d, %Y") %></td>
       </tr>
         <% end %>
         <% end %>
@@ -57,8 +60,9 @@
     </div>
     <table class="player-table">
       <tr>
-        <th>Player</th>
-        <th>Number</th>
+        <th width="350">Player</th>
+        <th width="250">Number</th>
+        <th width="100">Age</th>
         <th>DOB</th>
       </tr>
         <% @team.players.each do |player| %>
@@ -66,7 +70,9 @@
       <tr> 
           <td><%= player.name %></td>
           <td><%= player.number %></td>
-          <td><%= player.dob %></td>
+          <% age = (DateTime.now - player.dob)/365 %>
+          <td><%= age.to_i %></td>
+          <td><%= player.dob.strftime("%b %d, %Y") %></td>
       </tr>
         <% end %>
         <% end %>
@@ -76,8 +82,9 @@
     </div>
     <table class="player-table">
       <tr>
-        <th>Player</th>
-        <th>Number</th>
+        <th width="350">Player</th>
+        <th width="250">Number</th>
+        <th width="100">Age</th>
         <th>DOB</th>
       </tr>
         <% @team.players.each do |player| %>
@@ -85,7 +92,9 @@
       <tr> 
           <td><%= player.name %></td>
           <td><%= player.number %></td>
-          <td><%= player.dob %></td>
+          <% age = (DateTime.now - player.dob)/365 %>
+          <td><%= age.to_i %></td>
+          <td><%= player.dob.strftime("%b %d, %Y") %></td>
       </tr>
         <% end %>
         <% end %>
@@ -95,8 +104,9 @@
     </div>
     <table class="player-table">
       <tr>
-        <th>Player</th>
-        <th>Number</th>
+        <th width="350">Player</th>
+        <th width="250">Number</th>
+        <th width="100">Age</th>
         <th>DOB</th>
       </tr>
         <% @team.players.each do |player| %>
@@ -104,7 +114,9 @@
       <tr> 
           <td><%= player.name %></td>
           <td><%= player.number %></td>
-          <td><%= player.dob %></td>
+          <% age = (DateTime.now - player.dob)/365 %>
+          <td><%= age.to_i %></td>
+          <td><%= player.dob.strftime("%b %d, %Y") %></td>
       </tr>
         <% end %>
         <% end %>
@@ -160,7 +172,7 @@
 <!-- Schedule -->
 <div class="row">
   <h1>Fixtures</h1>
-  <h3 id="month"><%= Time.now.strftime("%B") %></h3>
+  <h3 id="month"><%= DateTime.now.strftime("%B") %></h3>
   <div class="large-5 large-offset-1 columns">
     <h3>Home</h3>
     <% @matches.each do |match| %>
@@ -168,7 +180,7 @@
         <div class="schedule-box large-6 columns">
           <h5><%= match["match_date"] %></h5>
           <h5><%= match["match_time"] %></h5>
-          <h4><%= match["match_visitorteam_name"] %></h4>
+          <h4><img src="<%= @team.photo_url.url %>" width="40" height="40"><%= match["match_visitorteam_name"] %></h4>
         </div>
       <% end %>
     <% end %>  
@@ -180,7 +192,7 @@
         <div class="schedule-box large-6 columns">
           <h5><%= match["match_date"] %></h5>
           <h5><%= match["match_time"] %></h5>
-          <h4><%= match["match_localteam_name"] %></h4>      
+          <h4><img src="<%= @team.photo_url.url %>" width="40" height="40"><%= match["match_localteam_name"] %></h4>      
         </div>
       <% end %>  
     <% end %>
