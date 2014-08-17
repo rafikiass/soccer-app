@@ -19,12 +19,12 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.friendly.find(params[:id])
-    @schedule = Unirest.get('http://football-api.com/api/?Action=fixtures&APIKey=ca6bb737-ab39-9f20-52e6efb05d40&comp_id=1204&&from_date=05.08.2014&&to_date=05.08.2015',
+    @schedule = Unirest.get("http://football-api.com/api/?Action=fixtures&APIKey=#{ENV['FOOTBALL_KEY']}&comp_id=1204&&from_date=05.08.2014&&to_date=05.08.2015",
                     headers:{"Accept" => "application/json"}).body
     @matches = @schedule["matches"]
-    @rank = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=ca6bb737-ab39-9f20-52e6efb05d40&comp_id=1204",
+    @rank = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_KEY']}&comp_id=1204",
                     headers: {"Accept" => "application/json"}).body
-    @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/eng.1/teams/360/news?apikey=xzswdj9d9eexp7nwep3qnz5e",
+    @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/eng.1/teams/360/news?apikey=#{ENV['ESPN_KEY']}",
                     headers: {"Accept" => "application/json"}).body
     @sbnation = SimpleRSS.parse open('http://www.sbnation.com/rss/section/epl/index.xml')
   end
