@@ -123,6 +123,10 @@
     </table>
   </div> 
 
+
+
+
+
 <!-- Rank -->
 <div class="row">
   <% ranks = @rank["teams"] %>
@@ -167,7 +171,7 @@
     </table>
   <% end %>
   <% end %>
-</div>
+
 
 <!-- Schedule -->
 <div class="row">
@@ -198,4 +202,67 @@
     <% end %>
   </div>
 </div>
+
+
+
+
+<!-- headlines -->
+
+
+
+<% @sbnation.entries[0..2].each do |entry| %>
+  <div class="large-4 columns article-headers">
+    <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+  </div>
+<% end %>
+
+<% @sbnation.entries[0..2].each do |entry| %>
+  <div class="large-4 columns article-headers-image">
+  <a href="<%= entry[:id] %>" target="_blank"><img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt=""></a>
+  </div>
+<% end %>
+ 
+
+<% headlines = @headlines["headlines"] %>
+<% headlines.each do |headline| %>
+  <% if headline["video"].any? %>
+  <div class="large-5 columns image-margin">
+    <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="100%" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
+    </video>
+  </div>
+
+  <% elsif headline["images"].any? %>
+  <div class="large-5 columns image-margin">
+    <img src="<%= headline["images"][0]["url"] %>" height="234" width="417" alt="">
+  </div>
+  <% end %>
+  <% end %>
+
+
+<div class="large-8 columns article-border"></div>
+
+<% @sbnation.entries[3..4].each do |entry| %>
+<div class="large-5 columns image-margin">
+  <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+</div>
+<div class="large-3 columns sb-article-margin">
+  
+  <h5><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></h5>
+  <p>by <%= entry[:author] %></p>
+  <p><%= entry[:content].match(/p&gt;(\S.*)\./)[1] %>.</p>
+</div>
+<div class="large-8 columns article-border"></div>
+<% end %>
+
+
+  <div>
+    <a class="twitter-timeline" width="280" href="https://twitter.com/premierleague" data-widget-id="499305398621315072">Tweets by @premierleague</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+
+  <div class="large-9 columns"></div>
+
+
+
+
 

@@ -249,7 +249,8 @@ p {
 	height: 40px;
 	p {
 		text-align: center;
-		font-family: 'Dosis', sans-serif;
+		font-family: Georgia, Times, "Times New Roman", serif;
+		padding-top: 3px;
 		
 	}
 	a {
@@ -283,10 +284,41 @@ p {
 	margin-top: 20px;
 }
 
+.article-border {
+	height: 15px;
+	background: #ff1212;
+	margin-top: 10px;
+	opacity: .6;
+}
+
+.sb-article-margin{
+
+	margin-top: 20px;
+	height: 277px;
+	padding: 5px 10px;
+	background: #000;
+	a {
+		color: #fff;
+	&:hover {
+		color: darken(#fff, 20);
+	}
+	}
+	h5 a{
+		margin-top: 40px;
+		color: darken(#fff, 30);
+		h5 a:hover {
+			color: darken(#fff, 10);
+		}
+	}
+	p {
+		color: darken(#fff, 20);
+	}
+}
+
 .article-margin {
 	margin-top: 20px;
 	height: 234px;
-	padding-left: 10px;
+	padding: 5px 10px;
 	background: #000;
 	a {
 		color: #fff;
