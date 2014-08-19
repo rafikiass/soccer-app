@@ -207,10 +207,34 @@ hr#team-break {
 	opacity: .6;
 }
 
+.sb-article-margin{
+
+	margin-top: 20px;
+	height: 277px;
+	padding: 5px 10px;
+	background: #000;
+	a {
+		color: #fff;
+	&:hover {
+		color: darken(#fff, 20);
+	}
+	}
+	h5 a{
+		margin-top: 40px;
+		color: darken(#fff, 30);
+		h5 a:hover {
+			color: darken(#fff, 10);
+		}
+	}
+	p {
+		color: darken(#fff, 20);
+	}
+}
+
 .article-margin {
 	margin-top: 20px;
 	height: 234px;
-	padding-left: 10px;
+	padding: 5px 10px;
 	background: #000;
 	a {
 		color: #fff;
