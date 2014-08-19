@@ -1,69 +1,59 @@
-
-
-
 <div class="row">
-  <div class="large-12 columns">
-  <h4 class="left"><%= @league.league %></h4>
-
-<% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
-    <%= form_tag("/favorites/#{@league.id}", remote: true, method: "delete") do %>
-      <%= hidden_field_tag :type, "League" %>
-      <%= button_tag'', class: "unfav-button" %>
-<% end %>
-<% else user_signed_in?%>
-    <%= form_tag("/favorites", remote: true) do %>
-      <%= hidden_field_tag :id, @league.id %>
-      <%= hidden_field_tag :type, "League" %>
-      <%= button_tag'', class: "fav-button" %>
-<% end %>
-<% end %>
-
-</div>
-
-<div class="large-8 columns padding">
-          <table class="league-table">
-          <tr>
-            
-            <th colspan="2">Team</th>
-            <th></th>
-            <th>Rank</th>
-            <th>Played</th>
-            <th>Points</th>
-          </tr>
-          <% @league.teams.each do |league| %>
-          <tr>
-            <td><img src="<%= league.photo_url %>" width="40" height="40" alt=""></td>
-            <td><a href="<%= team_path(league.slug) %>"><%= league.name %></a></td>
-            <td></td>
-            <% @rank["teams"].each do |rank| %>
-            <% if rank["stand_team_name"] == league.name %>
-            <td><%= rank["stand_position"] %></td>
-            <td><%= rank["stand_overall_gp"] %></td>
-            <td><%= rank["stand_points"] %></td>
-            <% end %>
-            <% end %>
-          </tr>
-          <% end %>
-        </table>
+  <div class="large-7 columns">
+    <h4 class="left"><%= @league.league %></h4>  
+      <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
+          <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
+            <%= hidden_field_tag :type, "League" %>
+            <%= button_tag'', class: "unfav-button" %>
+      <% end %>
+      <% else user_signed_in?%>
+          <%= form_tag("/favorites", method: "post") do %>
+            <%= hidden_field_tag :id, @league.id %>
+            <%= hidden_field_tag :type, "League" %>
+            <%= button_tag'', class: "fav-button" %>
+      <% end %>
+      <% end %>
   </div>
-  <div class="large-4 columns">
-    
+  <img src="" alt="">
+  <div class="large-7 columns">
+    <table class="league-table">
+      <tr>
+        <th colspan="2" width="300">Team</th>
+        <th></th>
+        <th width="100">Rank</th>
+        <th width="100">Played</th>
+        <th width="100">Points</th>
+      </tr>
+      <% @league.teams.each do |league| %>
+      <tr>
+        <td><img src="<%= league.photo_url %>" width="40" height="40" alt=""></td>
+        <td><a href="<%= team_path(league.slug) %>"><%= league.name %></a></td>
+        <td></td>
+        <% @rank["teams"].each do |rank| %>
+        <% if rank["stand_team_name"] == league.name %>
+        <td><%= rank["stand_position"] %></td>
+        <td><%= rank["stand_overall_gp"] %></td>
+        <td><%= rank["stand_points"] %></td>
+        <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
   </div>
 
+  <div class="large-5 columns">
+    <a class="twitter-timeline" href="https://twitter.com/premierleague" data-widget-id="499305398621315072" data-theme="light" data-link-color="#ff1212" data-chrome="transparent" height="1000" data-screen-name="premierleague">Tweets by @premierleague</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+  
 </div>
 
- 
-
-
-
-
 <div class="row">
-<p>Back to <a href="<%= leagues_path %>">leagues</a></p>
-
-  <% if user_signed_in? && current_user.admin? %>
-    
-      <a class="button small red-text-buttons" href="<%= leagues_edit_path(@league.slug) %>">Edit</a>
-    
-      <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues"%>" rel="nofollow">Destroy</a>
-  <% end %>
+  <p>Back to <a href="<%= leagues_path %>">leagues</a></p>
+    <% if user_signed_in? && current_user.admin? %>
+      
+        <a class="button small red-text-buttons" href="<%= leagues_edit_path(@league.slug) %>">Edit</a>
+      
+        <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues"%>" rel="nofollow">Destroy</a>
+    <% end %>
 </div>

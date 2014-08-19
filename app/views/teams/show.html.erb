@@ -10,12 +10,12 @@
   <h2 class="left"><%= @team.name %></h2>
 
   <% if user_signed_in? && current_user.teams.collect(&:id).include?(@team.id)%>
-    <%= form_tag("/favorites/#{@team.id}", remote: true, method: "delete") do %>
+    <%= form_tag("/favorites/#{@team.id}", method: "delete") do %>
       <%= hidden_field_tag :type, "Team" %>
       <%= button_tag'', class: "unfav-button" %>
     <% end %>
   <% else user_signed_in?%>
-    <%= form_tag("/favorites", remote: true) do %>
+    <%= form_tag("/favorites", method: "post") do %>
     <%= hidden_field_tag :id, @team.id %>
     <%= hidden_field_tag :type, "Team" %>
     <%= button_tag'', class: "fav-button" %>

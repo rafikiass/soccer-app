@@ -34,7 +34,6 @@ class TeamsController < ApplicationController
   end
 
   def update
-    
     @team = Team.friendly.find(params[:id])
     @team.update(params[:team])
     flash[:success] = "Team updated."

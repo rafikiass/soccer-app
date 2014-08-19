@@ -17,15 +17,3 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-
-$(document).ready(function(){
-	$('.fav-button').click(function (){
-		$(this).css("background", "#ff1212");
-	});
-	$('.unfav-button').click(function(){
-		$(this).css({"background": "none",
-			"border": "2px solid #ff1212"});
-	})
-
-
-})

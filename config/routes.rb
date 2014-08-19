@@ -37,7 +37,12 @@ get '/favorites/leagues' => 'favorites#show'
 get '/favorites/teams' => 'favorites#show'
 get '/favorites/players' => 'favorites#show'
 
+namespace :api do
+  namespace :v1 do
+    
 
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
