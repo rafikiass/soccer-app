@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804225551) do
+ActiveRecord::Schema.define(version: 20140819204613) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -34,7 +34,11 @@ ActiveRecord::Schema.define(version: 20140804225551) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "photo_url"
-    t.text     "intro"
+    t.integer  "espn_league_id"
+    t.string   "espn_shortname"
+    t.integer  "football_api_comp_id"
+    t.string   "sbnation_url"
+    t.string   "twitter_handle"
   end
 
   create_table "leagues_users", id: false, force: true do |t|
@@ -76,6 +80,10 @@ ActiveRecord::Schema.define(version: 20140804225551) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "uefa"
+    t.integer  "espn_team_id"
+    t.string   "espn_team_name"
+    t.integer  "football_api_team_id"
+    t.string   "twitter_handle"
   end
 
   create_table "teams_users", id: false, force: true do |t|

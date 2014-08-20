@@ -8,11 +8,12 @@
 
 # XML API
 # #===================
-client = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJFUUTSWCLTKI', api_type: 'Demo')
+# client = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJFUUTSWCLTKI', api_type: 'Demo')
 # teams = client.get_all_teams_by_league_and_season(league: 'Scottish Premier League', season_date_string: '1415')
 
 
 # teams.each do |team|
+
 
 
 #   # Team.create(:name => team[:name], :league_id => 7, :stadium => team[:stadium], :homepage => team[:home_page_url])
@@ -20,15 +21,15 @@ client = Xmlsoccer::Client.new(api_key: 'VLQTPIPEUHYLQXSLUPZBDFGNGEPYPWSPTOIJIEJ
 # end
 
 #Players!
-players = client.get_players_by_team(team_id: '38')
-players.each do |player|
-  Player.create(:name => player[:name], :number => player[:player_number], :team_id => 105, :position => player[:position], :nationality => player[:nationality], :dob => player[:date_of_birth])
+# players = client.get_players_by_team(team_id: '38')
+# players.each do |player|
+#   Player.update(:name => player[:name], :number => player[:player_number], :team_id => 105, :position => player[:position], :nationality => player[:nationality], :dob => player[:date_of_birth])
   # puts player[:name]
   # puts player[:player_number]
   # puts player[:nationality]
   # puts player[:date_of_birth]
   # puts player[:position]
-end
+# end
 
 #ESPN API
 #====================
@@ -50,3 +51,18 @@ end
   # Team.create(:name => team["name"], :league_id => 5, :nickname => team["nickname"], :location => team["location"], :abbr => team["abbreviation"])
 
 # end
+
+
+# Football API
+
+api_teams = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=ca6bb737-ab39-9f20-52e6efb05d40&comp_id=1221",
+                    headers: {"Accept" => "application/json"}).body["teams"]
+
+api_teams.each do |team|
+  puts team["stand_team_name"]
+end
+
+
+
+
+

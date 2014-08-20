@@ -21,7 +21,9 @@
     <%= button_tag'', class: "fav-button" %>
     <% end %>
   <% end %>
+<h3><%= @team.nickname %></h3>
 </div>
+
   <!-- Beginning of Roster -->
   <div class="row">
   <div class="large-12 columns roster">
@@ -123,10 +125,6 @@
     </table>
   </div> 
 
-
-
-
-
 <!-- Rank -->
 <div class="row">
   <% ranks = @rank["teams"] %>
@@ -174,7 +172,7 @@
 
 
 <!-- Schedule -->
-<div class="row">
+<div class="row schedule">
   <h1>Fixtures</h1>
   <h3 id="month"><%= DateTime.now.strftime("%B") %></h3>
   <div class="large-5 large-offset-1 columns">
@@ -203,12 +201,7 @@
   </div>
 </div>
 
-
-
-
 <!-- headlines -->
-
-
 
 <% @sbnation.entries[0..2].each do |entry| %>
   <div class="large-4 columns article-headers">
@@ -235,15 +228,24 @@
   <div class="large-5 columns image-margin">
     <img src="<%= headline["images"][0]["url"] %>" height="234" width="417" alt="">
   </div>
+
+<div class="large-3 columns article-margin">
+  <h5><a href="<%= headline["links"]["web"]["href"] %>" targe=_"blank"><%= headline["headline"] %></a></h5>
+  <p>By <%= headline["byline"] %></p>
+  <p><%= headline["linkText"] %></p>
+</div>
   <% end %>
+
+
   <% end %>
 
 
 <div class="large-8 columns article-border"></div>
 
-<% @sbnation.entries[3..4].each do |entry| %>
+<% @sbnation.entries[3..8].each do |entry| %>
+  <% if entry[:content].match(/src="(\S*)"/) != nil %>
 <div class="large-5 columns image-margin">
-  <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+  <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" width="417" alt="">
 </div>
 <div class="large-3 columns sb-article-margin">
   
@@ -252,11 +254,12 @@
   <p><%= entry[:content].match(/p&gt;(\S.*)\./)[1] %>.</p>
 </div>
 <div class="large-8 columns article-border"></div>
+  <% end %>
 <% end %>
 
 
   <div>
-    <a class="twitter-timeline" width="280" href="https://twitter.com/premierleague" data-widget-id="499305398621315072">Tweets by @premierleague</a>
+    <a class="twitter-timeline" width="280" href="https://twitter.com/premierleague" data-widget-id="499305398621315072" data-theme="light" data-link-color="#ff1212" data-chrome="transparent" height="1000" data-screen-name="premierleague">Tweets by @premierleague</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
 

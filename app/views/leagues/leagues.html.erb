@@ -4,20 +4,7 @@
     <h3><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
       <div class="row">
         <div class="large-6 medium-5 small-12 columns">
-          <table>
-            <tr>
-              <th width="200px"><%= link_to "Team", :sort => 'team' %></th>
-              <th><% link_to "Rank" %>Rank</th>
-              <th>Games Played</th>
-              <th>League points</th>
-            </tr>
-            <% league.teams.each do |team| %>
-            <tr>
-              <td><a href="<%= team_path(team.slug) %>"><%= team.name %></a></td>
-              <td><%= team.rank %></td>
-            <% end %>
-            </tr>
-          </table>
+          
         </div>
         <div class="large-6 columns">
           <div class="background-overlay">
@@ -32,4 +19,5 @@
     </div>
   <% end %>
 </div>
+
 

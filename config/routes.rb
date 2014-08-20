@@ -39,8 +39,9 @@ get '/favorites/players' => 'favorites#show'
 
 namespace :api do
   namespace :v1 do
-    
-
+    resources :leagues, only: [:index]
+    resources :teams, only: [:index]
+    resources :players, only: [:index]
   end
 end
 

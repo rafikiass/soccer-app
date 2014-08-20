@@ -4,7 +4,6 @@ class TeamsController < ApplicationController
   def teams
     redirect_to '/leagues' unless user_signed_in? && current_user.admin?
     @teams = Team.order(:rank)
-    
   end 
 
   def new
