@@ -1,6 +1,8 @@
-<div class="row">
+<div class="row" ng-app="app">
   <div class="large-7 columns">
-    <h4 class="left"><%= @league.league %></h4>  
+  
+    <h4 class="left"><%= @league.league %></h4> 
+    <div ng-controller="favoriteCtrl">
       <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
           <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
             <%= hidden_field_tag :type, "League" %>
@@ -13,13 +15,16 @@
             <%= button_tag'', class: "fav-button" %>
       <% end %>
       <% end %>
+      
+    </div> 
   </div>
-  <img src="" alt="">
-  <div class="large-7 columns" ng-app="app">
+  
+  <div class="large-7 columns">
 
     <table class="league-table" ng-controller="rankCtrl" ng-init="init(<%= @league.id %>)">
       
       <tr>
+        
         <th colspan="2" width="300"><a ng-click="predicate = 'name'; reverse=!reverse">Team</a></th>
         <th width="100"><a href="" ng-click="predicate = parseInt(rank.stand_position); reverse=!reverse">Rank</a></th>
         <th width="100"><a >Played</a></th>
