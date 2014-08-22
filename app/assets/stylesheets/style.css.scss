@@ -246,6 +246,10 @@ p {
 }
 //_____3 photo section
 
+.headlines {
+	margin-top: 40px;
+}
+
 .article-headers {
 	
 	background: black;
@@ -453,6 +457,13 @@ p {
 	}
 }
  
+.star{
+	width: 25px;
+	margin: 5px 0 0 10px;
+	height: 25px;
+	cursor: pointer;
+}
+
 button.fav-button {
 	background: none;
 	border: 2px solid #ff1212;

@@ -19,13 +19,8 @@ class Favorite
     team = Team.find_by(:id => @id)
     @user.teams << team
     
-    else
-    player = Player.find_by(:id => @id)
-    @user.players << player
-    
     end
   end
-
 
   def delete_favorite!
      if @type == "League"

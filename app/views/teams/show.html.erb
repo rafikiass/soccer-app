@@ -1,7 +1,9 @@
-<div class="side-navi-back">
-  <p class="side-navi"><a href="#roster">Roster</a></p>
-  <p class="side-navi"><a href="#">Team Standings</a></p>
-  <p class="side-navi"><a href="#">Headlines</a></p>
+<div ng-app="app">
+  <nav class="side-navi-back" ng-controller="ScrollCtrl">
+    <p class="side-navi"><a href="#roster" ng-click="gotoElement('roster')">Roster</a></p>
+    <p class="side-navi"><a href="#" ng-click="gotoElement('standings')">Team Standings</a></p>
+    <p class="side-navi"><a href="#" ng-click="gotoElement('headlines')">Headlines</a></p>
+  </nav>
 </div>
 
 <div class="row">
@@ -26,7 +28,7 @@
 
   <!-- Beginning of Roster -->
   <div class="row">
-  <div class="large-12 columns roster">
+  <div class="large-12 columns roster" id="roster">
 
     <div class="large-1 columns large-offset-1 left" id="team-logo">
       <img src="<%= @team.photo_url.url %>" alt="" width="80px" height="80px">  
@@ -126,7 +128,8 @@
   </div> 
 
 <!-- Rank -->
-<div class="row">
+<div id="standings" class="row">
+  <h1>Standings</h1>
   <% ranks = @rank["teams"] %>
   <% ranks.each do |rank| %>
   <% if rank["stand_team_name"] == @team.name %>
@@ -202,9 +205,9 @@
 </div>
 
 <!-- headlines -->
-
+<div class="headlines">
 <% @sbnation.entries[0..2].each do |entry| %>
-  <div class="large-4 columns article-headers">
+  <div class="large-4 columns article-headers" id="headlines">
     <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
   </div>
 <% end %>
@@ -240,7 +243,7 @@
   <% end %>
 
 
-<div class="large-8 columns article-border"></div>
+
 
 <% @sbnation.entries[3..8].each do |entry| %>
   <% if entry[:content].match(/src="(\S*)"/) != nil %>
@@ -253,7 +256,7 @@
   <p>by <%= entry[:author] %></p>
   <p><%= entry[:content].match(/p&gt;(\S.*)\./)[1] %>.</p>
 </div>
-<div class="large-8 columns article-border"></div>
+<div class="large-8 columns"></div>
   <% end %>
 <% end %>
 
@@ -265,7 +268,7 @@
 
   <div class="large-9 columns"></div>
 
-
+</div>
 
 
 

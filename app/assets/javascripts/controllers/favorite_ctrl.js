@@ -1,13 +1,18 @@
 (function(){
 	"use strict";
 
-	angular.module("app").controller("favoriteCtrl", function($scope){
+	angular.module("app").controller("favoriteCtrl", function($scope, $http){
 
-		function postFavorite() {$http.post("/favorites").then(function (response){
-    		
+		$scope.favorite = function (){
+			favoriteLeagues();
+		};
+
+
+
+		function favoriteLeagues(){$http.post("/favorites").then(function(){
+    			
     		});
-
-
+		};
 	});
 
 })();

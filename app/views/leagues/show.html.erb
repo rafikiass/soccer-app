@@ -3,19 +3,11 @@
   
     <h4 class="left"><%= @league.league %></h4> 
     <div ng-controller="favoriteCtrl">
-      <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
-          <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
-            <%= hidden_field_tag :type, "League" %>
-            <%= button_tag'', class: "unfav-button" %>
-      <% end %>
-      <% else user_signed_in?%>
-          <%= form_tag("/favorites", method: "post") do %>
-            <%= hidden_field_tag :id, @league.id %>
-            <%= hidden_field_tag :type, "League" %>
-            <%= button_tag'', class: "fav-button" %>
-      <% end %>
-      <% end %>
       
+          <div  ng-click="favorite()">
+            <%= image_tag('star.png', :class => "star") %>
+          </div>
+
     </div> 
   </div>
   
