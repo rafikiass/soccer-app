@@ -2,12 +2,20 @@
   <div class="large-7 columns">
   
     <h4 class="left"><%= @league.league %></h4> 
-    <div ng-controller="favoriteCtrl">
-      
-          <div  ng-click="favorite()">
-            <%= image_tag('star.png', :class => "star") %>
+    <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>)">
+      <!-- <input type="checkbox" ng-model="full"> -->
+      <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
+          <div ng-click="delete(<%= @league.id %>)">
+            <div class="outline" ng-class="{filled: true}"></div>
           </div>
-
+      <% else %>
+        <div ng-click="favorite(<%= @league.id %>)">
+            <div class="outline" ng-class="{filled: false}"></div>
+          </div>
+      <% end %>
+<div ng-click="clicked()">
+  <div class="outline" ng-class="{filled: false}"></div>
+</div>
     </div> 
   </div>
   
