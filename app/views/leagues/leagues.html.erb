@@ -1,13 +1,13 @@
 <div class="row">
   
-    <div class="large-10 large-offset-1 columns">
+    <div class="large-10 medium-10 small-10 medium-offset-1 small-offset-1 large-offset-1 columns">
       <% @leagues[0..3].each do |league| %>
-        <div class="large-5 columns leagues">
+        <div class="large-5 medium-5 small-12 columns leagues">
           <a href="<%= league_path(league.slug) %>"><h2><img src="<%= league.photo_url %>" width="200" height="200" alt=""></h2></a>
 
         </div>
       <% end %>
-        <div class="large-12 columns"></div>
+        <div class="large-12 medium-5 small-12 columns"></div>
     </div>
 </div>
 
