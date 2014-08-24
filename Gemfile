@@ -25,7 +25,8 @@ gem 'devise'
 gem 'espn'
 gem 'carrierwave'
 gem 'friendly_id'
-gem 'simple-rss'
+gem 'simple-rss', github: 'trevordjones/simple-rss'
+gem 'quiet_assets', group: :development
 
 gem "fog"
 gem 'xmlsoccer', '~> 0.1.0'

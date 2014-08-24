@@ -22,7 +22,13 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
     @league = League.friendly.find(params[:id])
     @ranks = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=#{@league.football_api_comp_id}",
                     headers: {"Accept" => "application/json"}).body["teams"]
-    @sbnation = SimpleRSS.parse open('http://www.sbnation.com/rss/section/epl/index.xml')
+    if @league.sbnation_url != nil
+    @sbnation = SimpleRSS.parse open("http://www.sbnation.com/rss/section/#{@league.sbnation_url}/index.xml")
+    end
+    @goal_com = SimpleRSS.parse open("http://www.goal.com/en-us/feeds/news?id=#{@league.goal_url_id}&fmt=rss&ICID=SP")
+    @espn = Unirest.get("http://api.espn.com/v1/sports/soccer/#{@league.espn_shortname}/news/headlines?apikey=#{ENV['ESPN_KEY']}",
+                    headers: {"Accept" => "application/json"}).body["headlines"]
+    @league_url
   end
 
   def edit

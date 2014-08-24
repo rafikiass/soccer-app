@@ -109,6 +109,25 @@ p {
 
 //Team Show Page
 
+.team-info-header{
+	h5 {
+		border: 2px solid #FF4545;
+		display: inline;
+		padding: 5px 5px 0 0;
+	}
+}
+
+.center-team-info {
+	text-align: center;
+}
+
+#team-info {
+	background: #FF4545;
+	padding: 5px 5px 0 5px;
+	margin-right: 5px;
+	color: #fff;
+	text-align: center;
+}
 
 .roster {
 	background: #333;
@@ -319,6 +338,31 @@ p {
 	}
 }
 
+.league-sb-article-margin{
+
+	margin-top: 20px;
+	height: 312px;
+	padding: 5px 10px;
+	background: #000;
+	a {
+		color: #fff;
+	&:hover {
+		color: darken(#fff, 20);
+	}
+	}
+	h5 a{
+		margin-top: 40px;
+		color: darken(#fff, 30);
+		h5 a:hover {
+			color: darken(#fff, 10);
+		}
+	}
+	p {
+		color: darken(#fff, 20);
+	}
+}
+
+
 .article-margin {
 	margin-top: 20px;
 	height: 234px;
@@ -341,6 +385,30 @@ p {
 		color: darken(#fff, 20);
 	}
 }
+
+.video-article-margin {
+	margin-top: 20px;
+	height: 234px;
+	padding: 5px 10px;
+	background: #000;
+	a {
+		color: #fff;
+	&:hover {
+		color: darken(#fff, 20);
+	}
+	}
+	h5 a{
+		margin-top: 40px;
+		color: darken(#fff, 30);
+		h5 a:hover {
+			color: darken(#fff, 10);
+		}
+	}
+	p {
+		color: darken(#fff, 20);
+	}
+}
+
 .twitter-timeline {
 	margin-top: 20px;
 	margin-left: 50px;
@@ -386,52 +454,16 @@ p {
 
 //League Page
 
-.league-list {
-	list-style: none;
+.leagues {
+	height: 400px;
+	border: 5px solid lighten(#ff1212, 10);
+	padding: 100px 50px 0px 50px;
+	margin: 0 15px 20px 0;
+	
 }
 
 
 
-.league-bottom-border {
-	border-bottom: #333 solid 1.5px;
-	margin-top: 20px;
-}
-
-#league-line {
-	color: red;
-	height: 2em;
-}
-
-.background-overlay {
-	background: #000;
-}
-
-.leagues-text {
-	color: darken(#fff, 20);
-	font-size: .9em;
-	margin:  20px 10px;
-	a {
-		color: darken(#fff, 30)
-	}
-	a:hover {
-		color: #fff;
-	}
-}
-
-.image-position {
-	opacity: .7;
-	padding: 0;
-	&:hover {
-		opacity: 1;
-	}
-}
-
-.text-overlay {
-	background-color: black;
-	padding: 3px;
-	padding-bottom: 17px;
-	margin-bottom: 10px;
-}
 
 
 //League Show Page

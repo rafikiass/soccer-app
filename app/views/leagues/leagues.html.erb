@@ -1,23 +1,14 @@
 <div class="row">
-  <% @leagues.each do |league| %>
   
-    <h3><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
-      <div class="row">
-        <div class="large-6 medium-5 small-12 columns">
-          
+    <div class="large-10 large-offset-1 columns">
+      <% @leagues[0..3].each do |league| %>
+        <div class="large-5 columns leagues">
+          <a href="<%= league_path(league.slug) %>"><h2><img src="<%= league.photo_url %>" width="200" height="200" alt=""></h2></a>
+
         </div>
-        <div class="large-6 columns">
-          <div class="background-overlay">
-          <a href="#"><img src="http://cdn1.vox-cdn.com/uploads/chorus_image/image/35872166/483579193.0_standard_709.0.jpg" alt="" class="image-position"></a>
-          </div>
-        </div>
-        <div class="columns large-6">
-          <div class="text-overlay">
-          <p class="leagues-text">Juventus confirmed on Monday the much rumored transfer of Patrice Evra to the defending Serie A champions. Evra leaves Manchester United for a £1.2 million fee, with an additional £300k going to the Red . . . <a href="#">Read More ></p></a>        
-          </div>
-        </div> 
+      <% end %>
+        <div class="large-12 columns"></div>
     </div>
-  <% end %>
 </div>
 
 

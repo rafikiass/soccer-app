@@ -18,14 +18,16 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.friendly.find(params[:id])
-    @schedule = Unirest.get("http://football-api.com/api/?Action=fixtures&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204&&from_date=05.08.2014&&to_date=05.08.2015",
+    @schedule = Unirest.get("http://football-api.com/api/?Action=fixtures&APIKey=#{ENV['FOOTBALL_API']}&comp_id=#{@team.league.football_api_comp_id}&&from_date=05.08.2014&&to_date=05.08.2015",
                     headers:{"Accept" => "application/json"}).body
     @matches = @schedule["matches"]
-    @rank = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204",
+    @rank = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=#{@team.league.football_api_comp_id}",
                     headers: {"Accept" => "application/json"}).body
-    @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/eng.1/teams/360/news?apikey=#{ENV['ESPN_KEY']}",
-                    headers: {"Accept" => "application/json"}).body
-    @sbnation = SimpleRSS.parse open('http://www.sbnation.com/rss/section/epl/index.xml')
+    @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/#{@team.league.espn_shortname}/teams/#{@team.espn_team_id}/news?apikey=#{ENV['ESPN_KEY']}",
+                    headers: {"Accept" => "application/json"}).body["headlines"]
+    @sbnation = SimpleRSS.parse open("http://www.sbnation.com/rss/section/#{@team.league.sbnation_url}/index.xml")
+    @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/arsenal/rss")
+    
   end
 
   def edit

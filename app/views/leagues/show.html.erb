@@ -44,30 +44,75 @@
   </div>
 
   <div class="large-5 columns">
-    <a class="twitter-timeline" href="https://twitter.com/<%= @league.twitter_handle %>" data-widget-id="499305398621315072" data-theme="light" data-link-color="#ff1212" data-chrome="transparent" height="1000" data-screen-name="<%= @league.twitter_handle %>">Tweets by @<%= @league.twitter_handle %></a>
+    <a class="twitter-timeline" href="https://twitter.com/<%= @league.twitter_handle %>" data-widget-id="499305398621315072" data-theme="light" data-link-color="#ff1212" data-chrome="transparent" height="800" data-screen-name="<%= @league.twitter_handle %>">Tweets by @<%= @league.twitter_handle %></a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
 </div>
 
 <div class="row">
 
-<% if @league.league == "English Premier League" %>
-    <% @sbnation.entries[1..5].each do |entry| %>
-    <% if entry[:content].match(/src="(\S*)"/) != nil%>
-  <div class="large-5 columns image-margin">
-    <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" width="417" alt="">
-  </div>
 
-  <div class="large-3 columns sb-article-margin">
-    <h5><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></h5>
-    <p>by <%= entry[:author] %></p>
-    <p><%= entry[:content].match(/p&gt;(\S.*)\./)[1] %>.</p>
-  </div>
 
+<% @sbnation.entries[1..3].each do |entry| %>
+      <% if entry[:content].match(/src="(\S*)"/) != nil%>
+        <div class="large-4 columns article-headers">
+          <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% @sbnation.entries[1..3].each do |entry| %>
+      <% if entry[:content].match(/src="(\S*)"/) != nil%>
+        <div class="large-4 columns article-headers-image">
+          <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+        </div>
+        
   <% end %>
   <% end %>
+
   <div class="large-12 columns"></div>
+  
+  <% @goal_com.items[0..3].each do |item| %>
+  <% if item.description.match(/&quot;&gt;(\D*)&lt/) != nil %>
+    <div class="large-5 columns image-margin">
+        <img src="<%= item.enclosure_url %>" height="277px" alt="">
+    </div>
+    <div class="large-3 columns league-sb-article-margin">
+      <h5><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h5> 
+      <p><%= item.description.match(/&quot;&gt;(\D*)&lt/)[1] %></p>
+    </div>
+      <% end %>
   <% end %>
+
+  <% @espn[0..8].each do |headline| %>
+  <% if headline["video"].any? %>
+  <div class="large-5 columns image-margin">
+    <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="422px" height="234px" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
+    </video>
+  </div>
+  <div class="large-3 columns article-margin">
+    <h5><a href="<%= headline["video"][0]["links"]["web"]["href"] %>" target="_blank"><%= headline["video"][0]["headline"] %></a></h5>
+    <p><%= headline["video"][0]["description"] %></p>
+  </div>
+  <div class="large-8 columns"></div>
+  <% elsif headline["images"].any? %>
+  <div class="large-5 columns image-margin">
+    <img src="<%= headline["images"][0]["url"] %>" height="234" width="417" alt="">
+  </div>
+
+  <div class="large-3 columns article-margin">
+    <h5><a href="<%= headline["links"]["web"]["href"] %>" target=_"blank"><%= headline["headline"] %></a></h5>
+    <p>By <%= headline["byline"] %></p>
+    <p><%= headline["linkText"] %></p>
+</div>
+  <% end %>
+
+
+  <% end %>
+
+  <div class="large-12 columns"></div>
+
+
 </div>
 
 
