@@ -24,11 +24,6 @@
 			console.log($scope.filled)
 		}
 
-//if they have favorited it, page should load as filled star - $scope.full = true
-//if they click on the outline star, post function should run
-//if they click on the full star, delete function should run
-		// $scope.full = based on whether they've favorited it
-
 
 		function deleteLeagues(id){$http.delete("/favorites/" + $scope.id, { id: id, type: "League" }).then(function(){
     			$scope.filled = false;

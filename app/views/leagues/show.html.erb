@@ -5,17 +5,14 @@
     <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>)">
       <!-- <input type="checkbox" ng-model="full"> -->
       <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
-          <div ng-click="delete(<%= @league.id %>)">
-            <div class="outline" ng-class="{filled: true}"></div>
+          <div ng-click="delete(<%= @league.id %>)" ng-model="outline">
+            <div class="filled" ng-class="{filled: outline}"></div>
           </div>
       <% else %>
-        <div ng-click="favorite(<%= @league.id %>)">
-            <div class="outline" ng-class="{filled: false}"></div>
+        <div ng-click="favorite(<%= @league.id %>)" ng-model="filled">
+            <div class="outline" ng-class="{filled: filled}"></div>
           </div>
       <% end %>
-<div ng-click="clicked()">
-  <div class="outline" ng-class="{filled: false}"></div>
-</div>
     </div> 
   </div>
   
