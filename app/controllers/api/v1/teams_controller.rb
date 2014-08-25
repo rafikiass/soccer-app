@@ -3,7 +3,9 @@ class Api::V1::TeamsController < ApplicationController
     
     @ranks = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204",
         headers: {"Accept" => "application/json"}).body["teams"]
-
+puts "WAAAAAAAAAT"
+puts @teams.league.football_api_comp_id
+puts "WAAAAAAAAAAT"
     ranks = {}
 
     @ranks.each do |rank|

@@ -2,7 +2,7 @@
   <div class="large-7 columns">
   
     <h4 class="left"><%= @league.league %></h4> 
-    <div ng-controller="favoriteCtrl">
+    <div>
       <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
           <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
             <%= hidden_field_tag :type, "League" %>
@@ -27,7 +27,7 @@
         
         <th colspan="2" width="300"><a ng-click="predicate = 'name'; reverse=!reverse">Team</a></th>
         <th width="100"><a href="" ng-click="predicate = parseInt(rank.stand_position); reverse=!reverse">Rank</a></th>
-        <th width="100"><a >Played</a></th>
+        <th width="100"><a href="" ng-click="predicate = 'stand_overall_gp'; reverse=!reverse">Played</a></th>
         <th width="100"><a >Points</a></th>
       </tr>
       
