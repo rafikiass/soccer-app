@@ -1,18 +1,14 @@
 class Api::V1::TeamsController < ApplicationController
   def index
-    
-    @ranks = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204",
+    @teams = Team.all
+    @league = League.find(params[:league_id])
+    @team = Team.find_by(params[:id])
+    @ranks = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=#{@league.football_api_comp_id}",
         headers: {"Accept" => "application/json"}).body["teams"]
-puts "WAAAAAAAAAT"
-puts @teams.league.football_api_comp_id
-puts "WAAAAAAAAAAT"
     ranks = {}
-
     @ranks.each do |rank|
       ranks[rank["stand_team_name"]] = rank
     end
-
-    @teams = Team.all
 
     if params[:league_id]
       @teams = @teams.where(:league_id => params[:league_id].to_i)

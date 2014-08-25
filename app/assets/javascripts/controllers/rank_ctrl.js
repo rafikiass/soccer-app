@@ -13,7 +13,8 @@
 		};
 
 		function getRanks() {$http.get("/api/v1/teams.json").then(function (response){
-    		$scope.ranks = response.data.ranks	
+    		$scope.ranks = response.data.ranks
+    		
     		});
 		};
 
