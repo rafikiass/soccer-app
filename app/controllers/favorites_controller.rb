@@ -23,7 +23,7 @@ class FavoritesController < ApplicationController
   def create
     favorite = Favorite.new(params[:type], current_user, params[:id])
     favorite.add_favorite!
-    redirect_to(:back)
+    render json: {message: "OK"}, status: 201
   end
 
   def edit
@@ -38,8 +38,9 @@ class FavoritesController < ApplicationController
 
   def destroy
     league = League.find_by(id: params[:id])
+    puts current_user.leagues
     current_user.leagues.delete(league)
-    redirect_to(:back)
+    render json: {message: "OK"}, status: 204
   end
 
   def user_params

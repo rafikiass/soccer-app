@@ -14,8 +14,9 @@
 			deleteLeagues(id);
 		}
 		
-		$scope.init = function(id){
+		$scope.init = function(id, filled){
 			$scope.id = id;
+			$scope.filled = filled;
 		}
 
 		$scope.clicked = function(filled){
@@ -25,14 +26,21 @@
 		}
 
 
-		function deleteLeagues(id){$http.delete("/favorites/" + $scope.id, { id: id, type: "League" }).then(function(){
-    			$scope.filled = false;
-    		});
+		function favoriteLeagues(id){
+
+			if($scope.filled) {
+				$http.delete("/favorites/" + $scope.id, { id: id, type: "League" }).then(function(){
+	    			$scope.filled = false;
+    			});
+			} else {
+				$http.post("/favorites", { id: id, type: "League" }).then(function(){
+	    			$scope.filled = true;
+	    		});
+			}
+
 		};
-		function favoriteLeagues(id){$http.post("/favorites", { id: id, type: "League" }).then(function(){
-    			$scope.filled = true;
-    		});
-		};
+
+		// window.scope = $scope;
 	});
 
 })();
