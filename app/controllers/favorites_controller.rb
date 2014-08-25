@@ -34,8 +34,10 @@ class FavoritesController < ApplicationController
     
   end
 
+  
+
   def destroy
-    league = League.find_by(params[:id])
+    league = League.find_by(id: params[:id])
     current_user.leagues.delete(league)
     redirect_to(:back)
   end

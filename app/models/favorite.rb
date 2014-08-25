@@ -27,6 +27,8 @@ class Favorite
       league = League.find_by(:id => @id)
       @user.league.destroy
     end
+
+  
   end
 
 end
