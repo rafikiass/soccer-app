@@ -1,28 +1,24 @@
+<!-- Auto Scroll nav -->
 <div ng-app="app">
   <nav class="side-navi-back" ng-controller="ScrollCtrl">
     <p class="side-navi"><a href="#roster" ng-click="gotoElement('roster')">Roster</a></p>
     <p class="side-navi"><a href="#" ng-click="gotoElement('standings')">Team Standings</a></p>
     <p class="side-navi"><a href="#" ng-click="gotoElement('headlines')">Headlines</a></p>
   </nav>
-</div>
 
-<div class="row">
-  <h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
-  
-  <h2 class="left"><%= @team.name %></h2>
-
-  <% if user_signed_in? && current_user.teams.collect(&:id).include?(@team.id)%>
-    <%= form_tag("/favorites/#{@team.id}", method: "delete") do %>
-      <%= hidden_field_tag :type, "Team" %>
-      <%= button_tag'', class: "unfav-button" %>
-    <% end %>
-  <% else user_signed_in?%>
-    <%= form_tag("/favorites", method: "post") do %>
-    <%= hidden_field_tag :id, @team.id %>
-    <%= hidden_field_tag :type, "Team" %>
-    <%= button_tag'', class: "fav-button" %>
-    <% end %>
-  <% end %>
+  <div class="row">
+    <h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
+    {{1+1}}
+    <h2 class="left"><%= @team.name %></h2>
+    <div ng-controller="favoriteCtrl" ng-init="init(<%= @team.id %>, <%= current_user.teams.collect(&:id).include?(@team.id) %>)">
+      {{1+1}}
+        <% if user_signed_in? %>
+          <div ng-click="favoriteTeam(<%= @team.id %>)">
+            <div class="outline" ng-class="{filled: filled}"></div>
+          </div>
+        <% end %>
+      </div> 
+  </div>
 </div>
 <div class="row team-info-header">
   <div class="large-4 columns center-team-info">  
@@ -183,7 +179,6 @@
   <% end %>
   <% end %>
 
-
 <!-- Schedule -->
 <div class="row schedule">
   <h1>Fixtures</h1>
@@ -213,21 +208,25 @@
     <% end %>
   </div>
 </div>
-
 <!-- headlines -->
-
-
-  <% @guardian.items[0..2].each do |item| %>
-    <div class="large-4 columns article-headers">
-      <p><a href="<%= item.link %>"><%= item.title.force_encoding('UTF-8') %></a></p>
-    </div>
+  <% counter = 1%>
+  <% @guardian.items[0..5].each do |item| %>
+    <% if counter < 4 %>
+      <div class="large-4 columns article-headers">
+        <p><a href="<%= item.link %>"><%= item.title.force_encoding('UTF-8') %></a></p>
+      </div>
+      <% counter += 1 %>
+    <% end %>
   <% end %>
+  <% counter = 1 %>
   <% @guardian.items[0..2].each do |item| %>
-    <div class="large-4 columns article-headers-image">
-      <a href="<%= item.link %>"><img src="<%= item.media_content_url %>" width="333px" height="200px" alt=""></a>
-    </div>
+    <% if counter < 4 %>
+      <div class="large-4 columns article-headers-image">
+        <a href="<%= item.link %>"><img src="<%= item.media_content_url %>" width="333px" height="200px" alt=""></a>
+      </div>
+      <% counter += 1 %>
+    <% end %>
   <% end %>
-
   <% @headlines[0..5].each do |headline| %>
     <% if headline["video"].any? %>
       <div class="large-5 columns image-margin">
@@ -250,15 +249,13 @@
       </div>
     <% end %>
   <% end %>
-
-
   <% @sbnation.entries[3..8].each do |entry| %>
     <% if entry[:content].match(/src="(\S*)"/) != nil %>
       <div class="large-5 columns image-margin">
         <img src="<%= entry[:content].match(/alt="" src="(\S*)"/)[1] %>" width="417" alt="">
       </div>
       <div class="large-3 columns sb-article-margin">
-        <h5><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></h5>
+        <h5><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title].force_encoding('UTF-8') %></a></h5>
         <p>by <%= entry[:author] %></p>
       </div>
       <div class="large-8 columns"></div>
@@ -272,8 +269,3 @@
   </div>
   <div class="large-9 columns"></div>
 </div>
-
-
-
-
-

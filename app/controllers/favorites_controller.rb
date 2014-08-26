@@ -37,10 +37,16 @@ class FavoritesController < ApplicationController
   
 
   def destroy
+    puts params[:type]
+    if params[:type] == "League"
     league = League.find_by(id: params[:id])
-    puts current_user.leagues
     current_user.leagues.delete(league)
-    render json: {message: "OK"}, status: 204
+    render json: {message: "OK"}, status: 201
+    elsif params[:type] == "Team"
+      team = Team.find_by(id: params[:id])
+      current_user.teams.delete(team)
+      render json: {message: "OK"}, status: 201
+    end
   end
 
   def user_params

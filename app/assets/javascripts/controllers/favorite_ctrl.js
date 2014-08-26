@@ -5,10 +5,14 @@
 
 
 
-		$scope.favorite = function (id){
+		$scope.favoriteLeague = function (id){
 			favoriteLeagues(id);
 
 		};
+
+		$scope.favoriteTeam = function (id){
+			favoriteTeams(id);
+		}
 
 		$scope.delete = function(id){
 			deleteLeagues(id);
@@ -21,15 +25,12 @@
 
 		$scope.clicked = function(filled){
 			$scope.filled = true;
-			console.log("clicked");
-			console.log($scope.filled)
 		}
-
 
 		function favoriteLeagues(id){
 
 			if($scope.filled) {
-				$http.delete("/favorites/" + $scope.id, { id: id, type: "League" }).then(function(){
+				$http.delete("/favorites/" + $scope.id + "?type=League").then(function(){
 	    			$scope.filled = false;
     			});
 			} else {
@@ -38,6 +39,18 @@
 	    		});
 			}
 
+		};
+
+		function favoriteTeams(id){
+			if($scope.filled){
+				$http.delete("/favorites/" + $scope.id + "?type=Team").then(function(){
+					$scope.filled = false;
+				});
+			} else {
+				$http.post("/favorites", { id: id, type: "Team"}).then(function(){
+					$scope.filled = true;
+				});
+			}
 		};
 
 		// window.scope = $scope;

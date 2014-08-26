@@ -3,7 +3,7 @@
     <h4 class="left"><%= @league.league %></h4>
     <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>, <%= current_user.leagues.collect(&:id).include?(@league.id) %>)">
       <% if user_signed_in? %>
-        <div ng-click="favorite(<%= @league.id %>)">
+        <div ng-click="favoriteLeague(<%= @league.id %>)">
           <div class="outline" ng-class="{filled: filled}"></div>
         </div>
       <% end %>
@@ -34,18 +34,22 @@
 </div>
 
 <div class="row">
-  <% @sbnation.entries[1..3].each do |entry| %>
-    <% if entry[:content].match(/src="(\S*)"/) != nil%>
+  <% counter = 1 %>
+  <% @sbnation.entries[1..6].each do |entry| %>
+    <% if entry[:content].match(/src="(\S*)"/) != nil && counter < 4%>
       <div class="large-4 medium-4 small-12 columns article-headers">
-        <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+        <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title].force_encoding('UTF-8') %></a></p>
       </div>
+      <% counter += 1 %>
     <% end %>
   <% end %>
-  <% @sbnation.entries[1..3].each do |entry| %>
-    <% if entry[:content].match(/src="(\S*)"/) != nil%>
+  <% counter = 1 %>
+  <% @sbnation.entries[1..6].each do |entry| %>
+    <% if entry[:content].match(/src="(\S*)"/) != nil && counter < 4%>
       <div class="large-4 medium-4 small-12 columns article-headers-image">
         <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
       </div>
+      <% counter += 1 %>
     <% end %>
   <% end %>
   <div class="large-12 columns"></div>
@@ -55,7 +59,7 @@
         <img src="<%= item.enclosure_url %>" height="277px" alt="">
       </div>
       <div class="large-3 columns league-sb-article-margin">
-        <h5><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h5> 
+        <h5><a href="<%= item.link %>" target="_blank"><%= item.title.force_encoding('UTF-8') %></a></h5> 
         <p><%= item.description.match(/&quot;&gt;(\D*)&lt/)[1] %></p>
       </div>
     <% end %>
