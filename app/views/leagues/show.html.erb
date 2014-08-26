@@ -1,48 +1,39 @@
-<div class="row">
+<div class="row" ng-app="app">
   <div class="large-7 columns">
-    
-    <h4 class="left"><%= @league.league %></h4>  
-      <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
+    <h4 class="left"><%= @league.league %></h4> 
+      <div>
+        <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
           <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
             <%= hidden_field_tag :type, "League" %>
             <%= image_submit_tag("filled-star.png", class: "favorite_button") %>
-      <% end %>
-      <% else user_signed_in?%>
+        <% end %>
+        <% else user_signed_in?%>
           <%= form_tag("/favorites", method: "post") do %>
-            <%= hidden_field_tag :id, @league.id %>
-            <%= hidden_field_tag :type, "League" %>
-            <%= image_submit_tag("star.png", class: "favorite_button")%>
-            
-      <% end %>
-      <% end %>
+          <%= hidden_field_tag :id, @league.id %>
+          <%= hidden_field_tag :type, "League" %>
+          <%= image_submit_tag("star.png", class: "favorite_button")%>    
+        <% end %>
+        <% end %>
+      </div> 
   </div>
   <img src="" alt="">
   <div class="large-7 medium-12 small-12 columns">
-    <table class="league-table">
+    <table class="league-table" ng-controller="rankCtrl" ng-init="init(<%= @league.id %>)">
       <tr>
-        <th colspan="2" width="300">Team</th>
-        <th></th>
-        <th width="100">Rank</th>
-        <th width="100">Played</th>
-        <th width="100">Points</th>
-      </tr>
-      <% @league.teams.each do |league| %>
-      <tr>
-        <td><img src="<%= league.photo_url %>" width="40" height="40" alt=""></td>
-        <td><a href="<%= team_path(league.slug) %>"><%= league.name %></a></td>
-        <td></td>
-        <% @ranks.each do |rank| %>
-        <% if rank["stand_team_name"] == league.name %>
-        <td><%= rank["stand_position"] %></td>
-        <td><%= rank["stand_overall_gp"] %></td>
-        <td><%= rank["stand_points"] %></td>
-        <% end %>
-        <% end %>
-      </tr>
-      <% end %>
-    </table>
+        <th colspan="2" width="300"><a ng-click="predicate = 'name'; reverse=!reverse">Team</a></th>
+        <th width="100"><a href="" ng-click="predicate = 'rank.stand_position'; reverse=!reverse">Rank</a></th>
+        <th width="100"><a>Played</a></th>
+        <th width="100"><a href="" ng-click="predicate = 'rank.stand_points'; reverse=!reverse">Points</a></th>
+      </tr>  
+      <tr ng-repeat="team in teams | orderBy:'name' | orderBy:predicate:reverse | filter:query">
+        <td><img src="{{ team.image.photo_url.url }}" width="30" height="30" alt=""></td>
+        <td><a href="/teams/{{team.slug}}">{{ team.name }}</a></td>
+        <td>{{ team.rank.stand_position }}</td>
+        <td>{{ team.rank.stand_overall_gp }}</td>
+        <td> {{ team.rank.stand_points }} </td>
+      </tr>  
+    </table> 
   </div>
-
   <div class="large-5 medium-12 hide-for-small-only columns">
     <a class="twitter-timeline" href="https://twitter.com/<%= @league.twitter_handle %>" data-widget-id="499305398621315072" data-theme="light" data-link-color="#ff1212" data-chrome="transparent" height="800" data-screen-name="<%= @league.twitter_handle %>">Tweets by @<%= @league.twitter_handle %></a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -50,78 +41,61 @@
 </div>
 
 <div class="row">
-
-
-
-<% @sbnation.entries[1..3].each do |entry| %>
-      <% if entry[:content].match(/src="(\S*)"/) != nil%>
-        <div class="large-4 medium-4 small-12 columns article-headers">
-          <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
-        </div>
-      <% end %>
+  <% @sbnation.entries[1..3].each do |entry| %>
+    <% if entry[:content].match(/src="(\S*)"/) != nil%>
+      <div class="large-4 medium-4 small-12 columns article-headers">
+        <p><a href="<%= entry[:id] %>" target="_blank"><%= entry[:title] %></a></p>
+      </div>
     <% end %>
-
-    <% @sbnation.entries[1..3].each do |entry| %>
-      <% if entry[:content].match(/src="(\S*)"/) != nil%>
-        <div class="large-4 medium-4 small-12 columns article-headers-image">
-          <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
-        </div>
-        
   <% end %>
+  <% @sbnation.entries[1..3].each do |entry| %>
+    <% if entry[:content].match(/src="(\S*)"/) != nil%>
+      <div class="large-4 medium-4 small-12 columns article-headers-image">
+        <img src="<%= entry[:content].match(/src="(\S*)"/)[1] %>" alt="">
+      </div>
+    <% end %>
   <% end %>
-
   <div class="large-12 columns"></div>
-  
   <% @goal_com.items[0..3].each do |item| %>
-  <% if item.description.match(/&quot;&gt;(\D*)&lt/) != nil %>
-    <div class="large-5 columns image-margin">
+    <% if item.description.match(/&quot;&gt;(\D*)&lt/) != nil %>
+      <div class="large-5 columns image-margin">
         <img src="<%= item.enclosure_url %>" height="277px" alt="">
-    </div>
-    <div class="large-3 columns league-sb-article-margin">
-      <h5><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h5> 
-      <p><%= item.description.match(/&quot;&gt;(\D*)&lt/)[1] %></p>
-    </div>
-      <% end %>
+      </div>
+      <div class="large-3 columns league-sb-article-margin">
+        <h5><a href="<%= item.link %>" target="_blank"><%= item.title %></a></h5> 
+        <p><%= item.description.match(/&quot;&gt;(\D*)&lt/)[1] %></p>
+      </div>
+    <% end %>
   <% end %>
-
   <% @espn[0..8].each do |headline| %>
-  <% if headline["video"].any? %>
-  <div class="large-5 columns image-margin">
-    <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="422px" height="234px" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
-    </video>
-  </div>
-  <div class="large-3 columns article-margin">
-    <h5><a href="<%= headline["video"][0]["links"]["web"]["href"] %>" target="_blank"><%= headline["video"][0]["headline"] %></a></h5>
-    <p><%= headline["video"][0]["description"] %></p>
-  </div>
-  <div class="large-8 columns"></div>
-  <% elsif headline["images"].any? %>
-  <div class="large-5 columns image-margin">
-    <img src="<%= headline["images"][0]["url"] %>" height="234" width="417" alt="">
-  </div>
-
-  <div class="large-3 columns article-margin">
-    <h5><a href="<%= headline["links"]["web"]["href"] %>" target=_"blank"><%= headline["headline"] %></a></h5>
-    <p>By <%= headline["byline"] %></p>
-    <p><%= headline["linkText"] %></p>
-</div>
+    <% if headline["video"].any? %>
+      <div class="large-5 columns image-margin">
+        <video controls src="<%= headline["video"][0]["links"]["source"]["mezzanine"]["href"]  %>" width="422px" height="234px" poster="<%= headline["video"][0]["posterImages"]["default"]["href"] %>">
+        </video>
+      </div>
+      <div class="large-3 columns article-margin">
+        <h5><a href="<%= headline["video"][0]["links"]["web"]["href"] %>" target="_blank"><%= headline["video"][0]["headline"] %></a></h5>
+        <p><%= headline["video"][0]["description"] %></p>
+      </div>
+    <div class="large-8 columns"></div>
+    <% elsif headline["images"].any? %>
+      <div class="large-5 columns image-margin">
+        <img src="<%= headline["images"][0]["url"] %>" height="234" width="417" alt="">
+      </div>
+      <div class="large-3 columns article-margin">
+        <h5><a href="<%= headline["links"]["web"]["href"] %>" target=_"blank"><%= headline["headline"] %></a></h5>
+        <p>By <%= headline["byline"] %></p>
+        <p><%= headline["linkText"] %></p>
+      </div>
+    <% end %>
   <% end %>
-
-
-  <% end %>
-
   <div class="large-12 columns"></div>
-
-
 </div>
-
 
 <div class="row">
   <p>Back to <a href="<%= leagues_path %>">leagues</a></p>
     <% if user_signed_in? && current_user.admin? %>
-      
         <a class="button small red-text-buttons" href="<%= leagues_edit_path(@league.slug) %>">Edit</a>
-      
         <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues"%>" rel="nofollow">Destroy</a>
     <% end %>
 </div>

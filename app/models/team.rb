@@ -1,4 +1,6 @@
 class Team < ActiveRecord::Base
+  attr_accessor :rank
+  
   extend FriendlyId
   friendly_id :name, use: :slugged
 
