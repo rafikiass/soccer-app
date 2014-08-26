@@ -1,20 +1,13 @@
 <div class="row" ng-app="app">
   <div class="large-7 columns">
-    <h4 class="left"><%= @league.league %></h4> 
-      <div>
-        <% if user_signed_in? && current_user.leagues.collect(&:id).include?(@league.id)%>
-          <%= form_tag("/favorites/#{@league.id}", method: "delete") do %>
-            <%= hidden_field_tag :type, "League" %>
-            <%= image_submit_tag("filled-star.png", class: "favorite_button") %>
-        <% end %>
-        <% else user_signed_in?%>
-          <%= form_tag("/favorites", method: "post") do %>
-          <%= hidden_field_tag :id, @league.id %>
-          <%= hidden_field_tag :type, "League" %>
-          <%= image_submit_tag("star.png", class: "favorite_button")%>    
-        <% end %>
-        <% end %>
-      </div> 
+    <h4 class="left"><%= @league.league %></h4>
+    <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>, <%= current_user.leagues.collect(&:id).include?(@league.id) %>)">
+      <% if user_signed_in? %>
+        <div ng-click="favorite(<%= @league.id %>)">
+          <div class="outline" ng-class="{filled: filled}"></div>
+        </div>
+      <% end %>
+    </div> 
   </div>
   <img src="" alt="">
   <div class="large-7 medium-12 small-12 columns">

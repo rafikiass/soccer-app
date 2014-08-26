@@ -1,4 +1,4 @@
-
+ 
 /*Top Navigation
 --------------------------------------------------------------*/
 
@@ -265,6 +265,10 @@ p {
 }
 //_____3 photo section
 
+.headlines {
+	margin-top: 40px;
+}
+
 .article-headers {
 	
 	background: black;
@@ -484,7 +488,23 @@ p {
 		border-top: 1px solid #e9e9e9;
 	}
 }
- 
+
+.outline{
+	margin: 5px 0 0 250px;
+	width: 60%;
+	width: 25px;
+    height: 25px;
+    background: url("star.png") -25px 0;
+    cursor: pointer;
+    
+}
+
+.filled{
+    	width: 25px;
+    	height: 25px;
+    	background: url("star.png") 0 0;
+    }
+
 button.fav-button {
 	background: none;
 	border: 2px solid #ff1212;
@@ -616,9 +636,6 @@ video {
 }
 
 
-.fav-button {
-	image-background: url('https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&docid=LBNVkPYc1RJbjM&tbnid=rGNOPLq3bwU27M:&ved=0CAUQjRw&url=http%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ARed_star.svg&ei=5prNU4T3LM-vyAS2sYHIBg&bvm=bv.71198958,d.aWw&psig=AFQjCNH661v70jYfwz51-pyAhp80EZ8Bxw&ust=1406069861246965')
-}
 
 hr#favorite-page-line {
     height: 3px;
