@@ -3,7 +3,7 @@
   
     <h4 class="left"><%= @league.league %></h4> 
     <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>, <%= current_user.leagues.collect(&:id).include?(@league.id) %>)">
-      <!-- <input type="checkbox" ng-model="full"> -->
+      
       <% if user_signed_in? %>
         <div ng-click="favorite(<%= @league.id %>)">
             <div class="outline" ng-class="{filled: filled}"></div>
