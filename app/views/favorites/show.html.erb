@@ -1,89 +1,56 @@
 
 <div class="row">
-<div class="columns large-2">
-      <ul id="favorites-nav">
-        <li><a href="/favorites">All</a></li>
-        <li><a href="/favorites/leagues">Leagues</a></li>
-        <li><a href="/favorites/teams">Teams</a></li>
-      </ul>
-    </div>
-
-<% if current_page?('/favorites/leagues') %>
-<div class="columns large-10">
-<% @fav_leagues.each do |league| %>
-<h3 class="subheader"><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
-  <table>
+  <div class="columns large-2">
+    <ul id="favorites-nav">
+      <li><a href="/favorites">All</a></li>
+      <li><a href="/favorites/leagues">Leagues</a></li>
+      <li><a href="/favorites/teams">Teams</a></li>
+    </ul>
+  </div>
+  <% if current_page?('/favorites/leagues') %>
+    <div class="columns large-8 large-offset-1">
+      <% @leagues.each do |league, ranks| %>
+        <h3 class="subheader"><a href="<%= league_path(league.slug) %>"><%= league.league %></a></h3>
+        <table class="league-table">
           <tr>
             <th width="200px"><%= link_to "Team", :sort => 'name' %></th>
-            <th><% link_to "Rank" %>Rank</th>
+            <th>Rank</th>
             <th>Games Played</th>
             <th>League points</th>
-          </tr>
-          <% counter = 0 %> <!-- list only the top 4 teams in each league -->
-          <% league.teams.each do |team| %>
+          </tr>  
+          <% ranks[0..3].each do |team| %>
           <tr>
-            <% if counter < 4 %>
-            <td><a href="<%= team_path(team.slug) %>"><%= team.name %></a></td>
-            <td><%= team.rank %></td>
-            <% counter += 1 %>
-            <% end %>
-            <% end %>
+            <td><%= team["stand_team_name"] %></a></td>
+            <td><%= team["stand_position"] %> </td>
+            <td><%= team["stand_overall_gp"] %></td>
+            <td><%= team["stand_points"] %></td>
+          </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+</div>
+  <!-- <hr id="favorite-page-line"> -->
+<div class="row">
+  <% elsif current_page?('/favorites/teams') %>
+
+    <% grouped_teams = @fav_teams.group_by {|team|team.league} %>
+    <% grouped_teams.each do |league, teams| %>
+      <div class="large-4 columns large-offset-1">
+    <% teams.each do |team| %>
+        <table class="fav-teams-table">
+          <tr>
+            <td><img src="<%= team.photo_url %>" width="35px" height="35px" alt=""></td>
+            <td width="100px" height="50px"><a href="<%= team_path(team.slug) %>"><%= team.name %></a></td>
           </tr>
         </table>
-<% end %>
-        </div>
-<div>
-<hr id="favorite-page-line">
-<h3>Latest League Headlines</h3>
-</div>
-<% elsif current_page?('/favorites/teams') %>
-
-<div class="columns large-10">
-<% grouped_teams = @fav_teams.group_by {|team|team.league} %>
-<% grouped_teams.each do |league, teams| %>
-<h3><%= league.league %></h3>
-<% teams.each do |team| %>
-<ul class="side-nav">
-  
-<li><%= team.name %></li>
-</ul>
-<% end %>
-<% end %>
+    <% end %>
+      </div>
+    <% end %>
 
 </div>
 
+  <% elsif current_page?('/favorites/players') %>
+  <!-- this is code for assigning leagues to teams - I dont' want it to show right now -->
+  <% end %>
 
-<div>
-<hr id="favorite-page-line">
-<h3>Latest Team Headlines</h3>
-</div>
-
-<% elsif current_page?('/favorites/players') %>
-<% grouped_players = @fav_players.group_by {|player|player.team} %>
-<% grouped_players.each do |team, players| %>
-<h3><%= team.name %></h3>
-<% players.each do |player| %>
-<ul class="side-nav">
-  <li><%= player.name %></li>
-</ul>
-
-<% end %>
-<% end %>
-  
-<div>
-<hr id="favorite-page-line">
-<h3>Latest Player Headlines</h3>
-</div>
-  <% else %>
-  <h1>404</h1>
-<% end %>
-
-
-
-
-
-
-
-
-
-</div>

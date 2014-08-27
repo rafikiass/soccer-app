@@ -606,18 +606,19 @@ video {
 #favorites-nav {
 	background: #FF4545;
 	list-style: none;
+
 	font-size: 1.5em;
 	font-family: 'Lato', sans-serif;
 	display: block;
 
 	li {
 		display: block;
-		margin-bottom: 25px;
+		
 	}
 	& a {
 		color: #fff;
 		display: block;
-		padding: 5px 0 5px 5px;
+		padding: 5px 0 25px 5px;
 	}
 	a:hover {
 		border: 2px solid #fff;
@@ -627,7 +628,11 @@ video {
 	}
 }
 
-
+.fav-teams-table {
+	a {
+		color: #000;
+	}
+}
 
 hr#favorite-page-line {
     height: 3px;

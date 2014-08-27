@@ -14,8 +14,14 @@ class FavoritesController < ApplicationController
      if user_signed_in?
       @favorites = current_user
       @fav_leagues = current_user.leagues
+      @leagues = {}
+      @teams = {}
+      @fav_leagues.each do |league, team|
+        @leagues[league] = Unirest.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=#{league.football_api_comp_id}",
+                    headers: {"Accept" => "application/json"}).body["teams"]
+      end
       @fav_teams = current_user.teams
-      @fav_players = current_user.players
+
     end
       
   end
