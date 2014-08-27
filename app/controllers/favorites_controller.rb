@@ -7,11 +7,16 @@ class FavoritesController < ApplicationController
       @fav_leagues = current_user.leagues
       @fav_teams = current_user.teams
       @fav_players = current_user.players
+      if current_user.leagues.any? && current_user.teams.any?
+        redirect_to '/favorites/leagues'
+      end
     end
   end
 
   def show
      if user_signed_in?
+      @allleagues = League.all
+      @allteams = Team.all
       @favorites = current_user
       @fav_leagues = current_user.leagues
       @leagues = {}

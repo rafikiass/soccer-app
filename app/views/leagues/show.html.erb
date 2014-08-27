@@ -1,13 +1,13 @@
 <div class="row" ng-app="app">
   <div class="large-7 columns">
-    <h4 class="left"><%= @league.league %></h4>
-    <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>, <%= current_user.leagues.collect(&:id).include?(@league.id) %>)">
       <% if user_signed_in? %>
-        <div ng-click="favoriteLeague(<%= @league.id %>)">
+    <div ng-controller="favoriteCtrl" ng-init="init(<%= @league.id %>, <%= current_user.leagues.collect(&:id).include?(@league.id) %>)">
+        <div class="left" ng-click="favoriteLeague(<%= @league.id %>)">
           <div class="outline" ng-class="{filled: filled}"></div>
         </div>
-      <% end %>
     </div> 
+      <% end %>
+    <h4 class="left"><%= @league.league %></h4>
   </div>
   <img src="" alt="">
   <div class="large-7 medium-12 small-12 columns">
@@ -18,7 +18,7 @@
         <th width="100"><a>Played</a></th>
         <th width="100"><a href="" ng-click="predicate = 'rank.stand_points'; reverse=!reverse">Points</a></th>
       </tr>  
-      <tr ng-repeat="team in teams | orderBy:'name' | orderBy:predicate:reverse | filter:query">
+      <tr ng-repeat="team in teams | orderBy: 'name' | orderBy:predicate:reverse | filter:query">
         <td><img src="{{ team.image.photo_url.url }}" width="30" height="30" alt=""></td>
         <td><a href="/teams/{{team.slug}}">{{ team.name }}</a></td>
         <td>{{ team.rank.stand_position }}</td>
@@ -90,7 +90,7 @@
 </div>
 
 <div class="row">
-  <p>Back to <a href="<%= leagues_path %>">leagues</a></p>
+  
     <% if user_signed_in? && current_user.admin? %>
         <a class="button small red-text-buttons" href="<%= leagues_edit_path(@league.slug) %>">Edit</a>
         <a class="destroy button small red-text-buttons" data-confirm="Are you sure?" data-method="delete" href="<%= "/leagues"%>" rel="nofollow">Destroy</a>

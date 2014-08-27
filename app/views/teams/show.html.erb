@@ -8,16 +8,15 @@
 
   <div class="row">
     <h4><a href="../leagues/<%= @team.league.slug %>"><%= @team.league.league %></a></h4>
-    {{1+1}}
-    <h2 class="left"><%= @team.name %></h2>
-    <div ng-controller="favoriteCtrl" ng-init="init(<%= @team.id %>, <%= current_user.teams.collect(&:id).include?(@team.id) %>)">
-      {{1+1}}
+    
         <% if user_signed_in? %>
-          <div ng-click="favoriteTeam(<%= @team.id %>)">
+    <div ng-controller="favoriteCtrl" ng-init="init(<%= @team.id %>, <%= current_user.teams.collect(&:id).include?(@team.id) %>)">
+          <div class="left" ng-click="favoriteTeam(<%= @team.id %>)">
             <div class="outline" ng-class="{filled: filled}"></div>
           </div>
-        <% end %>
       </div> 
+        <% end %>
+      <h4 class="left"><%= @team.name %></h4>
   </div>
 </div>
 <div class="row team-info-header">
@@ -210,17 +209,17 @@
 </div>
 <!-- headlines -->
   <% counter = 1%>
-  <% @guardian.items[0..5].each do |item| %>
-    <% if counter < 4 %>
-      <div class="large-4 columns article-headers">
+  <% @guardian.items.each do |item| %>
+    <% if counter < 4 && item.media_content_url != nil %>
+      <div id="headlines" class="large-4 columns article-headers">
         <p><a href="<%= item.link %>"><%= item.title.force_encoding('UTF-8') %></a></p>
       </div>
       <% counter += 1 %>
     <% end %>
   <% end %>
   <% counter = 1 %>
-  <% @guardian.items[0..2].each do |item| %>
-    <% if counter < 4 %>
+  <% @guardian.items.each do |item| %>
+    <% if counter < 4 && item.media_content_url != nil %>
       <div class="large-4 columns article-headers-image">
         <a href="<%= item.link %>"><img src="<%= item.media_content_url %>" width="333px" height="200px" alt=""></a>
       </div>

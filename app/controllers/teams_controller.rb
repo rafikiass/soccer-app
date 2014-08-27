@@ -26,7 +26,12 @@ class TeamsController < ApplicationController
     @headlines = Unirest.get("http://api.espn.com/v1/sports/soccer/#{@team.league.espn_shortname}/teams/#{@team.espn_team_id}/news?apikey=#{ENV['ESPN_KEY']}",
                     headers: {"Accept" => "application/json"}).body["headlines"]
     @sbnation = SimpleRSS.parse open("http://www.sbnation.com/rss/section/#{@team.league.sbnation_url}/index.xml")
-    @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/arsenal/rss")
+    if @team.guardian != nil
+      @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/#{@team.guardian}/rss")
+    else 
+      @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/arsenal/rss")
+
+    end
     
   end
 

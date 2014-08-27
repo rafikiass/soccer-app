@@ -34,7 +34,7 @@
       <dd class="accordion-navigation">
         <a href="#panel1c">About</a>
         <div id="panel1c" class="content">
-          Pick and choose the leagues, teams, and players you want to follow. Following European football leagues can be tough. This will make it easy. Get everything all the info as it happen, get calendar reminders
+          Pick and choose the leagues and teams you want to follow. Following European football leagues can be tough. This will make it easy. Get everything all the info as it happen, get calendar reminders
         </div>
       </dd>
       <dd class="accordion-navigation">
@@ -46,7 +46,7 @@
       <dd class="accordion-navigation">
         <a href="#panel3c">How does it work?</a>
         <div id="panel3c" class="content">
-          You can view all the leagues and stats without an account - no problem. But if you want a customized page with alerts for your favorite leagues, teams and players, then you need to register. From there, just choose who all you want to follow. This is awesome!
+          You can view all the leagues and stats without an account - no problem. But if you want a customized page to help you follow your favorite teams and leagues, then you need to register. From there, just choose who all you want to follow. This is awesome!
         </div>
       </dd>
     </dl>
@@ -61,7 +61,7 @@
   <li><a href="/leagues/english-premier-league">English Premier League</a></li>
   <li><a href="/leagues/la-liga">La Liga</a></li>
   <li><a href="/leagues/serie-a">Serie A</a></li>
-  <li><a href="#">UEFA Champions League</a></li>
+  
 </ul>
 </div>
 
@@ -92,13 +92,33 @@
   <div class="row">
     <div class="columns large-2">
       <ul id="favorites-nav">
-        <li><a href="/favorites">All</a></li>
         <li><a href="/favorites/leagues">Leagues</a></li>
         <li><a href="/favorites/teams">Teams</a></li>
       </ul>
     </div>
-    <div class="columns large-10">
-    <h2>news headlines here</h2>
+    <div class="columns large-9 large-offset-1">
+      <h3>Favorites!</h3>
+      <% if current_user.leagues.empty? && current_user.teams.empty?%>
+      <h4>It looks like you haven't favorited any leagues or teams yet. Get started here:</h4>
+      <h5><a href="<%= leagues_path %>">Leagues</h5>
+      <h5><a href="<%= leagues_path %>">Teams</a></h5>
+      <% elsif current_user.leagues.empty?%>
+      <h5>You've got some teams, let's get you started with some <a href="<%= leagues_path %>">leagues</a></h5>
+      <% @fav_teams.each do |team| %>
+        <div class="large-4 medium-5 small-12 columns fav-teams">
+          <a href="<%= team_path(team.slug) %>"><h2><img src="<%= team.photo_url %>" width="200" height="200" alt=""></h2></a>
+        </div>
+      <% end %>
+        <div class="large-12 columns"></div>
+
+      <% elsif current_user.teams.empty? %>
+      <h5>You've got some leagues, let's get you started with some <a href="<%= leagues_path %>">teams</a></h5>
+    <% @fav_leagues.each do |league| %>
+        <div class="large-4 medium-5 small-12 columns fav-leagues">
+          <a href="/favorites/leagues"><h2><img src="<%= league.photo_url %>" width="200" height="200" alt=""></h2></a>
+        </div>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </body>
