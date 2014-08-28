@@ -29,6 +29,7 @@ test:
   socket: /tmp/mysql.sock
 
 production:
+  database: soccer-app-production
   adapter: postgresql
   encoding: unicode
   pool: 5
