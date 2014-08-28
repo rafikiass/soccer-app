@@ -1,7 +1,3 @@
-User.create!([
-  {email: "trevordjones@outlook.com", first_name: "Trevor", last_name: "Jones", encrypted_password: "$2a$10$UVmkponagMiPmIaHHurJAOxQFWjnLCuFQCaUW2uPG7ojpHG6eTbMi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2014-08-27 19:56:55", last_sign_in_at: "2014-08-27 19:56:55", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true}
-])
-
 League.create!([
   {league: "English Premier League", country: "England", slug: "english-premier-league", photo_url: "premier-league.png", espn_league_id: 700, espn_shortname: "eng.1", football_api_comp_id: 1204, sbnation_url: "epl", twitter_handle: "premierleague", goal_url_id: "85", league_feed: "http://www.premierleague.com/content/premierleague/en-gb/news/newsfeed.rss"},
   {league: "Bundesliga", country: "Germany", slug: "bundesliga", photo_url: "bundesliga.png", espn_league_id: 720, espn_shortname: "ger.1", football_api_comp_id: 1229, sbnation_url: "bundesliga", twitter_handle: "Bundesliga_EN", goal_url_id: "87", league_feed: "http://www.bundesliga.com/rss/en/liga/rss_news.xml"},
