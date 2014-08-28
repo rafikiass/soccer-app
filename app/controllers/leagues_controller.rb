@@ -28,7 +28,6 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
     @goal_com = SimpleRSS.parse open("http://www.goal.com/en-us/feeds/news?id=#{@league.goal_url_id}&fmt=rss&ICID=SP")
     @espn = Unirest.get("http://api.espn.com/v1/sports/soccer/#{@league.espn_shortname}/news/headlines?apikey=#{ENV['ESPN_KEY']}",
                     headers: {"Accept" => "application/json"}).body["headlines"]
-    @league_url
   end
 
   def edit
