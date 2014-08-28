@@ -1,13 +1,7 @@
 User.create!([
   {email: "trevordjones@outlook.com", first_name: "Trevor", last_name: "Jones", encrypted_password: "$2a$10$UVmkponagMiPmIaHHurJAOxQFWjnLCuFQCaUW2uPG7ojpHG6eTbMi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2014-08-27 19:56:55", last_sign_in_at: "2014-08-27 19:56:55", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true}
 ])
-#<Class:0x007fe19649e3d0>.create!([
-  {league_id: 2, user_id: 4},
-  {league_id: 2, user_id: 5}
-])
-#<Class:0x007fe196405dd8>.create!([
-  {team_id: 108, user_id: 4}
-])
+
 League.create!([
   {league: "English Premier League", country: "England", slug: "english-premier-league", photo_url: "premier-league.png", espn_league_id: 700, espn_shortname: "eng.1", football_api_comp_id: 1204, sbnation_url: "epl", twitter_handle: "premierleague", goal_url_id: "85", league_feed: "http://www.premierleague.com/content/premierleague/en-gb/news/newsfeed.rss"},
   {league: "Bundesliga", country: "Germany", slug: "bundesliga", photo_url: "bundesliga.png", espn_league_id: 720, espn_shortname: "ger.1", football_api_comp_id: 1229, sbnation_url: "bundesliga", twitter_handle: "Bundesliga_EN", goal_url_id: "87", league_feed: "http://www.bundesliga.com/rss/en/liga/rss_news.xml"},
@@ -17,10 +11,7 @@ League.create!([
   {league: "Ligue 1", country: "France", slug: "ligue-1", photo_url: "ligue1.png", espn_league_id: 710, espn_shortname: "fra.1", football_api_comp_id: 1221, sbnation_url: nil, twitter_handle: "Ligue1", goal_url_id: nil, league_feed: nil},
   {league: "Scottish", country: nil, slug: "scottish", photo_url: nil, espn_league_id: nil, espn_shortname: nil, football_api_comp_id: nil, sbnation_url: nil, twitter_handle: nil, goal_url_id: nil, league_feed: nil}
 ])
-#<Class:0x007fe1915eee38>.create!([
-  {league_id: 2, user_id: 4},
-  {league_id: 2, user_id: 5}
-])
+
 Player.create!([
   {name: "David Goodwillie ", nationality: "Scotland", dob: "1989-03-28", position: "Forward", number: "17", slug: "david-goodwillie", team_id: 74, head_shot: nil},
   {name: "Jamie Langfield ", nationality: "Scotland", dob: "1979-12-22", position: "Goalkeeper", number: "1", slug: "jamie-langfield", team_id: 74, head_shot: nil},
@@ -2729,6 +2720,4 @@ Team.create!([
   {name: "Arouca", guardian: nil, manager: "Pedro Emanuel", slug: "arouca", nickname: "Arouquenses", stadium: nil, homepage: nil, location: "Porto", abbr: "ARO", established: nil, rank: nil, photo_url: nil, league_id: 5, uefa: nil, espn_team_id: nil, espn_team_name: nil, football_api_team_id: nil, twitter_handle: nil, football_UK: nil},
   {name: "Boavista", guardian: nil, manager: "Mário Silva", slug: "boavista", nickname: "Armando Gonçalves Teixeira", stadium: nil, homepage: nil, location: "Porto", abbr: "BOA", established: nil, rank: nil, photo_url: nil, league_id: 5, uefa: nil, espn_team_id: nil, espn_team_name: nil, football_api_team_id: nil, twitter_handle: nil, football_UK: nil}
 ])
-#<Class:0x007fe191313df8>.create!([
-  {team_id: 108, user_id: 4}
-])
+
