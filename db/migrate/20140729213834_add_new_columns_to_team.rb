@@ -4,7 +4,10 @@ class AddNewColumnsToTeam < ActiveRecord::Migration
       t.string :homepage
       t.string :location
       t.string :abbr
-      t.remove :next_fixture, :year_established, :overview, :schedule
+      t.remove :next_fixture 
+      t.remove :year_established
+      t.remove :overview
+      t.remove :schedule
       t.rename :team, :name
     end
   end
