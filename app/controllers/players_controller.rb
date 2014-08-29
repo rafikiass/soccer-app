@@ -15,11 +15,16 @@ before_action :authenticate_admin!, :only => [:destroy, :edit, :update, :create]
   end
 
   def show
-    @player = Player.friendly.find(params[:id])
+    if current_user.admin?
+      @player = Player.friendly.find(params[:id])
+    end
+    redirect_to "/leagues"
   end
 
   def edit
-    @player = Player.friendly.find(params[:id])
+    if current_user.admin?
+      @player = Player.friendly.find(params[:id])
+    end
   end
 
   def update
