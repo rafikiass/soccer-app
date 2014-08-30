@@ -30,7 +30,6 @@ class TeamsController < ApplicationController
       @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/#{@team.guardian}/rss")
     else 
       @guardian = SimpleRSS.parse open("http://www.theguardian.com/football/arsenal/rss")
-
     end
     
   end
