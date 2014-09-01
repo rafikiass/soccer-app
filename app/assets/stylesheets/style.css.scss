@@ -615,6 +615,12 @@ video {
 	a:hover {
 		color: #00b232;
 	}
+	border-bottom: 3px solid #93DAA7;
+	
+	&:last-child {
+		border-bottom: none;
+	}
+	
 }
 
 .no-fav-leagues {

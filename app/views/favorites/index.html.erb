@@ -101,7 +101,7 @@
       <% if current_user.leagues.empty? && current_user.teams.empty?%>
       <h4>It looks like you haven't favorited any leagues or teams yet. Get started here:</h4>
       <h5><a href="<%= leagues_path %>">Leagues</h5>
-      <h5><a href="<%= leagues_path %>">Teams</a></h5>
+      <h5><a href="/favorites/teams">Teams</a></h5>
       <% elsif current_user.leagues.empty?%>
       <h5>You've got some teams, let's get you started with some <a href="<%= leagues_path %>">leagues</a></h5>
       <% @fav_teams.each do |team| %>

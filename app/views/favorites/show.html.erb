@@ -52,10 +52,10 @@
   </div>
     <% grouped_teams = @allteams.group_by {|team|team.league} %>
       <% grouped_teams.each do |league, teams| %>
-        <div class="large-12 columns">
+        <div class="large-12 columns all-teams-list">
           <h3><%= league.league %></h3>
             <% teams.each do |team| %>
-              <div class="large-4 columns all-teams-list">
+              <div class="large-4 columns">
                 <h5><a href="<%= team_path(team.slug) %>"><%= team.name %></a></h5>
               </div>
             <% end %>
