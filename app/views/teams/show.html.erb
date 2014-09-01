@@ -135,8 +135,7 @@
 <!-- Rank -->
 <div id="standings" class="row">
   <h1>Standings</h1>
-  <% ranks = @rank["teams"] %>
-  <% ranks.each do |rank| %>
+  <% @ranks.each do |rank| %>
   <% if rank["stand_team_name"] == @team.name %>
     <table class="rank-table">
       <tr id="league-rank">
