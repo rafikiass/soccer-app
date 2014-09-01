@@ -63,8 +63,10 @@
       <% end %>
     <% end %>
     <% grouped_teams = @fav_teams.group_by {|team|team.league} %>
+      <% counter = 1 %>
     <% grouped_teams.each do |league, teams| %>
       <% teams.each do |team| %>
+      <% if counter < 7%>
         <div class="large-4 columns large-offset-1">
           <table class="fav-teams-table">
             <tr>
@@ -73,9 +75,10 @@
             </tr>
           </table>
         </div>
+        <% end %> 
       <% end %>
-      <div class="large-12 columns"></div>
     <% end %>
+      <div class="large-12 columns"></div>
 </div>
 
   <% elsif current_page?('/favorites/players') %>
