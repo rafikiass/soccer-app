@@ -184,7 +184,7 @@
   <div class="large-5 large-offset-1 columns">
     <h3>Home</h3>
     <% @matches.each do |match| %>
-      <% if match["match_localteam_name"] == @team.name %>  
+      <% if match["match_localteam_name"] == @team.football_fix_team_name %>  
         <div class="schedule-box large-6 columns">
           <h5><%= match["match_date"] %></h5>
           <h5><%= match["match_time"] %></h5>
@@ -196,7 +196,7 @@
   <div class="large-6 columns">
     <h3>Away</h3>
     <% @matches.each do |match| %>
-      <% if match["match_visitorteam_name"] == @team.name %>    
+      <% if match["match_visitorteam_name"] == @team.football_fix_team_name %>    
         <div class="schedule-box large-6 columns">
           <h5><%= match["match_date"] %></h5>
           <h5><%= match["match_time"] %></h5>
