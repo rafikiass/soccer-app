@@ -81,10 +81,10 @@
     
     <footer>
       <div class="row">
-      <h3 class="footer-header">Contact site owner<span class="footer-divider">|</span></h3>
-      <h3 class="footer-header">Leagues</h3>
+      <h3 class="footer-header"><a href="mailto:trevordjones@outlook.com">Contact site owner</a><span class="footer-divider">|</span></h3>
+      <h3 class="footer-header"><a href="<%= leagues_path %>">Leagues</a></h3>
       <% if user_signed_in? %>
-      <h3 class="footer-header"><span class="footer-divider">|</span>Your Favorites</h3>
+      <h3 class="footer-header"><span class="footer-divider">|</span><a href="<%= favorites_path %>">Your Favorites</a></h3>
       <% end %>
       <h4 id="copyright">&#169 Trevor Jones <span class="footer-divider">|</span> 2014</h4>
       </div>
