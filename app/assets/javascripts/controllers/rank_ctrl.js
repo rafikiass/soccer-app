@@ -7,6 +7,10 @@
 		
 		getRanks();
 
+		
+
+		
+
 		$scope.init = function(id){
     		$scope.league_id = id;
     		getTeams();	 		

@@ -248,7 +248,7 @@
     <% end %>
   <% end %>
   <% @sbnation.entries[3..8].each do |entry| %>
-    <% if entry[:content].match(/src="(\S*)"/) != nil %>
+    <% if entry[:content].match(/alt="" src="(\S*)"/) != nil %>
       <div class="large-5 columns image-margin">
         <img src="<%= entry[:content].match(/alt="" src="(\S*)"/)[1] %>" width="417" alt="">
       </div>
