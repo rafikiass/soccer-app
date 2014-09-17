@@ -14,16 +14,16 @@
     <table class="league-table" ng-controller="rankCtrl" ng-init="init(<%= @league.id %>)">
       <tr>
         <th colspan="2" width="300"><a ng-click="predicate = 'name'; reverse=!reverse">Team</a></th>
-        <th width="100"><a href="">Rank</a></th>
+        <th width="100"><a href="" ng-click="predicate = 'stand_position'; reverse=!reverse">Rank</a></th>
         <th width="100"><a>Played</a></th>
-        <th width="100"><a href="" ng-click="predicate = 'rank.stand_points'; reverse=!reverse">Points</a></th>
+        <th width="100"><a href="" ng-click="predicate = 'stand_points'; reverse=!reverse">Points</a></th>
       </tr>  
-      <tr ng-repeat="team in teams | orderBy: 'name' | orderBy:predicate:reverse | filter:query">
+      <tr ng-cloak class="ng-cloak" ng-repeat="team in teams | orderBy: 'name' | orderBy:predicate:reverse | filter:query">
         <td><img src="{{ team.image.photo_url.url }}" width="30" height="30" alt=""></td>
         <td><a href="/teams/{{team.slug}}">{{ team.name }}</a></td>
-        <td>{{ team.rank.stand_position }}</td>
+        <td>{{ team.stand_position }}</td>
         <td>{{ team.rank.stand_overall_gp }}</td>
-        <td> {{ team.rank.stand_points }} </td>
+        <td> {{ team.stand_points }} </td>
       </tr>  
     </table> 
   </div>

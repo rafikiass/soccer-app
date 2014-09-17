@@ -14,8 +14,6 @@ class Api::V1::TeamsController < ApplicationController
       @teams = @teams.where(:league_id => params[:league_id].to_i)
     end
 
-    @teams = @teams.to_a
-
     @teams.each do |team|
       team.rank = ranks[team.name]
     end

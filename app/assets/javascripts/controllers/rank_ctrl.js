@@ -7,7 +7,7 @@
 		
 		getRanks();
 
-		
+	
 
 		
 
@@ -17,15 +17,16 @@
 		};
 
 		function getRanks() {$http.get("/api/v1/teams.json").then(function (response){
-    		$scope.ranks = response.data.ranks
+    		$scope.ranks = response.data.ranks;
     		
     		});
 		};
 
 		function getTeams() {$http.get("/api/v1/teams.json?league_id=" + $scope.league_id).then(function (response){
-    		$scope.teams = response.data.teams
+    		$scope.teams = response.data.teams;
     		});
 		};	
+    		
 
 	});
 })();

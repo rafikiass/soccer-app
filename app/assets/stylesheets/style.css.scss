@@ -6,6 +6,8 @@
 
 //Main Typography - any typographical styling that is the same throughout
 
+.ng-cloak { visibility: hidden; }
+
 .side-navi a{
 	color:#fff;
 	font-size: 1.2em;
